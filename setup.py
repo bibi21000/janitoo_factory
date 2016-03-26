@@ -55,8 +55,6 @@ def data_files_config(res, rsrc, src, pattern):
 data_files = []
 data_files_config(data_files, 'docs','src/docs/','*')
 
-#You must define a variable like the one below.
-#It will be used to collect entries without installing the package
 janitoo_entry_points = {
     "janitoo.threads": [
         "http = janitoo_factory.threads.http:make_thread",
