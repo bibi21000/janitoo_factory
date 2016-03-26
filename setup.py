@@ -145,7 +145,7 @@ setup(
                     ],
     tests_require=['janitoo_nosetests'],
     dependency_links = [
-      'https://github.com/bibi21000/janitoo/archive/master.zip#egg=janitoo',
+      'https://github.com/bibi21000/janitoo/archive/master.zip#egg=janitoo-%s'%janitoo_version,
     ],
     entry_points = janitoo_entry_points,
 )
