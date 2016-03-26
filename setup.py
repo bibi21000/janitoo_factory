@@ -138,7 +138,6 @@ setup(
     package_dir = { '': 'src' },
     keywords = "core, official",
     install_requires=[
-                     'janitoo',
                      'janitoo == %s'%janitoo_version,
                     ],
     tests_require=['janitoo_nosetests'],

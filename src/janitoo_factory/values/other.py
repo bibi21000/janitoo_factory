@@ -33,7 +33,7 @@ from janitoo.classes import GENRE_DESC, VALUE_DESC
 from janitoo.utils import json_dumps
 from janitoo.value import JNTValue
 from janitoo.value_factory import JNTValueFactoryEntry
-from janitoo_factory.config import JNTValueConfigString
+from janitoo_factory.values.config import JNTValueConfigString
 
 ##############################################################
 #Check that we are in sync with the official command classes
