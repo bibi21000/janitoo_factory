@@ -44,7 +44,7 @@ from janitoo.runner import Runner, jnt_parse_args
 from janitoo.server import JNTServer
 from janitoo.options import JNTOptions
 
-from test_value_factory import TestFactory, BasePoll
+from test_values import TestFactory, BasePoll
 
 class TestSensorTemperature(TestFactory, BasePoll):
     """Test the value factory
