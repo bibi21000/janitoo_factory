@@ -57,7 +57,7 @@ class TestHttpSerser(JNTTServer, JNTTServerCommon):
         #~ JNTTServerCommon.test_040_server_start_no_error_in_log(self)
 
     def test_040_server_start_no_error_in_log(self):
-        self.skipCITest()
+        #~ self.skipCITest()
         self.start()
         self.assertHeartbeatNodes(hadds=self.hadds)
         time.sleep(65)
