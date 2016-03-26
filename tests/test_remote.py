@@ -43,7 +43,7 @@ from janitoo.utils import TOPIC_BROADCAST_REPLY, TOPIC_BROADCAST_REQUEST
 from janitoo.utils import TOPIC_VALUES_USER, TOPIC_VALUES_CONFIG, TOPIC_VALUES_SYSTEM, TOPIC_VALUES_BASIC
 
 from janitoo_factory.threads.remote import RemoteBus
-from janitoo.value_factory.other import JNTValueRRead, JNTValueRWrite
+from janitoo_factory.values.other import JNTValueRRead, JNTValueRWrite
 
 ##############################################################
 #Check that we are in sync with the official command classes
