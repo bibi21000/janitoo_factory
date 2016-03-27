@@ -310,7 +310,7 @@ class JNTValueSensorBoolean(JNTValueSensorGeneric):
         JNTValueSensorGeneric.__init__(self, entry_name=entry_name, help=help, label=label,
             cmd_class=cmd_class, type=0x01, **kwargs)
 
-class JNTValueSensorBoolean(JNTValueSensorBoolean):
+class JNTValueSensorPresence(JNTValueSensorBoolean):
     def __init__(self, entry_name="sensor_presence", **kwargs):
         """
         """
