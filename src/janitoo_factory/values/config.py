@@ -84,10 +84,11 @@ class JNTValueConfigGeneric(JNTValueFactoryEntry):
         genre = kwargs.pop('genre', 0x03)
         is_readonly = kwargs.pop('is_readonly', False)
         is_writeonly = kwargs.pop('is_writeonly', False)
+        index = kwargs.pop('index', 0)
         JNTValueFactoryEntry.__init__(self,
             get_data_cb=get_data_cb, set_data_cb=set_data_cb,
             cmd_class=COMMAND_CONFIGURATION,
-            genre=genre,
+            index=index, genre=genre,
             is_readonly=is_readonly, is_writeonly=is_writeonly,
             **kwargs)
 
@@ -104,19 +105,6 @@ class JNTValueConfigGeneric(JNTValueFactoryEntry):
             self.instances[index]['data'] = None
             logger.exception('Exception when writing %s_%s for node %s'%(self.uuid, index, node_uuid))
 
-    #~ def _get_data(self, node_uuid, index):
-        #~ """
-        #~ """
-        #~ if index not in self.instances:
-            #~ self.instances[index] = {}
-        #~ if 'data' not in self.instances[index]:
-            #~ self.instances[index]['data'] = None
-        #~ if self.instances[index]['data'] is None:
-            #~ try:
-                #~ self.instances[index]['data'] = self.options.get_option(node_uuid, '%s_%s'%(self.uuid, index))
-            #~ except:
-                #~ logger.exception('Exception when retrieving %s_%s for node %s'%(self.uuid, index, node_uuid))
-        #~ return self.instances[index]['data']
     def _get_data(self, node_uuid, index):
         """
         """
@@ -162,9 +150,8 @@ class JNTValueConfigString(JNTValueConfigGeneric):
         """
         help = kwargs.pop('help', 'A string')
         label = kwargs.pop('label', 'String')
-        index = kwargs.pop('index', 0)
         JNTValueConfigGeneric.__init__(self, entry_name=entry_name, help=help, label=label,
-            index=index, type=0x08, **kwargs)
+            type=0x08, **kwargs)
 
 class JNTValueConfigList(JNTValueConfigGeneric):
     def __init__(self, entry_name="config_list", **kwargs):
@@ -173,9 +160,8 @@ class JNTValueConfigList(JNTValueConfigGeneric):
         help = kwargs.pop('help', 'A string')
         label = kwargs.pop('label', 'String')
         list_items = kwargs.pop('list_items', ['value1', 'value2'])
-        index = kwargs.pop('index', 0)
         JNTValueConfigGeneric.__init__(self, entry_name=entry_name, help=help, label=label,
-            index=index, type=0x05, list_items=list_items, **kwargs)
+            type=0x05, list_items=list_items, **kwargs)
 
 class JNTValueConfigPassword(JNTValueConfigGeneric):
     def __init__(self, entry_name="config_password", **kwargs):
@@ -183,9 +169,8 @@ class JNTValueConfigPassword(JNTValueConfigGeneric):
         """
         help = kwargs.pop('help', 'A password')
         label = kwargs.pop('label', 'Password')
-        index = kwargs.pop('index', 0)
         JNTValueConfigGeneric.__init__(self, entry_name=entry_name, help=help, label=label,
-            index=index, type=0x14, **kwargs)
+            type=0x14, **kwargs)
 
 class JNTValueConfigBoolean(JNTValueConfigGeneric):
     def __init__(self, entry_name="config_boolean", **kwargs):
@@ -193,11 +178,10 @@ class JNTValueConfigBoolean(JNTValueConfigGeneric):
         """
         help = kwargs.pop('help', 'A boolean')
         label = kwargs.pop('label', 'Bool')
-        index = kwargs.pop('index', 0)
         get_data_cb = kwargs.pop('get_data_cb', self._get_data_bool)
         JNTValueConfigGeneric.__init__(self, entry_name=entry_name, help=help, label=label,
             get_data_cb=get_data_cb,
-            index=index, type=0x01, **kwargs)
+            type=0x01, **kwargs)
 
     def _get_data_bool(self, node_uuid, index):
         """
@@ -218,11 +202,10 @@ class JNTValueConfigInteger(JNTValueConfigGeneric):
         """
         help = kwargs.pop('help', 'An integer')
         label = kwargs.pop('label', 'Int')
-        index = kwargs.pop('index', 0)
         get_data_cb = kwargs.pop('get_data_cb', self._get_data_integer)
         JNTValueConfigGeneric.__init__(self, entry_name=entry_name, help=help, label=label,
             get_data_cb=get_data_cb,
-            index=index, type=0x04, **kwargs)
+            type=0x04, **kwargs)
 
     def _get_data_integer(self, node_uuid, index):
         """
@@ -243,11 +226,10 @@ class JNTValueConfigByte(JNTValueConfigGeneric):
         """
         help = kwargs.pop('help', 'A byte')
         label = kwargs.pop('label', 'Byte')
-        index = kwargs.pop('index', 0)
         get_data_cb = kwargs.pop('get_data_cb', self._get_data_byte)
         JNTValueConfigGeneric.__init__(self, entry_name=entry_name, help=help, label=label,
             get_data_cb=get_data_cb,
-            index=index, type=0x02, **kwargs)
+            type=0x02, **kwargs)
 
     def _get_data_byte(self, node_uuid, index):
         """
@@ -268,11 +250,10 @@ class JNTValueConfigFloat(JNTValueConfigGeneric):
         """
         help = kwargs.pop('help', 'A float')
         label = kwargs.pop('label', 'Float')
-        index = kwargs.pop('index', 0)
         get_data_cb = kwargs.pop('get_data_cb', self._get_data_float)
         JNTValueConfigGeneric.__init__(self, entry_name=entry_name, help=help, label=label,
             get_data_cb=get_data_cb,
-            index=index, type=0x04, **kwargs)
+            type=0x04, **kwargs)
 
     def _get_data_float(self, node_uuid, index):
         """
@@ -293,11 +274,10 @@ class JNTValueConfigArray(JNTValueConfigGeneric):
         """
         help = kwargs.pop('help', 'An array of strings separated by |')
         label = kwargs.pop('label', 'Array')
-        index = kwargs.pop('index', 0)
         get_data_cb = kwargs.pop('get_data_cb', self._get_data_list)
         JNTValueConfigGeneric.__init__(self, entry_name=entry_name, help=help, label=label,
             get_data_cb=get_data_cb,
-            index=index, type=0x16, **kwargs)
+            type=0x16, **kwargs)
 
     def _get_data_list(self, node_uuid, index):
         """

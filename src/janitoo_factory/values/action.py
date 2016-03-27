@@ -84,7 +84,9 @@ class JNTValueActionGeneric(JNTValueFactoryEntry):
         genre = kwargs.pop('genre', 0x02)
         is_readonly = kwargs.pop('is_readonly', False)
         is_writeonly = kwargs.pop('is_writeonly', False)
+        index = kwargs.pop('index', 0)
         JNTValueFactoryEntry.__init__(self,
+            index=index,
             genre=genre,
             is_readonly=is_readonly,
             is_writeonly=is_writeonly,
@@ -96,12 +98,10 @@ class JNTValueActionString(JNTValueActionGeneric):
         """
         help = kwargs.pop('help', 'A string')
         label = kwargs.pop('label', 'String')
-        index = kwargs.pop('index', 0)
         JNTValueActionGeneric.__init__(self,
             entry_name=entry_name,
             help=help,
             label=label,
-            index=index,
             type=0x08,
             **kwargs)
 
@@ -111,12 +111,10 @@ class JNTValueActionByte(JNTValueActionGeneric):
         """
         help = kwargs.pop('help', 'A byte')
         label = kwargs.pop('label', 'Byte')
-        index = kwargs.pop('index', 0)
         JNTValueActionGeneric.__init__(self,
             entry_name=entry_name,
             help=help,
             label=label,
-            index=index,
             type=0x02,
             **kwargs)
 
@@ -126,7 +124,6 @@ class JNTValueActionInteger(JNTValueActionGeneric):
         """
         help = kwargs.pop('help', 'An integer')
         label = kwargs.pop('label', 'Integer')
-        index = kwargs.pop('index', 0)
         JNTValueActionGeneric.__init__(self,
             entry_name=entry_name,
             help=help,
@@ -141,12 +138,10 @@ class JNTValueActionBoolean(JNTValueActionGeneric):
         """
         help = kwargs.pop('help', 'A boolean')
         label = kwargs.pop('label', 'Boolean')
-        index = kwargs.pop('index', 0)
         JNTValueActionGeneric.__init__(self,
             entry_name=entry_name,
             help=help,
             label=label,
-            index=index,
             type=0x04,
             **kwargs)
 
@@ -156,12 +151,10 @@ class JNTValueActionList(JNTValueActionGeneric):
         """
         help = kwargs.pop('help', 'A string')
         label = kwargs.pop('label', 'String')
-        index = kwargs.pop('index', 0)
         JNTValueActionGeneric.__init__(self,
             entry_name=entry_name,
             help=help,
             label=label,
-            index=index,
             type=0x05,
             **kwargs)
 
@@ -170,7 +163,6 @@ class JNTValueActionSwitchBinary(JNTValueActionList):
         """
         """
         label = kwargs.pop('label', 'Switch')
-        index = kwargs.pop('index', 0)
         list_items = kwargs.pop('list_items', ['on', 'off'])
         help = kwargs.pop('help', 'A switch. Valid values are : %s'%list_items)
         JNTValueActionList.__init__(self,
@@ -179,7 +171,6 @@ class JNTValueActionSwitchBinary(JNTValueActionList):
             label=label,
             list_items=list_items,
             cmd_class=COMMAND_SWITCH_BINARY,
-            index=index,
             **kwargs)
 
 class JNTValueActionSwitchMultilevel(JNTValueActionByte):
@@ -188,13 +179,11 @@ class JNTValueActionSwitchMultilevel(JNTValueActionByte):
         """
         help = kwargs.pop('help', 'A switch multilevel. A byte from 0 to 100')
         label = kwargs.pop('label', 'Switch')
-        index = kwargs.pop('index', 0)
         JNTValueActionByte.__init__(self,
             entry_name=entry_name,
             help=help,
             label=label,
             cmd_class=COMMAND_SWITCH_MULTILEVEL,
-            index=index,
             **kwargs)
 
 class JNTValueActionButtonBinary(JNTValueActionList):
@@ -203,7 +192,6 @@ class JNTValueActionButtonBinary(JNTValueActionList):
         """
         help = kwargs.pop('help', 'A button')
         label = kwargs.pop('label', 'Button')
-        index = kwargs.pop('index', 0)
         list_items = kwargs.pop('list_items', ['on', 'off'])
         JNTValueActionList.__init__(self,
             entry_name=entry_name,
@@ -211,7 +199,6 @@ class JNTValueActionButtonBinary(JNTValueActionList):
             label=label,
             list_items=list_items,
             cmd_class=COMMAND_BUTTON_BINARY,
-            index=index,
             **kwargs)
 
 class JNTValueActionButtonMultiLevel(JNTValueActionByte):
@@ -220,12 +207,10 @@ class JNTValueActionButtonMultiLevel(JNTValueActionByte):
         """
         help = kwargs.pop('help', 'A button')
         label = kwargs.pop('label', 'Button')
-        index = kwargs.pop('index', 0)
         JNTValueActionByte.__init__(self,
             entry_name=entry_name,
             help=help,
             label=label,
             cmd_class=COMMAND_BUTTON_MULTILEVEL,
-            index=index,
             **kwargs)
 

@@ -66,8 +66,9 @@ class JNTValueSensorGeneric(JNTValueFactoryEntry):
         genre = kwargs.pop('genre', 0x01)
         is_readonly = kwargs.pop('is_readonly', True)
         is_writeonly = kwargs.pop('is_writeonly', False)
+        index = kwargs.pop('index', 0)
         JNTValueFactoryEntry.__init__(self,
-            genre=genre,
+            index=index, genre=genre,
             is_readonly=is_readonly, is_writeonly=is_writeonly,
             **kwargs)
 
@@ -83,10 +84,9 @@ class JNTValueSensorFloat(JNTValueSensorGeneric):
         """
         help = kwargs.pop('help', 'A float sensor')
         label = kwargs.pop('label', 'Float')
-        index = kwargs.pop('index', 0)
         cmd_class = kwargs.pop('cmd_class', COMMAND_SENSOR_MULTILEVEL)
         JNTValueSensorGeneric.__init__(self, entry_name=entry_name, help=help, label=label,
-            index=index, cmd_class=cmd_class, type=0x03, **kwargs)
+            cmd_class=cmd_class, type=0x03, **kwargs)
 
 class JNTValueSensorByte(JNTValueSensorGeneric):
     def __init__(self, entry_name="sensor_byte", **kwargs):
@@ -94,10 +94,9 @@ class JNTValueSensorByte(JNTValueSensorGeneric):
         """
         help = kwargs.pop('help', 'A byte sensor')
         label = kwargs.pop('label', 'Byte')
-        index = kwargs.pop('index', 0)
         cmd_class = kwargs.pop('cmd_class', COMMAND_SENSOR_MULTILEVEL)
         JNTValueSensorGeneric.__init__(self, entry_name=entry_name, help=help, label=label,
-            index=index, cmd_class=cmd_class, type=0x02, **kwargs)
+            cmd_class=cmd_class, type=0x02, **kwargs)
 
 class JNTValueSensorInteger(JNTValueSensorGeneric):
     def __init__(self, entry_name="sensor_integer", **kwargs):
@@ -105,8 +104,7 @@ class JNTValueSensorInteger(JNTValueSensorGeneric):
         """
         help = kwargs.pop('help', 'An integer sensor')
         label = kwargs.pop('label', 'Integer')
-        index = kwargs.pop('index', 0)
         cmd_class = kwargs.pop('cmd_class', COMMAND_SENSOR_MULTILEVEL)
         JNTValueSensorGeneric.__init__(self, entry_name=entry_name, help=help, label=label,
-            index=index, cmd_class=cmd_class, type=0x04, **kwargs)
+            cmd_class=cmd_class, type=0x04, **kwargs)
 

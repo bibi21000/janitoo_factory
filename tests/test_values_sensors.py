@@ -125,3 +125,9 @@ class TestSensorOrientation(TestFactory, BasePoll):
     """Test the value factory
     """
     entry_name='sensor_orientation'
+
+class TestSensorPresence(TestFactory, BasePoll):
+    """Test the value factory
+    """
+    entry_name='sensor_presence'
+
