@@ -140,11 +140,11 @@ setup(
     package_dir = { '': 'src' },
     keywords = "core, official",
     install_requires=[
-                     'janitoo == %s'%janitoo_version,
+                     'janitoo',
                     ],
     tests_require=['janitoo_nosetests'],
     dependency_links = [
-      'https://github.com/bibi21000/janitoo/archive/master.zip#egg=janitoo-%s'%janitoo_version,
+      'https://github.com/bibi21000/janitoo/archive/master.zip#egg=janitoo',
     ],
     entry_points = janitoo_entry_points,
 )

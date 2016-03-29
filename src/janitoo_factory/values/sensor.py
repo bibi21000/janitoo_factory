@@ -102,7 +102,6 @@ def make_sensor_boolean(**kwargs):
 def make_sensor_presence(**kwargs):
     return JNTValueSensorPresence(**kwargs)
 
-
 class JNTValueSensorGeneric(JNTValueFactoryEntry):
     """
     """
