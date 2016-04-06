@@ -165,9 +165,11 @@ class JNTValueActionSwitchBinary(JNTValueActionList):
         label = kwargs.pop('label', 'Switch')
         list_items = kwargs.pop('list_items', ['on', 'off'])
         help = kwargs.pop('help', 'A switch. Valid values are : %s'%list_items)
+        default = kwargs.pop('default', 0)
         JNTValueActionList.__init__(self,
             entry_name=entry_name,
             help=help,
+            default=default,
             label=label,
             list_items=list_items,
             cmd_class=COMMAND_SWITCH_BINARY,
@@ -179,9 +181,11 @@ class JNTValueActionSwitchMultilevel(JNTValueActionByte):
         """
         help = kwargs.pop('help', 'A switch multilevel. A byte from 0 to 100')
         label = kwargs.pop('label', 'Switch')
+        default = kwargs.pop('default', 0)
         JNTValueActionByte.__init__(self,
             entry_name=entry_name,
             help=help,
+            default=default,
             label=label,
             cmd_class=COMMAND_SWITCH_MULTILEVEL,
             **kwargs)
@@ -193,10 +197,12 @@ class JNTValueActionButtonBinary(JNTValueActionList):
         help = kwargs.pop('help', 'A button')
         label = kwargs.pop('label', 'Button')
         list_items = kwargs.pop('list_items', ['on', 'off'])
+        default = kwargs.pop('default', 'off')
         JNTValueActionList.__init__(self,
             entry_name=entry_name,
             help=help,
             label=label,
+            default=default,
             list_items=list_items,
             cmd_class=COMMAND_BUTTON_BINARY,
             **kwargs)
@@ -207,10 +213,12 @@ class JNTValueActionButtonMultiLevel(JNTValueActionByte):
         """
         help = kwargs.pop('help', 'A button')
         label = kwargs.pop('label', 'Button')
+        default = kwargs.pop('default', 'off')
         JNTValueActionByte.__init__(self,
             entry_name=entry_name,
             help=help,
             label=label,
+            default=default,
             cmd_class=COMMAND_BUTTON_MULTILEVEL,
             **kwargs)
 
