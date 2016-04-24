@@ -96,6 +96,9 @@ def make_sensor_float(**kwargs):
 def make_sensor_pressure(**kwargs):
     return JNTValueSensorPressure(**kwargs)
 
+def make_sensor_distance(**kwargs):
+    return JNTValueSensorDistance(**kwargs)
+
 def make_sensor_boolean(**kwargs):
     return JNTValueSensorBoolean(**kwargs)
 
@@ -228,6 +231,17 @@ class JNTValueSensorHumidity(JNTValueSensorFloat):
         help = kwargs.pop('help', 'An humidity sensor')
         label = kwargs.pop('label', 'humidity')
         units = kwargs.pop('units', '%')
+        cmd_class = kwargs.pop('cmd_class', COMMAND_SENSOR_MULTILEVEL)
+        JNTValueSensorGeneric.__init__(self, entry_name=entry_name, help=help, label=label, units=units,
+            cmd_class=cmd_class, **kwargs)
+
+class JNTValueSensorDistance(JNTValueSensorFloat):
+    def __init__(self, entry_name="sensor_distance", **kwargs):
+        """
+        """
+        help = kwargs.pop('help', 'A distance sensor')
+        label = kwargs.pop('label', 'distance')
+        units = kwargs.pop('units', 'm')
         cmd_class = kwargs.pop('cmd_class', COMMAND_SENSOR_MULTILEVEL)
         JNTValueSensorGeneric.__init__(self, entry_name=entry_name, help=help, label=label, units=units,
             cmd_class=cmd_class, **kwargs)
