@@ -61,8 +61,10 @@ assert(COMMAND_DESC[COMMAND_DOC_RESOURCE] == 'COMMAND_DOC_RESOURCE')
 
 DEPLOY_DIRS = ['css', 'images', 'js']
 
+OID = 'http'
+
 def make_thread(options):
-    if get_option_autostart(options, 'http') == True:
+    if get_option_autostart(options, OID) == True:
         return HttpThread(options)
     else:
         return None
@@ -198,10 +200,10 @@ class HttpBus(JNTBus):
         :param int bus_id: the SMBus id (see Raspberry Pi documentation)
         :param kwargs: parameters transmitted to :py:class:`smbus.SMBus` initializer
         """
-        oid = kwargs.pop('oid', 'http')
+        oid = kwargs.pop('oid', OID)
         JNTBus.__init__(self, oid=oid, **kwargs)
-        self._lock =  threading.Lock()
-        self._server = None
+        self._http_lock =  threading.Lock()
+        self.http_server = None
         if 'home_dir' in self.options.data and self.options.data['home_dir'] is not None:
             dirname = self.options.data['home_dir']
         directory = os.path.join(dirname, 'public')
@@ -236,6 +238,19 @@ class HttpBus(JNTBus):
             genre=0x01,
         )
 
+        self.load_extensions(OID)
+        self.export_attrs('http_acquire', self.http_acquire)
+        self.export_attrs('http_release', self.http_release)
+        self.export_attrs('http_server', self.http_server)
+
+    def http_acquire(self):
+        """Get a lock on the bus"""
+        self._http_lock.acquire()
+
+    def http_release(self):
+        """Release a lock on the bus"""
+        self._http_lock.release()
+
     def get_resource_path(self):
         """Return the resource path
 
@@ -247,8 +262,8 @@ class HttpBus(JNTBus):
 
         """
         #~ print "it's me %s : %s" % (self.values['upsname'].data, self._ups_stats_last)
-        if self._server is not None:
-            return self._server.is_alive()
+        if self.server_http is not None:
+            return self.server_http.is_alive()
         return False
 
     def set_action(self, node_uuid, index, data):
@@ -261,19 +276,19 @@ class HttpBus(JNTBus):
         elif data == "stop":
             self.stop()
         elif data == "reload":
-            if self._server is not None:
-                self._server.trigger_reload()
+            if self.server_http is not None:
+                self.server_http.trigger_reload()
 
     def start(self, mqttc, trigger_thread_reload_cb=None):
         JNTBus.start(self, mqttc, trigger_thread_reload_cb)
-        self._server = HttpServerThread("http_server", self.options.data)
-        self._server.config(host=self.values["host"].data, port=self.values["port"].data)
-        self._server.start()
+        self.server_http = HttpServerThread("http_server", self.options.data)
+        self.server_http.config(host=self.values["host"].data, port=self.values["port"].data)
+        self.server_http.start()
 
     def stop(self):
-        if self._server is not None:
-            self._server.stop()
-            self._server = None
+        if self.server_http is not None:
+            self.server_http.stop()
+            self.server_http = None
         JNTBus.stop(self)
 
 class HttpResourceComponent(JNTComponent):
