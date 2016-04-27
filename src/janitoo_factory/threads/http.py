@@ -242,6 +242,9 @@ class HttpBus(JNTBus):
         self.export_attrs('http_acquire', self.http_acquire)
         self.export_attrs('http_release', self.http_release)
         self.export_attrs('http_server', self.http_server)
+        self.export_attrs('reload_http_server', self.reload_http_server)
+        self.export_attrs('start_http_server', self.start_http_server)
+        self.export_attrs('stop_http_server', self.stop_http_server)
 
     def http_acquire(self):
         """Get a lock on the bus"""
@@ -261,8 +264,8 @@ class HttpBus(JNTBus):
         """Check that the component is 'available'
 
         """
-        if self.server_http is not None:
-            return self.server_http.is_alive()
+        if self.http_server is not None:
+            return self.http_server.is_alive()
         return False
 
     def set_action(self, node_uuid, index, data):
@@ -271,26 +274,35 @@ class HttpBus(JNTBus):
         params = {}
         if data == "start":
             if self.mqttc is not None:
-                self.start_server()
+                self.start_http_server()
         elif data == "stop":
-            self.stop_server()
+            self.stop_http_server()
         elif data == "reload":
-            if self.server_http is not None:
-                self.server_http.trigger_reload()
+            self.reload_http_server()
 
     def start(self, mqttc, trigger_thread_reload_cb=None):
         """ Start the bus"""
-        self.start_server()
+        self.start_http_server()
         JNTBus.start(self, mqttc, trigger_thread_reload_cb)
 
-    def start_server(self):
+    def reload_http_server(self):
+        """ Reload the http server """
+        self.http_acquire()
+        try:
+            if self.http_server is not None:
+                self.http_server.trigger_reload()
+                return True
+        finally:
+            self.http_release()
+
+    def start_http_server(self):
         """ Start the http server """
         self.http_acquire()
         try:
-            if self.server_http is None:
-                self.server_http = HttpServerThread("http_server", self.options.data)
-                self.server_http.config(host=self.values["host"].data, port=self.values["port"].data)
-                self.server_http.start()
+            if self.http_server is None:
+                self.http_server = HttpServerThread("http_server", self.options.data)
+                self.http_server.config(host=self.values["host"].data, port=self.values["port"].data)
+                self.http_server.start()
                 self.export_attrs('http_server', self.http_server)
                 return True
         finally:
@@ -299,18 +311,18 @@ class HttpBus(JNTBus):
     def stop(self):
         """ Stop the bus """
         JNTBus.stop(self)
-        self.stop_server()
+        self.stop_http_server()
 
-    def stop_server(self):
+    def stop_http_server(self):
         """ Stop the http server """
         self.http_acquire()
         try:
-            if self.server_http is not None:
+            if self.http_server is not None:
                 try:
-                    self.server_http.stop()
+                    self.http_server.stop()
                 except:
                     logger.exception("[%s] - stop_server:%s", self.__class__.__name__)
-                self.server_http = None
+                self.http_server = None
                 self.export_attrs('http_server', self.http_server)
                 return True
         finally:
