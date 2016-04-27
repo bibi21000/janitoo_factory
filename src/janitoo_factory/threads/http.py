@@ -261,7 +261,6 @@ class HttpBus(JNTBus):
         """Check that the component is 'available'
 
         """
-        #~ print "it's me %s : %s" % (self.values['upsname'].data, self._ups_stats_last)
         if self.server_http is not None:
             return self.server_http.is_alive()
         return False
@@ -272,24 +271,50 @@ class HttpBus(JNTBus):
         params = {}
         if data == "start":
             if self.mqttc is not None:
-                self.start(self.mqttc)
+                self.start_server()
         elif data == "stop":
-            self.stop()
+            self.stop_server()
         elif data == "reload":
             if self.server_http is not None:
                 self.server_http.trigger_reload()
 
     def start(self, mqttc, trigger_thread_reload_cb=None):
+        """ Start the bus"""
+        self.start_server()
         JNTBus.start(self, mqttc, trigger_thread_reload_cb)
-        self.server_http = HttpServerThread("http_server", self.options.data)
-        self.server_http.config(host=self.values["host"].data, port=self.values["port"].data)
-        self.server_http.start()
+
+    def start_server(self):
+        """ Start the http server """
+        self.http_acquire()
+        try:
+            if self.server_http is None:
+                self.server_http = HttpServerThread("http_server", self.options.data)
+                self.server_http.config(host=self.values["host"].data, port=self.values["port"].data)
+                self.server_http.start()
+                self.export_attrs('http_server', self.http_server)
+                return True
+        finally:
+            self.http_release()
 
     def stop(self):
-        if self.server_http is not None:
-            self.server_http.stop()
-            self.server_http = None
+        """ Stop the bus """
         JNTBus.stop(self)
+        self.stop_server()
+
+    def stop_server(self):
+        """ Stop the http server """
+        self.http_acquire()
+        try:
+            if self.server_http is not None:
+                try:
+                    self.server_http.stop()
+                except:
+                    logger.exception("[%s] - stop_server:%s", self.__class__.__name__)
+                self.server_http = None
+                self.export_attrs('http_server', self.http_server)
+                return True
+        finally:
+            self.http_release()
 
 class HttpResourceComponent(JNTComponent):
     """ A resource ie /rrd """
