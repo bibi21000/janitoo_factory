@@ -201,7 +201,7 @@ class HttpBus(JNTBus):
         :param kwargs: parameters transmitted to :py:class:`smbus.SMBus` initializer
         """
         oid = kwargs.pop('oid', OID)
-        JNTBus.__init__(self, oid=oid, **kwargs)
+        JNTBus.__init__(self, **kwargs)
         self._http_lock =  threading.Lock()
         self.http_server = None
         dirname = oid
