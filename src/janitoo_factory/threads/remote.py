@@ -276,12 +276,12 @@ class RemoteNodeComponent(JNTComponent):
 class RemoteBus(JNTBus):
     """A pseudo-bus
     """
-    def __init__(self, oid='remote', **kwargs):
+    def __init__(self, **kwargs):
         """
         :param int bus_id: the SMBus id (see Raspberry Pi documentation)
         :param kwargs: parameters transmitted to :py:class:`smbus.SMBus` initializer
         """
-        JNTBus.__init__(self, oid=oid, **kwargs)
+        JNTBus.__init__(self, **kwargs)
 
 class RemoteThread(JNTBusThread):
     """The remote thread

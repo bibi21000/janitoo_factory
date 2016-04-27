@@ -204,7 +204,10 @@ class HttpBus(JNTBus):
         JNTBus.__init__(self, oid=oid, **kwargs)
         self._http_lock =  threading.Lock()
         self.http_server = None
-        if 'home_dir' in self.options.data and self.options.data['home_dir'] is not None:
+        dirname = oid
+        if self.options is not None and \
+          'home_dir' in self.options.data and \
+          self.options.data['home_dir'] is not None:
             dirname = self.options.data['home_dir']
         directory = os.path.join(dirname, 'public')
         if not os.path.exists(directory):
