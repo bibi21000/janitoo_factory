@@ -291,4 +291,4 @@ class RemoteThread(JNTBusThread):
         """Build the bus
         """
         self.section = 'remote'
-        self.bus = RemoteBus(options=self.options, product_name="Remote thread")
+        self.bus = RemoteBus(options=self.options, oid=self.section, product_name="Remote thread")

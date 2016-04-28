@@ -65,3 +65,8 @@ class TestRemoteNodeComponent(JNTTComponent, JNTTComponentCommon):
     """
     component_name = "remote.node"
 
+class TestHttpComponent(JNTTComponent, JNTTComponentCommon):
+    """Test the component
+    """
+    component_name = "http.resource"
+
