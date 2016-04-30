@@ -26,6 +26,7 @@ __copyright__ = "Copyright © 2013-2014-2015-2016 Sébastien GALLET aka bibi2100
 
 # Set default logging handler to avoid "No handler found" warnings.
 import os
+import threading
 import logging
 logger = logging.getLogger(__name__)
 
@@ -44,7 +45,9 @@ COMMAND_CONFIGURATION = 0x0070
 COMMAND_SENSOR_BINARY = 0x0030
 COMMAND_SENSOR_MULTILEVEL = 0x0031
 COMMAND_BASIC = 0x0020
+COMMAND_BLINK = 0x3203
 
+assert(COMMAND_DESC[COMMAND_BLINK] == 'COMMAND_BLINK')
 assert(COMMAND_DESC[COMMAND_BASIC] == 'COMMAND_BASIC')
 assert(COMMAND_DESC[COMMAND_CONFIGURATION] == 'COMMAND_CONFIGURATION')
 assert(COMMAND_DESC[COMMAND_SENSOR_BINARY] == 'COMMAND_SENSOR_BINARY')
@@ -59,6 +62,9 @@ def make_value_rread(**kwargs):
 
 def make_value_rwrite(**kwargs):
     return JNTValueRWrite(**kwargs)
+
+def make_blink(**kwargs):
+    return JNTValueBlink(**kwargs)
 
 class JNTValueIpPing(JNTValueFactoryEntry):
     """
@@ -204,3 +210,144 @@ class JNTValueRWrite(JNTValueConfigString):
         except :
             logger.exception('[%s] - Exception when reading (%s)', self.__class__.__name__, self.instances[index]['data'])
             return None
+
+class JNTValueBlink(JNTValueFactoryEntry):
+    """
+    """
+    def __init__(self, entry_name="blink", **kwargs):
+        self.light_on_cb = kwargs.pop('light_on_cb', None)
+        self.light_off_cb = kwargs.pop('light_off_cb', None)
+        self.delays = {
+            'off' : {
+                'on' : kwargs.pop('off_on_delay', 0),
+                'off' : kwargs.pop('off_off_delay', 2.5),
+            },
+            'blink' : {
+                'on' : kwargs.pop('blink_on_delay', 0.6),
+                'off' : kwargs.pop('blink_off_delay', 2.5),
+            },
+            'heartbeat' : {
+                'on' : kwargs.pop('heartbeat_on_delay', 0.5),
+                'off' : kwargs.pop('heartbeat_off_delay', 10),
+            },
+            'notify' : {
+                'on' : kwargs.pop('heartbeat_on_delay', 0.6),
+                'off' : kwargs.pop('heartbeat_off_delay', 5),
+            },
+            'alert' : {
+                'on' : kwargs.pop('heartbeat_on_delay', 0.6),
+                'off' : kwargs.pop('heartbeat_off_delay', 1),
+            },
+        }
+        self.timer = None
+        self.timer_lock = None
+        if self.light_on_cb is None or self.light_off_cb is None:
+            raise RuntimeError("You must define light_off_cb and light_on_cb parameters")
+        help = kwargs.pop('help', 'Blink')
+        default = kwargs.pop('default', 'off')
+        label = kwargs.pop('label', 'Blink')
+        index = kwargs.pop('index', 0)
+        list_items = kwargs.pop('list_items', ['off', 'blink', 'heartbeat', 'notify', 'alert'])
+        cmd_class = kwargs.pop('cmd_class', COMMAND_BLINK)
+        JNTValueFactoryEntry.__init__(self, entry_name=entry_name, help=help, label=label,
+            get_data_cb=self.get_blink, set_data_cb=self.set_blink,
+            index=index, cmd_class=cmd_class,
+            default=default,
+            genre=0x01, type=0x05,
+            is_writeonly=False, is_readonly=True, **kwargs)
+
+    def start(self):
+        """Start the value
+        """
+        self.start_blinking()
+
+    def stop(self):
+        """Start the value
+        """
+        if self.timer_lock is not None:
+            self.stop_blinking()
+
+    def create_poll_value(self, **kwargs):
+        """
+        """
+        default = kwargs.pop('default', 300)
+        return self._create_poll_value(default=default, **kwargs)
+
+    def start_blinking(self, **kwargs):
+        """
+        """
+        self.timer_lock = threading.Lock()
+        self.timer_lock.acquire()
+        try:
+            if self.timer is not None:
+                self.timer.cancel()
+                self.timer = None
+            self.timer = threading.Timer(0.1, self.timer_change, args=(True,))
+            self.timer.start()
+        finally:
+            self.timer_lock.release()
+
+    def timer_change(self, status):
+        """
+        """
+        if self.timer_lock is None:
+            return
+        self.timer_lock.acquire()
+        try:
+            if self.timer is not None:
+                self.timer.cancel()
+                self.timer = None
+            if status:
+                self.light_on_cb(node_uuid=self.node_uuid)
+                try:
+                    delay = self.delays[self._data]['off']
+                except:
+                    delay = 0
+                    logger.exception('[%s] - Exception when timer_change', self.__class__.__name__)
+                if delay > 0:
+                    self.timer = threading.Timer(delay, self.timer_change, args=(False,))
+                    self.timer.start()
+            else:
+                self.light_off_cb(node_uuid=self.node_uuid)
+                try:
+                    delay = self.delays[self._data]['on']
+                except:
+                    delay = 0
+                    logger.exception('[%s] - Exception when timer_change', self.__class__.__name__)
+                if delay > 0:
+                    self.timer = threading.Timer(delay, self.timer_change, args=(True,))
+                    self.timer.start()
+        finally:
+            self.timer_lock.release()
+
+    def stop_blinking(self, **kwargs):
+        """
+        """
+        #~ print 'locking', self.timer_lock.acquire(False)
+        self.timer_lock.acquire()
+        try:
+            if self.timer is not None:
+                self.timer.cancel()
+                self.timer = None
+            self._data = 'off'
+            self.light_off_cb(node_uuid=self.node_uuid)
+        finally:
+            self.timer_lock.release()
+        self.timer_lock = None
+
+    def get_blink(self, node_uuid=None, index=None):
+        """
+        """
+        return self._data
+
+    def set_blink(self, node_uuid=None, index=None, data = None):
+        """
+        """
+        if data == 'off':
+            self._data = data
+            self.stop_blinking(node_uuid=node_uuid, index=index, data = data)
+        elif data in ['blink', 'heartbeat', 'notify', 'alert']:
+            self._data = data
+            self.start_blinking(node_uuid=node_uuid, index=index, data = data)
+        else:
+            logger.warning('[%s] - set_blink invalid data %s', self.__class__.__name__, data)
