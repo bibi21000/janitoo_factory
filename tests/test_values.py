@@ -132,10 +132,10 @@ class TestBlinkValue(TestFactory, BasePoll):
     entry_name='blink'
     led = None
 
-    def light_off_cb(self, node_uuid=None, index=None):
+    def blink_off_cb(self, node_uuid=None, index=None):
         self.led = False
 
-    def light_on_cb(self, node_uuid=None, index=None):
+    def blink_on_cb(self, node_uuid=None, index=None):
         self.led = True
 
     def test_020_value_entry_poll(self):
@@ -143,8 +143,8 @@ class TestBlinkValue(TestFactory, BasePoll):
         node_uuid='test_node'
         main_value = self.get_main_value(
             node_uuid=node_uuid,
-            light_off_cb=self.light_off_cb,
-            light_on_cb=self.light_on_cb
+            blink_off_cb=self.blink_off_cb,
+            blink_on_cb=self.blink_on_cb
         )
         self.assertFalse(main_value.is_writeonly)
         print main_value
@@ -166,8 +166,8 @@ class TestBlinkValue(TestFactory, BasePoll):
         node_uuid='test_node'
         main_value = self.get_main_value(
             node_uuid=node_uuid,
-            light_off_cb=self.light_off_cb,
-            light_on_cb=self.light_on_cb,
+            blink_off_cb=self.blink_off_cb,
+            blink_on_cb=self.blink_on_cb,
             blink_on_delay=2,
             blink_off_delay=2,
         )

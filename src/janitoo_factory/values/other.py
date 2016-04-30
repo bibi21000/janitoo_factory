@@ -215,12 +215,12 @@ class JNTValueBlink(JNTValueFactoryEntry):
     """
     """
     def __init__(self, entry_name="blink", **kwargs):
-        self.light_on_cb = kwargs.pop('light_on_cb', None)
-        self.light_off_cb = kwargs.pop('light_off_cb', None)
+        self.blink_on_cb = kwargs.pop('blink_on_cb', None)
+        self.blink_off_cb = kwargs.pop('blink_off_cb', None)
         self.delays = {
             'off' : {
                 'on' : kwargs.pop('off_on_delay', 0),
-                'off' : kwargs.pop('off_off_delay', 2.5),
+                'off' : kwargs.pop('off_off_delay', 1),
             },
             'blink' : {
                 'on' : kwargs.pop('blink_on_delay', 0.6),
@@ -228,33 +228,37 @@ class JNTValueBlink(JNTValueFactoryEntry):
             },
             'heartbeat' : {
                 'on' : kwargs.pop('heartbeat_on_delay', 0.5),
-                'off' : kwargs.pop('heartbeat_off_delay', 10),
+                'off' : kwargs.pop('heartbeat_off_delay', 30),
             },
             'notify' : {
-                'on' : kwargs.pop('heartbeat_on_delay', 0.6),
-                'off' : kwargs.pop('heartbeat_off_delay', 5),
+                'on' : kwargs.pop('notify_on_delay', 0.6),
+                'off' : kwargs.pop('notify_off_delay', 10),
+            },
+            'warning' : {
+                'on' : kwargs.pop('warning_on_delay', 0.6),
+                'off' : kwargs.pop('warning_off_delay', 5),
             },
             'alert' : {
-                'on' : kwargs.pop('heartbeat_on_delay', 0.6),
-                'off' : kwargs.pop('heartbeat_off_delay', 1),
+                'on' : kwargs.pop('alert_on_delay', 0.6),
+                'off' : kwargs.pop('alert_off_delay', 1),
             },
         }
         self.timer = None
         self.timer_lock = None
-        if self.light_on_cb is None or self.light_off_cb is None:
-            raise RuntimeError("You must define light_off_cb and light_on_cb parameters")
+        if self.blink_on_cb is None or self.blink_off_cb is None:
+            raise RuntimeError("You must define blink_off_cb and blink_on_cb parameters")
         help = kwargs.pop('help', 'Blink')
         default = kwargs.pop('default', 'off')
         label = kwargs.pop('label', 'Blink')
         index = kwargs.pop('index', 0)
-        list_items = kwargs.pop('list_items', ['off', 'blink', 'heartbeat', 'notify', 'alert'])
+        list_items = kwargs.pop('list_items', ['off', 'blink', 'heartbeat', 'notify', 'warning', 'alert'])
         cmd_class = kwargs.pop('cmd_class', COMMAND_BLINK)
         JNTValueFactoryEntry.__init__(self, entry_name=entry_name, help=help, label=label,
             get_data_cb=self.get_blink, set_data_cb=self.set_blink,
             index=index, cmd_class=cmd_class,
             default=default,
             genre=0x01, type=0x05,
-            is_writeonly=False, is_readonly=True, **kwargs)
+            is_writeonly=False, is_readonly=False, **kwargs)
 
     def start(self):
         """Start the value
@@ -298,7 +302,7 @@ class JNTValueBlink(JNTValueFactoryEntry):
                 self.timer.cancel()
                 self.timer = None
             if status:
-                self.light_on_cb(node_uuid=self.node_uuid)
+                self.blink_on_cb(node_uuid=self.node_uuid)
                 try:
                     delay = self.delays[self._data]['off']
                 except:
@@ -308,7 +312,7 @@ class JNTValueBlink(JNTValueFactoryEntry):
                     self.timer = threading.Timer(delay, self.timer_change, args=(False,))
                     self.timer.start()
             else:
-                self.light_off_cb(node_uuid=self.node_uuid)
+                self.blink_off_cb(node_uuid=self.node_uuid)
                 try:
                     delay = self.delays[self._data]['on']
                 except:
@@ -330,7 +334,7 @@ class JNTValueBlink(JNTValueFactoryEntry):
                 self.timer.cancel()
                 self.timer = None
             self._data = 'off'
-            self.light_off_cb(node_uuid=self.node_uuid)
+            self.blink_off_cb(node_uuid=self.node_uuid)
         finally:
             self.timer_lock.release()
         self.timer_lock = None
@@ -346,7 +350,7 @@ class JNTValueBlink(JNTValueFactoryEntry):
         if data == 'off':
             self._data = data
             self.stop_blinking(node_uuid=node_uuid, index=index, data = data)
-        elif data in ['blink', 'heartbeat', 'notify', 'alert']:
+        elif data in ['blink', 'heartbeat', 'notify', 'warning', 'alert']:
             self._data = data
             self.start_blinking(node_uuid=node_uuid, index=index, data = data)
         else:
