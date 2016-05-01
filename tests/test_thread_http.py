@@ -62,9 +62,8 @@ class TestHttpThread(JNTTThreadRun, JNTTThreadRunCommon):
 
     def test_101_thread_start_wait_long_stop(self):
         #~ self.skipTest("Fail on docker")
-        self.thread.start()
+        self.wait_for_nodeman()
         try:
-            time.sleep(15)
             self.assertDir("/tmp/janitoo_test/home/public")
             #~ self.assertDir("/tmp/janitoo_test/home/public/generic/js")
             #~ self.assertDir("/tmp/janitoo_test/home/public/generic/css")

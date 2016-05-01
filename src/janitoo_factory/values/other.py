@@ -228,7 +228,11 @@ class JNTValueBlink(JNTValueFactoryEntry):
             },
             'heartbeat' : {
                 'on' : kwargs.pop('heartbeat_on_delay', 0.5),
-                'off' : kwargs.pop('heartbeat_off_delay', 30),
+                'off' : kwargs.pop('heartbeat_off_delay', 300),
+            },
+            'info' : {
+                'on' : kwargs.pop('notify_on_delay', 0.6),
+                'off' : kwargs.pop('notify_off_delay', 60),
             },
             'notify' : {
                 'on' : kwargs.pop('notify_on_delay', 0.6),
@@ -251,7 +255,7 @@ class JNTValueBlink(JNTValueFactoryEntry):
         default = kwargs.pop('default', 'off')
         label = kwargs.pop('label', 'Blink')
         index = kwargs.pop('index', 0)
-        list_items = kwargs.pop('list_items', ['off', 'blink', 'heartbeat', 'notify', 'warning', 'alert'])
+        list_items = kwargs.pop('list_items', ['off', 'blink', 'heartbeat', 'info', 'notify', 'warning', 'alert'])
         cmd_class = kwargs.pop('cmd_class', COMMAND_BLINK)
         JNTValueFactoryEntry.__init__(self, entry_name=entry_name, help=help, label=label,
             get_data_cb=self.get_blink, set_data_cb=self.set_blink,
@@ -350,7 +354,7 @@ class JNTValueBlink(JNTValueFactoryEntry):
         if data == 'off':
             self._data = data
             self.stop_blinking(node_uuid=node_uuid, index=index, data = data)
-        elif data in ['blink', 'heartbeat', 'notify', 'warning', 'alert']:
+        elif data in ['blink', 'heartbeat', 'notify', 'info', 'warning', 'alert']:
             self._data = data
             self.start_blinking(node_uuid=node_uuid, index=index, data = data)
         else:
