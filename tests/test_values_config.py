@@ -36,17 +36,14 @@ import mock
 import ConfigParser
 from ConfigParser import RawConfigParser
 
-sys.path.insert(0,os.path.dirname(__name__))
-
 from janitoo_nosetests import JNTTBase
+from janitoo_nosetests.values import JNTTFactory, JNTTFactoryCommon, JNTTFactoryPollCommon, JNTTFactoryConfigCommon
 
 from janitoo.runner import Runner, jnt_parse_args
 from janitoo.server import JNTServer
 from janitoo.options import JNTOptions
 
-from test_values import TestFactory, BasePoll
-
-class TestConfigString(TestFactory):
+class TestConfigString(JNTTFactory, JNTTFactoryConfigCommon):
     """Test the value factory
     """
     entry_name='config_string'
@@ -55,12 +52,12 @@ class TestConfigString(TestFactory):
         node_uuid='test_node'
         self.assertSetgetConfig(node_uuid=node_uuid, data = 'A string')
 
-class TestConfigPassword(TestFactory):
+class TestConfigPassword(JNTTFactory, JNTTFactoryConfigCommon):
     """Test the value factory
     """
     entry_name='config_password'
 
-class TestConfigInteger(TestFactory):
+class TestConfigInteger(JNTTFactory, JNTTFactoryConfigCommon):
     """Test the value factory
     """
     entry_name='config_integer'
@@ -69,7 +66,7 @@ class TestConfigInteger(TestFactory):
         node_uuid='test_node'
         self.assertSetgetConfig(node_uuid=node_uuid, data = 10)
 
-class TestConfigByte(TestFactory):
+class TestConfigByte(JNTTFactory, JNTTFactoryConfigCommon):
     """Test the value factory
     """
     entry_name='config_byte'
@@ -78,7 +75,7 @@ class TestConfigByte(TestFactory):
         node_uuid='test_node'
         self.assertSetgetConfig(node_uuid=node_uuid, data = 10)
 
-class TestConfigList(TestFactory):
+class TestConfigList(JNTTFactory, JNTTFactoryConfigCommon):
     """Test the value factory
     """
     entry_name='config_list'
@@ -87,7 +84,7 @@ class TestConfigList(TestFactory):
         node_uuid='test_node'
         self.assertSetgetConfig(node_uuid=node_uuid, data = 'A string')
 
-class TestConfigArray(TestFactory):
+class TestConfigArray(JNTTFactory, JNTTFactoryConfigCommon):
     """Test the value factory
     """
     entry_name='config_array'
@@ -96,7 +93,7 @@ class TestConfigArray(TestFactory):
         node_uuid='test_node'
         self.assertSetgetConfig(node_uuid=node_uuid, data = 'A string|Another string')
 
-class TestConfigBoolean(TestFactory):
+class TestConfigBoolean(JNTTFactory, JNTTFactoryConfigCommon):
     """Test the value factory
     """
     entry_name='config_boolean'
@@ -106,7 +103,7 @@ class TestConfigBoolean(TestFactory):
         self.assertSetgetConfig(node_uuid=node_uuid, data = True)
         self.assertSetgetConfig(node_uuid=node_uuid, data = False)
 
-class TestConfigFloat(TestFactory):
+class TestConfigFloat(JNTTFactory, JNTTFactoryConfigCommon):
     """Test the value factory
     """
     entry_name='config_float'

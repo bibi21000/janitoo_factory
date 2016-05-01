@@ -36,102 +36,99 @@ import mock
 import ConfigParser
 from ConfigParser import RawConfigParser
 
-sys.path.insert(0,os.path.dirname(__name__))
-
 from janitoo_nosetests import JNTTBase
+from janitoo_nosetests.values import JNTTFactory, JNTTFactoryCommon, JNTTFactoryPollCommon, JNTTFactoryConfigCommon
 
 from janitoo.runner import Runner, jnt_parse_args
 from janitoo.server import JNTServer
 from janitoo.options import JNTOptions
 
-from test_values import TestFactory, BasePoll
-
-class TestSensorTemperature(TestFactory, BasePoll):
+class TestSensorTemperature(JNTTFactory, JNTTFactoryPollCommon):
     """Test the value factory
     """
     entry_name='sensor_temperature'
 
-class TestSensorAltitude(TestFactory, BasePoll):
+class TestSensorAltitude(JNTTFactory, JNTTFactoryPollCommon):
     """Test the value factory
     """
     entry_name='sensor_altitude'
 
-class TestSensorVoltage(TestFactory, BasePoll):
+class TestSensorVoltage(JNTTFactory, JNTTFactoryPollCommon):
     """Test the value factory
     """
     entry_name='sensor_voltage'
 
-class TestSensorCurrent(TestFactory, BasePoll):
+class TestSensorCurrent(JNTTFactory, JNTTFactoryPollCommon):
     """Test the value factory
     """
     entry_name='sensor_current'
 
-class TestSensorPercent(TestFactory, BasePoll):
+class TestSensorPercent(JNTTFactory, JNTTFactoryPollCommon):
     """Test the value factory
     """
     entry_name='sensor_percent'
 
-class TestSensorFrequency(TestFactory, BasePoll):
+class TestSensorFrequency(JNTTFactory, JNTTFactoryPollCommon):
     """Test the value factory
     """
     entry_name='sensor_frequency'
 
-class TestSensorHumidity(TestFactory, BasePoll):
+class TestSensorHumidity(JNTTFactory, JNTTFactoryPollCommon):
     """Test the value factory
     """
     entry_name='sensor_humidity'
 
-class TestSensorPressure(TestFactory, BasePoll):
+class TestSensorPressure(JNTTFactory, JNTTFactoryPollCommon):
     """Test the value factory
     """
     entry_name='sensor_pressure'
 
-class TestSensorDistance(TestFactory, BasePoll):
+class TestSensorDistance(JNTTFactory, JNTTFactoryPollCommon):
     """Test the value factory
     """
     entry_name='sensor_distance'
 
-class TestSensorRotationSpeed(TestFactory, BasePoll):
+class TestSensorRotationSpeed(JNTTFactory, JNTTFactoryPollCommon):
     """Test the value factory
     """
     entry_name='sensor_rotation_speed'
 
-class TestSensorString(TestFactory, BasePoll):
+class TestSensorString(JNTTFactory, JNTTFactoryPollCommon):
     """Test the value factory
     """
     entry_name='sensor_string'
 
-class TestSensorFloat(TestFactory, BasePoll):
+class TestSensorFloat(JNTTFactory, JNTTFactoryPollCommon):
     """Test the value factory
     """
     entry_name='sensor_float'
 
-class TestSensorList(TestFactory, BasePoll):
+class TestSensorList(JNTTFactory, JNTTFactoryPollCommon):
     """Test the value factory
     """
     entry_name='sensor_list'
 
-class TestSensorByte(TestFactory, BasePoll):
+class TestSensorByte(JNTTFactory, JNTTFactoryPollCommon):
     """Test the value factory
     """
     entry_name='sensor_byte'
 
-class TestSensorInteger(TestFactory, BasePoll):
+class TestSensorInteger(JNTTFactory, JNTTFactoryPollCommon):
     """Test the value factory
     """
     entry_name='sensor_integer'
 
-class TestSensorMemory(TestFactory, BasePoll):
+class TestSensorMemory(JNTTFactory, JNTTFactoryPollCommon):
     """Test the value factory
     """
     entry_name='sensor_memory'
 
-class TestSensorOrientation(TestFactory, BasePoll):
+class TestSensorOrientation(JNTTFactory, JNTTFactoryPollCommon):
     """Test the value factory
     """
     entry_name='sensor_orientation'
 
-class TestSensorPresence(TestFactory, BasePoll):
+class TestSensorPresence(JNTTFactory, JNTTFactoryPollCommon):
     """Test the value factory
     """
     entry_name='sensor_presence'

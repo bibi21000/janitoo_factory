@@ -36,27 +36,25 @@ import mock
 import ConfigParser
 from ConfigParser import RawConfigParser
 
-sys.path.insert(0,os.path.dirname(__name__))
-
 from janitoo_nosetests import JNTTBase
+from janitoo_nosetests.values import JNTTFactory, JNTTFactoryCommon, JNTTFactoryPollCommon, JNTTFactoryConfigCommon
 
 from janitoo.runner import Runner, jnt_parse_args
 from janitoo.server import JNTServer
 from janitoo.options import JNTOptions
 
-from test_values import TestFactory, BasePoll
 
-class TestSensorFloat(TestFactory, BasePoll):
+class TestSensorFloat(JNTTFactory, JNTTFactoryPollCommon):
     """Test the value factory
     """
     entry_name='sensor_basic_float'
 
-class TestSensorByte(TestFactory, BasePoll):
+class TestSensorByte(JNTTFactory, JNTTFactoryPollCommon):
     """Test the value factory
     """
     entry_name='sensor_basic_byte'
 
-class TestSensorInteger(TestFactory, BasePoll):
+class TestSensorInteger(JNTTFactory, JNTTFactoryPollCommon):
     """Test the value factory
     """
     entry_name='sensor_basic_integer'

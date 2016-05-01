@@ -68,8 +68,6 @@ janitoo_entry_points = {
         "remote.node = janitoo_factory.threads.remote:make_remote_node",
     ],
     "janitoo.values": [
-        "blink = janitoo_factory.values.other:make_blink",
-        "ip_ping = janitoo_factory.values.other:make_ip_ping",
         "rread_value = janitoo_factory.values.other:make_value_rread",
         "rwrite_value = janitoo_factory.values.other:make_value_rwrite",
         "sensor_pressure = janitoo_factory.values.sensor:make_sensor_pressure",
