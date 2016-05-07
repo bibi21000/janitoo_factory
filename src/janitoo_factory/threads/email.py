@@ -29,13 +29,6 @@ __copyright__ = "Copyright © 2013-2014-2015-2016 Sébastien GALLET aka bibi2100
 
 # Set default logging handler to avoid "No handler found" warnings.
 import logging
-try:  # Python 2.7+                                   # pragma: no cover
-    from logging import NullHandler                   # pragma: no cover
-except ImportError:                                   # pragma: no cover
-    class NullHandler(logging.Handler):               # pragma: no cover
-        """NullHandler logger for python 2.6"""       # pragma: no cover
-        def emit(self, record):                       # pragma: no cover
-            pass                                      # pragma: no cover
 logger = logging.getLogger(__name__)
 
 import os, sys
@@ -50,8 +43,10 @@ from janitoo.value import JNTValue
 from janitoo.bus import JNTBus
 from janitoo.classes import COMMAND_DESC
 
-def make_thread(options):
-    if get_option_autostart(options, 'email') == True:
+OID = 'email'
+
+def make_thread(options, force=False):
+    if get_option_autostart(options, OID) == True or force:
         return EmailThread(options)
     else:
         return None
@@ -64,5 +59,5 @@ class EmailThread(JNTBusThread):
     def init_bus(self):
         """Build the bus
         """
-        self.section = 'email'
+        self.section = OID
         self.bus = JNTBus(options=self.options, oid=self.section, product_name="Email controller")

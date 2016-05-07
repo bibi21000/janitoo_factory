@@ -70,8 +70,9 @@ assert(COMMAND_DESC[COMMAND_WEB_RESOURCE] == 'COMMAND_WEB_RESOURCE')
 
 DEPLOY_DIRS = ['css', 'images', 'js']
 
-def make_thread(options):
-    if get_option_autostart(options, 'http') == True:
+OID = 'views'
+def make_thread(options, force=False):
+    if get_option_autostart(options, OID) == True or force:
         return HttpThread(options)
     else:
         return None
@@ -384,5 +385,5 @@ class HttpThread(JNTBusThread):
     def init_bus(self):
         """Build the bus
         """
-        self.section = 'http'
+        self.section = OID
         self.bus = HttpBus(options=self.options, oid=self.section, product_name="Http server")

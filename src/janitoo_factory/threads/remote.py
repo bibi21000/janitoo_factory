@@ -63,9 +63,10 @@ assert(COMMAND_DESC[COMMAND_WEB_RESOURCE] == 'COMMAND_WEB_RESOURCE')
 assert(COMMAND_DESC[COMMAND_DOC_RESOURCE] == 'COMMAND_DOC_RESOURCE')
 ##############################################################
 
+OID = 'remote'
 
-def make_thread(options):
-    if get_option_autostart(options, 'remote') == True:
+def make_thread(options, force=False):
+    if get_option_autostart(options, OID) == True or force:
         return RemoteThread(options)
     else:
         return None
@@ -289,5 +290,5 @@ class RemoteThread(JNTBusThread):
     def init_bus(self):
         """Build the bus
         """
-        self.section = 'remote'
+        self.section = OID
         self.bus = RemoteBus(options=self.options, oid=self.section, product_name="Remote thread")

@@ -73,8 +73,10 @@ assert(COMMAND_DESC[COMMAND_SCENE_CONTROLLER_CONF] == 'COMMAND_SCENE_CONTROLLER_
 assert(COMMAND_DESC[COMMAND_CONFIGURATION] == 'COMMAND_CONFIGURATION')
 ##############################################################
 
-def make_thread(options):
-    if get_option_autostart(options, 'scenes') == True:
+OID = 'scenes'
+
+def make_thread(options, force=False):
+    if get_option_autostart(options, OID) == True or force:
         return ScenesThread(options)
     else:
         return None
@@ -89,7 +91,7 @@ class ScenesThread(JNTBusThread):
     def init_bus(self):
         """Build the bus
         """
-        self.section = 'scenes'
+        self.section = OID
         self.bus = ScenesBus(options=self.options, oid=self.section, name='Scene Manager bus', product_name="Scene controller", product_type="Core thread")
 
 
