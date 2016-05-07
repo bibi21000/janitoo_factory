@@ -186,14 +186,8 @@ class JNTValueConfigBoolean(JNTValueConfigGeneric):
     def _get_data_bool(self, node_uuid, index):
         """
         """
-        try:
-            data = self._get_data(node_uuid, index)
-            if data is not None:
-                self.instances[index]['data'] = bool(data)
-            else:
-                self.instances[index]['data'] = None
-        except:
-            logger.exception('Exception when retrieving %s_%s for node %s'%(self.uuid, index, node_uuid))
+        data = self._get_data(node_uuid, index)
+        self.instances[index]['data'] = self.convert(data)
         return self.instances[index]['data']
 
 class JNTValueConfigInteger(JNTValueConfigGeneric):
@@ -210,14 +204,8 @@ class JNTValueConfigInteger(JNTValueConfigGeneric):
     def _get_data_integer(self, node_uuid, index):
         """
         """
-        try:
-            data = self._get_data(node_uuid, index)
-            if data is not None:
-                self.instances[index]['data'] = int(data)
-            else:
-                self.instances[index]['data'] = None
-        except:
-            logger.exception('Exception when retrieving %s_%s for node %s'%(self.uuid, index, node_uuid))
+        data = self._get_data(node_uuid, index)
+        self.instances[index]['data'] = self.convert(data)
         return self.instances[index]['data']
 
 class JNTValueConfigByte(JNTValueConfigGeneric):
@@ -234,14 +222,8 @@ class JNTValueConfigByte(JNTValueConfigGeneric):
     def _get_data_byte(self, node_uuid, index):
         """
         """
-        try:
-            data = self._get_data(node_uuid, index)
-            if data is not None:
-                self.instances[index]['data'] = int(data)
-            else:
-                self.instances[index]['data'] = None
-        except:
-            logger.exception('Exception when retrieving %s_%s for node %s'%(self.uuid, index, node_uuid))
+        data = self._get_data(node_uuid, index)
+        self.instances[index]['data'] = self.convert(data)
         return self.instances[index]['data']
 
 class JNTValueConfigFloat(JNTValueConfigGeneric):
@@ -253,19 +235,13 @@ class JNTValueConfigFloat(JNTValueConfigGeneric):
         get_data_cb = kwargs.pop('get_data_cb', self._get_data_float)
         JNTValueConfigGeneric.__init__(self, entry_name=entry_name, help=help, label=label,
             get_data_cb=get_data_cb,
-            type=0x04, **kwargs)
+            type=0x05, **kwargs)
 
     def _get_data_float(self, node_uuid, index):
         """
         """
-        try:
-            data = self._get_data(node_uuid, index)
-            if data is not None:
-                self.instances[index]['data'] = float(data)
-            else:
-                self.instances[index]['data'] = None
-        except:
-            logger.exception('Exception when retrieving %s_%s for node %s'%(self.uuid, index, node_uuid))
+        data = self._get_data(node_uuid, index)
+        self.instances[index]['data'] = self.convert(data)
         return self.instances[index]['data']
 
 class JNTValueConfigArray(JNTValueConfigGeneric):
@@ -282,12 +258,6 @@ class JNTValueConfigArray(JNTValueConfigGeneric):
     def _get_data_list(self, node_uuid, index):
         """
         """
-        try:
-            data = self._get_data(node_uuid, index)
-            if data is not None:
-                self.instances[index]['data'] = data.split('|')
-            else:
-                self.instances[index]['data'] = None
-        except:
-            logger.exception('Exception when retrieving %s_%s for node %s'%(self.uuid, index, node_uuid))
+        data = self._get_data(node_uuid, index)
+        self.instances[index]['data'] = self.convert(data)
         return self.instances[index]['data']
