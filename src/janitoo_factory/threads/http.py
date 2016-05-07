@@ -213,7 +213,7 @@ class HttpBus(JNTBus):
         if not os.path.exists(directory):
             os.makedirs(directory)
 
-        uuid="host"
+        uuid="%s_host"%OID
         self.values[uuid] = self.value_factory['config_string'](options=self.options, uuid=uuid,
             node_uuid=self.uuid,
             help='The host or IP to use for the server',
@@ -221,7 +221,7 @@ class HttpBus(JNTBus):
             default='localhost',
         )
 
-        uuid="port"
+        uuid="%s_port"%OID
         self.values[uuid] = self.value_factory['config_integer'](options=self.options, uuid=uuid,
             node_uuid=self.uuid,
             help='The port',
@@ -229,7 +229,7 @@ class HttpBus(JNTBus):
             default=8081,
         )
 
-        uuid="actions"
+        uuid="%s_actions"%OID
         self.values[uuid] = self.value_factory['action_list'](options=self.options, uuid=uuid,
             node_uuid=self.uuid,
             help='The action on the HTTP server',
