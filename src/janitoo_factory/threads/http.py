@@ -304,7 +304,7 @@ class HttpBus(JNTBus):
         try:
             if self.http_server is None:
                 self.http_server = HttpServerThread("http_server", self.options.data)
-                self.http_server.config(host=self.values["host"].data, port=self.values["port"].data)
+                self.http_server.config(host=self.values["%s_host"%OID].data, port=self.values["%s_port"%OID].data)
                 self.http_server.start()
                 self.export_attrs('http_server', self.http_server)
                 return True
