@@ -261,7 +261,7 @@ class HttpBus(JNTBus):
         """Return the resource path
 
         """
-        return "%s:%s/%%s" % (self.values["host"].data, self.values["port"].data)
+        return "%s:%s/%%s" % (self.values["%s_host"%OID].data, self.values["%s_port"%OID].data)
 
     def check_heartbeat(self):
         """Check that the component is 'available'
