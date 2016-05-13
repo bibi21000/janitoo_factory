@@ -1,0 +1,54 @@
+janitoo_factory.values package
+==============================
+
+Submodules
+----------
+
+janitoo_factory.values.action module
+------------------------------------
+
+.. automodule:: janitoo_factory.values.action
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+janitoo_factory.values.basic module
+-----------------------------------
+
+.. automodule:: janitoo_factory.values.basic
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+janitoo_factory.values.config module
+------------------------------------
+
+.. automodule:: janitoo_factory.values.config
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+janitoo_factory.values.other module
+-----------------------------------
+
+.. automodule:: janitoo_factory.values.other
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+janitoo_factory.values.sensor module
+------------------------------------
+
+.. automodule:: janitoo_factory.values.sensor
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: janitoo_factory.values
+    :members:
+    :undoc-members:
+    :show-inheritance:

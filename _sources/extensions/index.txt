@@ -1,0 +1,66 @@
+janitoo_factory package
+=======================
+
+Show janitoo's extensions.
+
+Core extensions
+---------------
+
+Threads
+^^^^^^^
+
+ - remote (janitoo_factory.threads.remote:make_thread)
+ - http (janitoo_factory.threads.http:make_thread)
+ - email (janitoo_factory.threads.email:make_thread)
+ - scenes (janitoo_factory.threads.scenes:make_thread)
+
+Components
+^^^^^^^^^^
+
+ - http.resource (janitoo_factory.threads.http:make_http_resource)
+ - scenes.scene (janitoo_factory.threads.scenes:make_scene)
+ - remote.node (janitoo_factory.threads.remote:make_remote_node)
+
+Values
+^^^^^^
+
+ - config_array (janitoo_factory.values.config:make_config_array)
+ - sensor_temperature (janitoo_factory.values.sensor:make_sensor_temperature)
+ - action_integer (janitoo_factory.values.action:make_action_integer)
+ - sensor_percent (janitoo_factory.values.sensor:make_sensor_percent)
+ - sensor_list (janitoo_factory.values.sensor:make_sensor_list)
+ - sensor_humidity (janitoo_factory.values.sensor:make_sensor_humidity)
+ - sensor_memory (janitoo_factory.values.sensor:make_sensor_memory)
+ - sensor_string (janitoo_factory.values.sensor:make_sensor_string)
+ - config_byte (janitoo_factory.values.config:make_config_byte)
+ - action_byte (janitoo_factory.values.action:make_action_byte)
+ - action_list (janitoo_factory.values.action:make_action_list)
+ - config_float (janitoo_factory.values.config:make_config_float)
+ - config_password (janitoo_factory.values.config:make_config_password)
+ - sensor_basic_byte (janitoo_factory.values.basic:make_sensor_byte)
+ - sensor_byte (janitoo_factory.values.sensor:make_sensor_byte)
+ - sensor_float (janitoo_factory.values.sensor:make_sensor_float)
+ - sensor_pressure (janitoo_factory.values.sensor:make_sensor_pressure)
+ - sensor_altitude (janitoo_factory.values.sensor:make_sensor_altitude)
+ - sensor_frequency (janitoo_factory.values.sensor:make_sensor_frequency)
+ - config_string (janitoo_factory.values.config:make_config_string)
+ - action_boolean (janitoo_factory.values.action:make_action_boolean)
+ - rread_value (janitoo_factory.values.other:make_value_rread)
+ - sensor_rotation_speed (janitoo_factory.values.sensor:make_sensor_rotation_speed)
+ - sensor_presence (janitoo_factory.values.sensor:make_sensor_presence)
+ - sensor_distance (janitoo_factory.values.sensor:make_sensor_distance)
+ - sensor_basic_integer (janitoo_factory.values.basic:make_sensor_integer)
+ - sensor_orientation (janitoo_factory.values.sensor:make_sensor_orientation)
+ - sensor_basic_float (janitoo_factory.values.basic:make_sensor_float)
+ - action_switch_binary (janitoo_factory.values.action:make_action_switch_binary)
+ - sensor_voltage (janitoo_factory.values.sensor:make_sensor_voltage)
+ - config_boolean (janitoo_factory.values.config:make_config_boolean)
+ - sensor_boolean (janitoo_factory.values.sensor:make_sensor_boolean)
+ - action_switch_multilevel (janitoo_factory.values.action:make_action_switch_multilevel)
+ - sensor_current (janitoo_factory.values.sensor:make_sensor_current)
+ - config_list (janitoo_factory.values.config:make_config_list)
+ - action_string (janitoo_factory.values.action:make_action_string)
+ - config_integer (janitoo_factory.values.config:make_config_integer)
+ - rwrite_value (janitoo_factory.values.other:make_value_rwrite)
+ - sensor_integer (janitoo_factory.values.sensor:make_sensor_integer)
+
