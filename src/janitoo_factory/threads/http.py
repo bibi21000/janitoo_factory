@@ -93,13 +93,7 @@ class HttpServerThread(BaseThread):
 
     """
     def __init__(self, section, options={}):
-        """Initialise the cache thread
-
-        Manage a cache for the rrd.
-
-        A timer in a separated thread will pickle the cache to disk every 30 seconds.
-
-        An other thread will update the rrd every hours
+        """Initialise the thread
 
         :param options: The options used to start the worker.
         :type clientid: str
