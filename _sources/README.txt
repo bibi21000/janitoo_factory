@@ -10,6 +10,11 @@
     :target: https://coveralls.io/github/bibi21000/janitoo_factory?branch=master
     :alt: Coveralls results
 
+.. image:: https://landscape.io/github/bibi21000/janitoo_factory/master/landscape.svg?style=flat
+   :target: https://landscape.io/github/bibi21000/janitoo_factory/master
+   :alt: Code Health
+
+
 ==========================
 Welcome to Janitoo factory
 ==========================
