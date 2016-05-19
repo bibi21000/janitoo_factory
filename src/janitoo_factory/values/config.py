@@ -235,7 +235,7 @@ class JNTValueConfigFloat(JNTValueConfigGeneric):
         get_data_cb = kwargs.pop('get_data_cb', self._get_data_float)
         JNTValueConfigGeneric.__init__(self, entry_name=entry_name, help=help, label=label,
             get_data_cb=get_data_cb,
-            type=0x05, **kwargs)
+            type=0x03, **kwargs)
 
     def _get_data_float(self, node_uuid, index):
         """
