@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>janitoo_factory package &mdash; janitoo_factory 0.0.8 documentation</title>
+    <title>Janitoo’s extensions &mdash; janitoo_factory 0.0.8 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -105,78 +105,63 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="janitoo-factory-package">
-<h1>janitoo_factory package<a class="headerlink" href="#janitoo-factory-package" title="Permalink to this headline">¶</a></h1>
-<p>Show janitoo&#8217;s extensions.</p>
-<div class="section" id="core-extensions">
-<h2>Core extensions<a class="headerlink" href="#core-extensions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="threads">
-<h3>Threads<a class="headerlink" href="#threads" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><ul class="simple">
-<li>remote (janitoo_factory.threads.remote:make_thread)</li>
-<li>http (janitoo_factory.threads.http:make_thread)</li>
-<li>email (janitoo_factory.threads.email:make_thread)</li>
-<li>scenes (janitoo_factory.threads.scenes:make_thread)</li>
-</ul>
-</div></blockquote>
+  <div class="section" id="janitoo-s-extensions">
+<h1>Janitoo&#8217;s extensions<a class="headerlink" href="#janitoo-s-extensions" title="Permalink to this headline">¶</a></h1>
+<p>This package contains the following extensions for Janitoo.</p>
+<div class="section" id="type-0">
+<h2>Values in factory<a class="headerlink" href="#type-0" title="Permalink to this headline">¶</a></h2>
+<li><strong class="first">action_boolean</strong><span> : </span><em>janitoo_factory.values.action:make_action_boolean</em></li>
+<li><strong class="first">action_byte</strong><span> : </span><em>janitoo_factory.values.action:make_action_byte</em></li>
+<li><strong class="first">action_integer</strong><span> : </span><em>janitoo_factory.values.action:make_action_integer</em></li>
+<li><strong class="first">action_list</strong><span> : </span><em>janitoo_factory.values.action:make_action_list</em></li>
+<li><strong class="first">action_string</strong><span> : </span><em>janitoo_factory.values.action:make_action_string</em></li>
+<li><strong class="first">action_switch_binary</strong><span> : </span><em>janitoo_factory.values.action:make_action_switch_binary</em></li>
+<li><strong class="first">action_switch_multilevel</strong><span> : </span><em>janitoo_factory.values.action:make_action_switch_multilevel</em></li>
+<li><strong class="first">config_array</strong><span> : </span><em>janitoo_factory.values.config:make_config_array</em></li>
+<li><strong class="first">config_boolean</strong><span> : </span><em>janitoo_factory.values.config:make_config_boolean</em></li>
+<li><strong class="first">config_byte</strong><span> : </span><em>janitoo_factory.values.config:make_config_byte</em></li>
+<li><strong class="first">config_float</strong><span> : </span><em>janitoo_factory.values.config:make_config_float</em></li>
+<li><strong class="first">config_integer</strong><span> : </span><em>janitoo_factory.values.config:make_config_integer</em></li>
+<li><strong class="first">config_list</strong><span> : </span><em>janitoo_factory.values.config:make_config_list</em></li>
+<li><strong class="first">config_password</strong><span> : </span><em>janitoo_factory.values.config:make_config_password</em></li>
+<li><strong class="first">config_string</strong><span> : </span><em>janitoo_factory.values.config:make_config_string</em></li>
+<li><strong class="first">rread_value</strong><span> : </span><em>janitoo_factory.values.other:make_value_rread</em></li>
+<li><strong class="first">rwrite_value</strong><span> : </span><em>janitoo_factory.values.other:make_value_rwrite</em></li>
+<li><strong class="first">sensor_altitude</strong><span> : </span><em>janitoo_factory.values.sensor:make_sensor_altitude</em></li>
+<li><strong class="first">sensor_basic_byte</strong><span> : </span><em>janitoo_factory.values.basic:make_sensor_byte</em></li>
+<li><strong class="first">sensor_basic_float</strong><span> : </span><em>janitoo_factory.values.basic:make_sensor_float</em></li>
+<li><strong class="first">sensor_basic_integer</strong><span> : </span><em>janitoo_factory.values.basic:make_sensor_integer</em></li>
+<li><strong class="first">sensor_boolean</strong><span> : </span><em>janitoo_factory.values.sensor:make_sensor_boolean</em></li>
+<li><strong class="first">sensor_byte</strong><span> : </span><em>janitoo_factory.values.sensor:make_sensor_byte</em></li>
+<li><strong class="first">sensor_current</strong><span> : </span><em>janitoo_factory.values.sensor:make_sensor_current</em></li>
+<li><strong class="first">sensor_distance</strong><span> : </span><em>janitoo_factory.values.sensor:make_sensor_distance</em></li>
+<li><strong class="first">sensor_float</strong><span> : </span><em>janitoo_factory.values.sensor:make_sensor_float</em></li>
+<li><strong class="first">sensor_frequency</strong><span> : </span><em>janitoo_factory.values.sensor:make_sensor_frequency</em></li>
+<li><strong class="first">sensor_humidity</strong><span> : </span><em>janitoo_factory.values.sensor:make_sensor_humidity</em></li>
+<li><strong class="first">sensor_integer</strong><span> : </span><em>janitoo_factory.values.sensor:make_sensor_integer</em></li>
+<li><strong class="first">sensor_list</strong><span> : </span><em>janitoo_factory.values.sensor:make_sensor_list</em></li>
+<li><strong class="first">sensor_memory</strong><span> : </span><em>janitoo_factory.values.sensor:make_sensor_memory</em></li>
+<li><strong class="first">sensor_orientation</strong><span> : </span><em>janitoo_factory.values.sensor:make_sensor_orientation</em></li>
+<li><strong class="first">sensor_percent</strong><span> : </span><em>janitoo_factory.values.sensor:make_sensor_percent</em></li>
+<li><strong class="first">sensor_presence</strong><span> : </span><em>janitoo_factory.values.sensor:make_sensor_presence</em></li>
+<li><strong class="first">sensor_pressure</strong><span> : </span><em>janitoo_factory.values.sensor:make_sensor_pressure</em></li>
+<li><strong class="first">sensor_rotation_speed</strong><span> : </span><em>janitoo_factory.values.sensor:make_sensor_rotation_speed</em></li>
+<li><strong class="first">sensor_string</strong><span> : </span><em>janitoo_factory.values.sensor:make_sensor_string</em></li>
+<li><strong class="first">sensor_temperature</strong><span> : </span><em>janitoo_factory.values.sensor:make_sensor_temperature</em></li>
+<li><strong class="first">sensor_voltage</strong><span> : </span><em>janitoo_factory.values.sensor:make_sensor_voltage</em></li>
 </div>
-<div class="section" id="components">
-<h3>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><ul class="simple">
-<li>http.resource (janitoo_factory.threads.http:make_http_resource)</li>
-<li>scenes.scene (janitoo_factory.threads.scenes:make_scene)</li>
-<li>remote.node (janitoo_factory.threads.remote:make_remote_node)</li>
-</ul>
-</div></blockquote>
+<div class="section" id="type-1">
+<h2>Threads (bus)<a class="headerlink" href="#type-1" title="Permalink to this headline">¶</a></h2>
+<li><strong class="first">email</strong><span> : </span><em>janitoo_factory.threads.email:make_thread</em></li>
+<li><strong class="first">http</strong><span> : </span><em>janitoo_factory.threads.http:make_thread</em></li>
+<li><strong class="first">remote</strong><span> : </span><em>janitoo_factory.threads.remote:make_thread</em></li>
+<li><strong class="first">scenes</strong><span> : </span><em>janitoo_factory.threads.scenes:make_thread</em></li>
 </div>
-<div class="section" id="values">
-<h3>Values<a class="headerlink" href="#values" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><ul class="simple">
-<li>config_array (janitoo_factory.values.config:make_config_array)</li>
-<li>sensor_temperature (janitoo_factory.values.sensor:make_sensor_temperature)</li>
-<li>action_integer (janitoo_factory.values.action:make_action_integer)</li>
-<li>sensor_percent (janitoo_factory.values.sensor:make_sensor_percent)</li>
-<li>sensor_list (janitoo_factory.values.sensor:make_sensor_list)</li>
-<li>sensor_humidity (janitoo_factory.values.sensor:make_sensor_humidity)</li>
-<li>sensor_memory (janitoo_factory.values.sensor:make_sensor_memory)</li>
-<li>sensor_string (janitoo_factory.values.sensor:make_sensor_string)</li>
-<li>config_byte (janitoo_factory.values.config:make_config_byte)</li>
-<li>action_byte (janitoo_factory.values.action:make_action_byte)</li>
-<li>action_list (janitoo_factory.values.action:make_action_list)</li>
-<li>config_float (janitoo_factory.values.config:make_config_float)</li>
-<li>config_password (janitoo_factory.values.config:make_config_password)</li>
-<li>sensor_basic_byte (janitoo_factory.values.basic:make_sensor_byte)</li>
-<li>sensor_byte (janitoo_factory.values.sensor:make_sensor_byte)</li>
-<li>sensor_float (janitoo_factory.values.sensor:make_sensor_float)</li>
-<li>sensor_pressure (janitoo_factory.values.sensor:make_sensor_pressure)</li>
-<li>sensor_altitude (janitoo_factory.values.sensor:make_sensor_altitude)</li>
-<li>sensor_frequency (janitoo_factory.values.sensor:make_sensor_frequency)</li>
-<li>config_string (janitoo_factory.values.config:make_config_string)</li>
-<li>action_boolean (janitoo_factory.values.action:make_action_boolean)</li>
-<li>rread_value (janitoo_factory.values.other:make_value_rread)</li>
-<li>sensor_rotation_speed (janitoo_factory.values.sensor:make_sensor_rotation_speed)</li>
-<li>sensor_presence (janitoo_factory.values.sensor:make_sensor_presence)</li>
-<li>sensor_distance (janitoo_factory.values.sensor:make_sensor_distance)</li>
-<li>sensor_basic_integer (janitoo_factory.values.basic:make_sensor_integer)</li>
-<li>sensor_orientation (janitoo_factory.values.sensor:make_sensor_orientation)</li>
-<li>sensor_basic_float (janitoo_factory.values.basic:make_sensor_float)</li>
-<li>action_switch_binary (janitoo_factory.values.action:make_action_switch_binary)</li>
-<li>sensor_voltage (janitoo_factory.values.sensor:make_sensor_voltage)</li>
-<li>config_boolean (janitoo_factory.values.config:make_config_boolean)</li>
-<li>sensor_boolean (janitoo_factory.values.sensor:make_sensor_boolean)</li>
-<li>action_switch_multilevel (janitoo_factory.values.action:make_action_switch_multilevel)</li>
-<li>sensor_current (janitoo_factory.values.sensor:make_sensor_current)</li>
-<li>config_list (janitoo_factory.values.config:make_config_list)</li>
-<li>action_string (janitoo_factory.values.action:make_action_string)</li>
-<li>config_integer (janitoo_factory.values.config:make_config_integer)</li>
-<li>rwrite_value (janitoo_factory.values.other:make_value_rwrite)</li>
-<li>sensor_integer (janitoo_factory.values.sensor:make_sensor_integer)</li>
-</ul>
-</div></blockquote>
-</div>
+<div class="section" id="type-2">
+<h2>Components<a class="headerlink" href="#type-2" title="Permalink to this headline">¶</a></h2>
+<li><strong class="first">http.resource</strong><span> : </span><em>janitoo_factory.threads.http:make_http_resource</em></li>
+<li><strong class="first">remote.node</strong><span> : </span><em>janitoo_factory.threads.remote:make_remote_node</em></li>
+<li><strong class="first">scenes.scene</strong><span> : </span><em>janitoo_factory.threads.scenes:make_scene</em></li>
 </div>
 </div>
 
