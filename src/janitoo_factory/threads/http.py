@@ -111,7 +111,7 @@ class HttpServerThread(BaseThread):
         """
         try:
             self.stop()
-        except:
+        except Exception:
             pass
 
     def config(self, host="localhost", port=8081):
@@ -176,14 +176,14 @@ class HttpServerThread(BaseThread):
             self._reloadevent.clear()
             try:
                 self.pre_loop()
-            except:
+            except Exception:
                 logger.exception('[%s] - Exception in pre_loop', self.__class__.__name__)
                 self._stopevent.set()
             while not self._reloadevent.isSet() and not self._stopevent.isSet():
                 self.loop()
             try:
                 self.post_loop()
-            except:
+            except Exception:
                 logger.exception('[%s] - Exception in post_loop', self.__class__.__name__)
 
 class HttpBus(JNTBus):
@@ -317,7 +317,7 @@ class HttpBus(JNTBus):
             if self.http_server is not None:
                 try:
                     self.http_server.stop()
-                except:
+                except Exception:
                     logger.exception("[%s] - stop_server:%s", self.__class__.__name__)
                 self.http_server = None
                 self.export_attrs('http_server', self.http_server)
@@ -416,7 +416,7 @@ class BasicResourceComponent(HttpResourceComponent):
                     os.makedirs(os.path.join(destination,subdir))
                 if os.path.isdir(source):
                     copy_tree(source, os.path.join(destination,subdir), preserve_mode=1, preserve_times=1, preserve_symlinks=0, update=0, verbose=0, dry_run=0)
-            except:
+            except Exception:
                 logger.exception('[%s] - Exception in deploy_resource', self.__class__.__name__)
         try:
             source = os.path.join(self.resource_filename('public'), "html")
@@ -428,9 +428,9 @@ class BasicResourceComponent(HttpResourceComponent):
                         full_file_name = os.path.join(source, file_name)
                         if (os.path.isfile(full_file_name)):
                             shutil.copy(full_file_name, destination)
-                    except:
+                    except Exception:
                         logger.exception('[%s] - Exception in deploy_resource', self.__class__.__name__)
-        except:
+        except Exception:
             logger.exception('[%s] - Exception in deploy_resource', self.__class__.__name__)
 
 
@@ -483,7 +483,7 @@ class DocumentationResourceComponent(HttpResourceComponent):
             if os.path.isdir(source):
                 #~ if os.path.isfile(source):
                 copy_tree(source, destination, preserve_mode=1, preserve_times=1, preserve_symlinks=0, update=0, verbose=0, dry_run=0)
-        except:
+        except Exception:
             logger.exception('[%s] - Exception in deploy_resource', self.__class__.__name__)
 
     def get_key(self, node_uuid, index):

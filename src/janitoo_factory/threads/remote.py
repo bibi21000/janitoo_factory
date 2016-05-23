@@ -146,7 +146,7 @@ class RemoteNodeComponent(JNTComponent):
             self.mqttc_heartbeat.connect()
             self.mqttc_heartbeat.subscribe(topic=TOPIC_HEARTBEAT_NODE%(hadd), callback=self.on_heartbeat)
             self.mqttc_heartbeat.start()
-        except:
+        except Exception:
             logger.exception("[%s] - start", self.__class__.__name__)
         values_read = self.get_read_values()
         values_write = self.get_write_values()
@@ -167,7 +167,7 @@ class RemoteNodeComponent(JNTComponent):
                 self.mqttc_values.connect()
                 self.mqttc_values.subscribe(topics=topics, callback=self.on_remote_value)
                 self.mqttc_values.start()
-            except:
+            except Exception:
                 logger.exception("[%s] - start", self.__class__.__name__)
 
         #~ print max_index
@@ -218,7 +218,7 @@ class RemoteNodeComponent(JNTComponent):
                 if self.mqttc_values.is_alive():
                     self.mqttc_values.join()
                 self.mqttc_values = None
-            except:
+            except Exception:
                 logger.exception("[%s] - stop", self.__class__.__name__)
         if self.mqttc_heartbeat is not None:
             try:
@@ -229,7 +229,7 @@ class RemoteNodeComponent(JNTComponent):
                 if self.mqttc_heartbeat.is_alive():
                     self.mqttc_heartbeat.join()
                 self.mqttc_heartbeat = None
-            except:
+            except Exception:
                 logger.exception("[%s] - stop", self.__class__.__name__)
         JNTComponent.stop(self)
         return True

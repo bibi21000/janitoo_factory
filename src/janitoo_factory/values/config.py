@@ -101,7 +101,7 @@ class JNTValueConfigGeneric(JNTValueFactoryEntry):
             if index not in self.instances or self.instances[index] != data:
                 self.instances[index]['data'] = data
                 self.options.set_option(node_uuid, '%s_%s'%(self.uuid, index), '%s'%data)
-        except:
+        except Exception:
             self.instances[index]['data'] = None
             logger.exception('Exception when writing %s_%s for node %s'%(self.uuid, index, node_uuid))
 
@@ -131,7 +131,7 @@ class JNTValueConfigGeneric(JNTValueFactoryEntry):
                         else:
                             stop = True
                         #~ logger.debug('index %s, instances %s'%(i, self.instances))
-                    except:
+                    except Exception:
                         logger.exception('Catched exception when retrieving %s_%s for self.instances : %s'%(self.uuid, i, self.instances))
                         stop = True
                 i += 1
@@ -139,7 +139,7 @@ class JNTValueConfigGeneric(JNTValueFactoryEntry):
         if self.instances[index]['data'] is None:
             try:
                 self.instances[index]['data'] = self.options.get_option(node_uuid, '%s_%s'%(self.uuid, index))
-            except:
+            except Exception:
                 logger.exception('Exception when retrieving %s_%s for node %s'%(self.uuid, index, node_uuid))
                 self.instances[index]['data'] = self.default
         return self.instances[index]['data']

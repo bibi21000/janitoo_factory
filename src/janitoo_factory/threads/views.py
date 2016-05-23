@@ -186,14 +186,14 @@ class HttpServerThread(BaseThread):
             self._reloadevent.clear()
             try:
                 self.pre_loop()
-            except:
+            except Exception:
                 logger.exception('[%s] - Exception in pre_loop', self.__class__.__name__)
                 self._stopevent.set()
             while not self._reloadevent.isSet() and not self._stopevent.isSet():
                 self.loop()
             try:
                 self.post_loop()
-            except:
+            except Exception:
                 logger.exception('[%s] - Exception in post_loop', self.__class__.__name__)
 
 class HttpBus(JNTBus):
@@ -354,7 +354,7 @@ class HttpResourceComponent(JNTComponent):
         for subdir in DEPLOY_DIRS:
             try:
                 copy_tree(os.path.join(self.get_module_dir(),subdir), os.path.join(destination,subdir), preserve_mode=1, preserve_times=1, preserve_symlinks=0, update=0, verbose=0, dry_run=0)
-            except:
+            except Exception:
                 logger.exception('[%s] - Exception in deploy_resource', self.__class__.__name__)
         try:
             src_files = os.listdir(os.path.join(self.get_module_dir(),"html"))
@@ -363,9 +363,9 @@ class HttpResourceComponent(JNTComponent):
                     full_file_name = os.path.join(os.path.join(self.get_module_dir(),"html"), file_name)
                     if (os.path.isfile(full_file_name)):
                         shutil.copy(full_file_name, destination)
-                except:
+                except Exception:
                     logger.exception('[%s] - Exception in deploy_resource', self.__class__.__name__)
-        except:
+        except Exception:
             logger.exception('[%s] - Exception in deploy_resource', self.__class__.__name__)
 
     def check_heartbeat_file(self, filename):
