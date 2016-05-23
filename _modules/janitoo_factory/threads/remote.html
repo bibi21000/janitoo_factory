@@ -255,7 +255,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">mqttc_heartbeat</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">mqttc_heartbeat</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">topic</span><span class="o">=</span><span class="n">TOPIC_HEARTBEAT_NODE</span><span class="o">%</span><span class="p">(</span><span class="n">hadd</span><span class="p">),</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">on_heartbeat</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">mqttc_heartbeat</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-        <span class="k">except</span><span class="p">:</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s">&quot;[</span><span class="si">%s</span><span class="s">] - start&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
         <span class="n">values_read</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_read_values</span><span class="p">()</span>
         <span class="n">values_write</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_write_values</span><span class="p">()</span>
@@ -276,7 +276,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">mqttc_values</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">mqttc_values</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">topics</span><span class="o">=</span><span class="n">topics</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">on_remote_value</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">mqttc_values</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-            <span class="k">except</span><span class="p">:</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s">&quot;[</span><span class="si">%s</span><span class="s">] - start&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
 
         <span class="c">#~ print max_index</span>
@@ -327,7 +327,7 @@
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mqttc_values</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">mqttc_values</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">mqttc_values</span> <span class="o">=</span> <span class="bp">None</span>
-            <span class="k">except</span><span class="p">:</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s">&quot;[</span><span class="si">%s</span><span class="s">] - stop&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mqttc_heartbeat</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
@@ -338,7 +338,7 @@
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mqttc_heartbeat</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">mqttc_heartbeat</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">mqttc_heartbeat</span> <span class="o">=</span> <span class="bp">None</span>
-            <span class="k">except</span><span class="p">:</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s">&quot;[</span><span class="si">%s</span><span class="s">] - stop&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
         <span class="n">JNTComponent</span><span class="o">.</span><span class="n">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">True</span>
