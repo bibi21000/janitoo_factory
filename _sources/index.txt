@@ -7,6 +7,7 @@ Contents:
     :maxdepth: 3
 
     Tests <tests>
+    Using documentation <using_doc>
 
 Indices and tables
 ==================
