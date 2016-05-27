@@ -1,7 +1,18 @@
-Welcome to janitoo's documentation!
-===================================
+=========================
+Welcome to documentation!
+=========================
 
-Contents:
+.. jnt-package::
+    :infos: desc, longdesc
+
+License
+=======
+
+.. jnt-package::
+    :infos: license
+
+Contents
+========
 
 .. toctree::
     :maxdepth: 3
@@ -12,5 +23,9 @@ Contents:
 Indices and tables
 ==================
 
-* :ref:`genindex`
+Indices and tables
+==================
 
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
