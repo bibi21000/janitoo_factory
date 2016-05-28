@@ -234,12 +234,13 @@ class JNTValueTransitionFsm(JNTValueActionList):
         if self._fsm_bus is None:
             raise RuntimeError("You must define fsm_bus parameter")
         help = kwargs.pop('help', 'Send a transition to the fsm')
-        label = kwargs.pop('label', 'Transi.')
+        label = kwargs.pop('label', 'Transit')
+        genre = kwargs.pop('genre', 0x01)
         list_items = kwargs.pop('list_items', ['sleep','work'])
         get_data_cb = kwargs.pop('get_data_cb', self.get_transition)
         set_data_cb = kwargs.pop('set_data_cb', self.set_transition)
         JNTValueActionList.__init__(self,
-            entry_name=entry_name,
+            entry_name=entry_name, genre=genre,
             get_data_cb=get_data_cb, set_data_cb=set_data_cb,
             list_items=list_items,
             help=help,
