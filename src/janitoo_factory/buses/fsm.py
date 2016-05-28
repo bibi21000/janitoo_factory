@@ -149,8 +149,7 @@ class JNTFsmBus(JNTBus):
                     self._fsm_retry += 1
                     self._fsm_boot_timer = threading.Timer(self._fsm_timer_delay + self._fsm_retry*self.nodeman.slow_start)
                     self._fsm_boot_timer.start()
-                    state = self.nodeman.find_bus_value('state_config').data
-
+                    state = self.nodeman.find_bus_value('transition_config').data
             else:
                 logger.info("[%s] - fsm has booted in state %s", self.__class__.__name__, self.state)
         except :
