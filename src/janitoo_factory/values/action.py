@@ -77,8 +77,8 @@ def make_action_switch_binary(**kwargs):
 def make_action_switch_multilevel(**kwargs):
     return JNTValueActionSwitchMultilevel(**kwargs)
 
-def make_action_fsm(**kwargs):
-    return JNTValueActionFsm(**kwargs)
+def make_transition_fsm(**kwargs):
+    return JNTValueTransitionFsm(**kwargs)
 
 class JNTValueActionGeneric(JNTValueFactoryEntry):
     def __init__(self, **kwargs):
@@ -225,19 +225,19 @@ class JNTValueActionButtonMultiLevel(JNTValueActionByte):
             cmd_class=COMMAND_BUTTON_MULTILEVEL,
             **kwargs)
 
-class JNTValueActionFsm(JNTValueActionList):
+class JNTValueTransitionFsm(JNTValueActionList):
 
-    def __init__(self, entry_name="action_fsm", fsm_bus=None, **kwargs):
+    def __init__(self, entry_name="transition_fsm", fsm_bus=None, **kwargs):
         """Manage a fsm on a bus
         """
         self._fsm_bus = fsm_bus
         if self._fsm_bus is None:
             raise RuntimeError("You must define fsm_bus parameter")
-        help = kwargs.pop('help', 'The state of the bus (fsm)')
-        label = kwargs.pop('label', 'state')
-        list_items = kwargs.pop('list_items', ['booting','sleeping','working'])
-        get_data_cb = kwargs.pop('get_data_cb', self.get_state)
-        set_data_cb = kwargs.pop('set_data_cb', self.set_state)
+        help = kwargs.pop('help', 'Send a transition to the fsm')
+        label = kwargs.pop('label', 'Transi.')
+        list_items = kwargs.pop('list_items', ['sleep','work'])
+        get_data_cb = kwargs.pop('get_data_cb', self.get_transition)
+        set_data_cb = kwargs.pop('set_data_cb', self.set_transition)
         JNTValueActionList.__init__(self,
             entry_name=entry_name,
             get_data_cb=get_data_cb, set_data_cb=set_data_cb,
@@ -254,8 +254,8 @@ class JNTValueActionFsm(JNTValueActionList):
     def create_config_value(self, **kwargs):
         """
         """
-        help = kwargs.pop('help', 'The initial state of the bus (at boot)')
-        default = kwargs.pop('default', 'sleeping')
+        help = kwargs.pop('help', 'The initial transition to apply (at boot)')
+        default = kwargs.pop('default', 'sleep')
         return self._create_config_value(type=0x08, help=help, default=default)
 
     def create_poll_value(self, **kwargs):
@@ -264,20 +264,17 @@ class JNTValueActionFsm(JNTValueActionList):
         default = kwargs.pop('default', 60)
         return self._create_poll_value(default=default, **kwargs)
 
-    def get_state(self, node_uuid, index):
-        """Get the state of the machine
+    def get_transition(self, node_uuid, index):
+        """Get the last transition applied to the machine
         """
-        try:
-            return getattr(self._fsm_bus, 'state')
-        except Exception:
-            logger.exception("[%s] - Error in get_state", self.__class__.__name__)
-        return self.state
+        return self._data
 
-    def set_state(self, node_uuid, index, data):
-        """Act on the server
+    def set_transition(self, node_uuid, index, data):
+        """Apply a transition
         """
         try:
             bus_cb = getattr(self._fsm_bus, data)
             bus_cb()
+            self._data = data
         except Exception:
-            logger.exception("[%s] - Error in set_state %s", self.__class__.__name__, data)
+            logger.exception("[%s] - Error in set_transition %s", self.__class__.__name__, data)

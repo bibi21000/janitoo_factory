@@ -62,9 +62,9 @@ class JNTFsmBus(JNTBus):
         JNTBus.__init__(self, **kwargs)
         self._fsm =  None
         """The finish state machine"""
-        self._fsm_timer = None
+        self._fsm_boot_timer = None
         """The timer that's start the finish state machine"""
-        self._fsm_timer_delay = None
+        self._fsm_timer_delay = 3
         """The timer delay between 2 retries"""
         self._fsm_max_retries = 3
         """The max retries to boot the fsm"""
@@ -72,16 +72,25 @@ class JNTFsmBus(JNTBus):
         """The current retry to boot the fsm"""
         self.state = "booting"
         """Initial state of the fsm"""
-        uuid="{:s}_state".format(self.oid)
-        self.values[uuid] = self.value_factory['action_fsm'](options=self.options, uuid=uuid,
+        uuid="{:s}_transition".format(self.oid)
+        self.values[uuid] = self.value_factory['transition_fsm'](options=self.options, uuid=uuid,
             node_uuid=self.uuid,
-            list_items=self.states,
+            list_items=[ v['trigger'] for v in self.transitions ],
             fsm_bus=self,
         )
         poll_value = self.values[uuid].create_poll_value()
         self.values[poll_value.uuid] = poll_value
         config_value = self.values[uuid].create_config_value()
         self.values[config_value.uuid] = config_value
+
+        uuid="{:s}_state".format(self.oid)
+        self.values[uuid] = self.value_factory['sensor_string'](options=self.options, uuid=uuid,
+            node_uuid=self.uuid,
+            help='The state of the fsm.',
+            label='State',
+        )
+        poll_value = self.values[uuid].create_poll_value(default=60)
+        self.values[poll_value.uuid] = poll_value
 
     def start(self, mqttc, trigger_thread_reload_cb=None):
         """Start the bus
@@ -101,6 +110,7 @@ class JNTFsmBus(JNTBus):
     def stop(self):
         """Stop the bus
         """
+        self.stop_boot_timer()
         if self.state != 'booting':
             self.sleep()
         self._fsm = None
@@ -111,3 +121,31 @@ class JNTFsmBus(JNTBus):
 
         """
         return self.state != 'booting'
+
+    def stop_boot_timer(self):
+        """Stop the boot timer
+
+        """
+        if self._fsm_boot_timer is not None:
+            self._fsm_boot_timer.cancel()
+            self._fsm_boot_timer = None
+
+    def on_boot_timer(self):
+        """Make a check using a timer.
+
+        """
+        try:
+            self.stop_boot_timer()
+            if self.state == 'booting':
+                if self._fsm_retry > self._fsm_max_retries:
+                    logger.errot("[%s] - Fail to boot fsm after %s retries", self.__class__.__name__, self._fsm_retry)
+                else:
+                    self._fsm_retry += 1
+                    self._fsm_boot_timer = threading.Timer(self._fsm_timer_delay + self._fsm_retry*self.nodeman.slow_start)
+                    self._fsm_boot_timer.start()
+                    state = self.nodeman.find_bus_value('state_config').data
+
+            else:
+                logger.info("[%s] - fsm has booted in state %s", self.__class__.__name__, self.state)
+        except :
+            logger.exception("Error wheb trying to boot fsm at try %s", self._fsm_retry)

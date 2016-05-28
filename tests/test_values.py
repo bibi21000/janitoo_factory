@@ -90,7 +90,7 @@ class TestListString(JNTTFactory, JNTTFactoryCommon):
 class TestActionFsm(JNTTFactory, JNTTFactoryConfigCommon, JNTTFactoryPollCommon):
     """Test the value factory
     """
-    entry_name='action_fsm'
+    entry_name='transition_fsm'
     bus = JNTFsmBus(oid='test_bus')
 
     def get_main_value(self, node_uuid='test_node', **kwargs):
