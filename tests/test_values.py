@@ -45,6 +45,8 @@ from janitoo.runner import Runner, jnt_parse_args
 from janitoo.server import JNTServer
 from janitoo.options import JNTOptions
 
+from janitoo_factory.buses.fsm import JNTFsmBus
+
 class TestRreadValue(JNTTFactory, JNTTFactoryConfigCommon, JNTTFactoryPollCommon):
     """Test the value factory
     """
@@ -84,3 +86,30 @@ class TestListString(JNTTFactory, JNTTFactoryCommon):
     """Test the value factory
     """
     entry_name='action_list'
+
+class TestActionFsm(JNTTFactory, JNTTFactoryConfigCommon, JNTTFactoryPollCommon):
+    """Test the value factory
+    """
+    entry_name='action_fsm'
+    bus = JNTFsmBus(oid='test_bus')
+
+    def get_main_value(self, node_uuid='test_node', **kwargs):
+        return JNTTFactory.get_main_value(
+                    self,
+                    node_uuid = node_uuid,
+                    fsm_bus = self.bus,
+                    **kwargs)
+
+    def test_100_value_entry_config(self):
+        bus = JNTFsmBus(oid='test_bus')
+        node_uuid='test_node'
+        main_value = self.get_main_value(node_uuid=node_uuid)
+        print main_value
+        config_value = main_value.create_config_value()
+        print config_value
+        main_value.set_config(node_uuid, 0, 'working')
+        self.assertEqual('working', main_value.get_config(node_uuid, 0))
+        #~ self.assertTrue(main_value.ping_ip(node_uuid, 0))
+        main_value.set_config(node_uuid, 0, 'sleeping')
+        self.assertEqual('sleeping', main_value.get_config(node_uuid, 0))
+        #~ self.assertFalse(main_value.ping_ip(node_uuid, 0))

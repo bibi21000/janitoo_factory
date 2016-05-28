@@ -104,6 +104,7 @@ janitoo_entry_points = {
         "action_switch_binary = janitoo_factory.values.action:make_action_switch_binary",
         "action_switch_multilevel = janitoo_factory.values.action:make_action_switch_multilevel",
         "action_boolean = janitoo_factory.values.action:make_action_boolean",
+        "action_fsm = janitoo_factory.values.action:make_action_fsm",
         "sensor_basic_float = janitoo_factory.values.basic:make_sensor_float",
         "sensor_basic_integer = janitoo_factory.values.basic:make_sensor_integer",
         "sensor_basic_byte = janitoo_factory.values.basic:make_sensor_byte",
