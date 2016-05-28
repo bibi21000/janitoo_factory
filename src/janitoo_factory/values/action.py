@@ -46,7 +46,9 @@ COMMAND_SWITCH_BINARY = 0x0025
 COMMAND_SWITCH_MULTILEVEL = 0x0026
 COMMAND_BUTTON_BINARY = 0x3000
 COMMAND_BUTTON_MULTILEVEL = 0x3001
+COMMAND_FSM = 0x10B0
 
+assert(COMMAND_DESC[COMMAND_FSM] == 'COMMAND_FSM')
 assert(COMMAND_DESC[COMMAND_CONFIGURATION] == 'COMMAND_CONFIGURATION')
 assert(COMMAND_DESC[COMMAND_SENSOR_BINARY] == 'COMMAND_SENSOR_BINARY')
 assert(COMMAND_DESC[COMMAND_SENSOR_MULTILEVEL] == 'COMMAND_SENSOR_MULTILEVEL')
@@ -243,6 +245,7 @@ class JNTValueTransitionFsm(JNTValueActionList):
             entry_name=entry_name, genre=genre,
             get_data_cb=get_data_cb, set_data_cb=set_data_cb,
             list_items=list_items,
+            cmd_class=COMMAND_FSM,
             help=help,
             label=label,
             **kwargs)
