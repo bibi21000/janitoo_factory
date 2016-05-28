@@ -86,6 +86,7 @@ class JNTFsmBus(JNTBus):
         uuid="{:s}_state".format(self.oid)
         self.values[uuid] = self.value_factory['sensor_string'](options=self.options, uuid=uuid,
             node_uuid=self.uuid,
+            get_data_cb = self.get_state,
             help='The state of the fsm.',
             label='State',
         )
@@ -97,6 +98,11 @@ class JNTFsmBus(JNTBus):
         """
         self._fsm = self.create_fsm()
         JNTBus.start(self, mqttc, trigger_thread_reload_cb)
+
+    def get_state(self, node_uuid, index):
+        """Get the state of the fsm
+        """
+        return self.state
 
     def create_fsm(self):
         """Create the fsm
