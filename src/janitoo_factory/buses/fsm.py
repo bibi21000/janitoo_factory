@@ -85,7 +85,7 @@ class JNTFsmBus(JNTBus):
 
         uuid="{:s}_state".format(self.oid)
         self.values[uuid] = self.value_factory['sensor_string'](options=self.options, uuid=uuid,
-            node_uuid=self.uuid,
+            node_uuid=self.uuid, genre = 0x01,
             get_data_cb = self.get_state,
             help='The state of the fsm.',
             label='State',
