@@ -41,6 +41,11 @@ class JNTFsmBus(JNTBus):
        'working',
     ]
     """The fsm states :
+
+   - the first state must be booting
+   - the second is considered as the sleeping mode. We activate this state before stopping the bus.
+   - do what you want with the other ones.
+
     """
 
     transitions = [
@@ -66,7 +71,7 @@ class JNTFsmBus(JNTBus):
         """The timer that's start the finish state machine"""
         self._fsm_timer_delay = 3
         """The timer delay between 2 retries"""
-        self._fsm_max_retries = 3
+        self._fsm_max_retries = 5
         """The max retries to boot the fsm"""
         self._fsm_retry = 0
         """The current retry to boot the fsm"""
@@ -118,7 +123,7 @@ class JNTFsmBus(JNTBus):
         """
         self.stop_boot_timer()
         if self.state != 'booting':
-            self.sleep()
+            self.nodeman.find_bus_value('transition').data = self.states[1]
         self._fsm = None
         JNTBus.stop(self)
 
@@ -150,6 +155,7 @@ class JNTFsmBus(JNTBus):
                     self._fsm_boot_timer = threading.Timer(self._fsm_timer_delay + self._fsm_retry*self.nodeman.slow_start)
                     self._fsm_boot_timer.start()
                     state = self.nodeman.find_bus_value('transition_config').data
+                    self.nodeman.find_bus_value('transition').data = state
             else:
                 logger.info("[%s] - fsm has booted in state %s", self.__class__.__name__, self.state)
         except :
