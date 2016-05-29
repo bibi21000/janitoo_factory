@@ -158,7 +158,9 @@
 <span class="n">COMMAND_SWITCH_MULTILEVEL</span> <span class="o">=</span> <span class="mh">0x0026</span>
 <span class="n">COMMAND_BUTTON_BINARY</span> <span class="o">=</span> <span class="mh">0x3000</span>
 <span class="n">COMMAND_BUTTON_MULTILEVEL</span> <span class="o">=</span> <span class="mh">0x3001</span>
+<span class="n">COMMAND_FSM</span> <span class="o">=</span> <span class="mh">0x10B0</span>
 
+<span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_FSM</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;COMMAND_FSM&#39;</span><span class="p">)</span>
 <span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_CONFIGURATION</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;COMMAND_CONFIGURATION&#39;</span><span class="p">)</span>
 <span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_SENSOR_BINARY</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;COMMAND_SENSOR_BINARY&#39;</span><span class="p">)</span>
 <span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_SENSOR_MULTILEVEL</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;COMMAND_SENSOR_MULTILEVEL&#39;</span><span class="p">)</span>
@@ -188,6 +190,9 @@
 </div>
 <div class="viewcode-block" id="make_action_switch_multilevel"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.action.make_action_switch_multilevel">[docs]</a><span class="k">def</span> <span class="nf">make_action_switch_multilevel</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">JNTValueActionSwitchMultilevel</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="make_transition_fsm"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.action.make_transition_fsm">[docs]</a><span class="k">def</span> <span class="nf">make_transition_fsm</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">JNTValueTransitionFsm</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </div>
 <div class="viewcode-block" id="JNTValueActionGeneric"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.action.JNTValueActionGeneric">[docs]</a><span class="k">class</span> <span class="nc">JNTValueActionGeneric</span><span class="p">(</span><span class="n">JNTValueFactoryEntry</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -333,7 +338,63 @@
             <span class="n">default</span><span class="o">=</span><span class="n">default</span><span class="p">,</span>
             <span class="n">cmd_class</span><span class="o">=</span><span class="n">COMMAND_BUTTON_MULTILEVEL</span><span class="p">,</span>
             <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</pre></div></div>
+</div>
+<div class="viewcode-block" id="JNTValueTransitionFsm"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.action.JNTValueTransitionFsm">[docs]</a><span class="k">class</span> <span class="nc">JNTValueTransitionFsm</span><span class="p">(</span><span class="n">JNTValueActionList</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="s">&quot;transition_fsm&quot;</span><span class="p">,</span> <span class="n">fsm_bus</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Manage a fsm on a bus</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_bus</span> <span class="o">=</span> <span class="n">fsm_bus</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_bus</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s">&quot;You must define fsm_bus parameter&quot;</span><span class="p">)</span>
+        <span class="n">help</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;help&#39;</span><span class="p">,</span> <span class="s">&#39;Trigger a transition on the fsm or get the last triggered&#39;</span><span class="p">)</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;label&#39;</span><span class="p">,</span> <span class="s">&#39;Transit&#39;</span><span class="p">)</span>
+        <span class="n">genre</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;genre&#39;</span><span class="p">,</span> <span class="mh">0x01</span><span class="p">)</span>
+        <span class="n">list_items</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;list_items&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;sleep&#39;</span><span class="p">,</span><span class="s">&#39;work&#39;</span><span class="p">])</span>
+        <span class="n">get_data_cb</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;get_data_cb&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_transition</span><span class="p">)</span>
+        <span class="n">set_data_cb</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;set_data_cb&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_transition</span><span class="p">)</span>
+        <span class="n">JNTValueActionList</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+            <span class="n">entry_name</span><span class="o">=</span><span class="n">entry_name</span><span class="p">,</span> <span class="n">genre</span><span class="o">=</span><span class="n">genre</span><span class="p">,</span>
+            <span class="n">get_data_cb</span><span class="o">=</span><span class="n">get_data_cb</span><span class="p">,</span> <span class="n">set_data_cb</span><span class="o">=</span><span class="n">set_data_cb</span><span class="p">,</span>
+            <span class="n">list_items</span><span class="o">=</span><span class="n">list_items</span><span class="p">,</span>
+            <span class="n">cmd_class</span><span class="o">=</span><span class="n">COMMAND_FSM</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="n">help</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_bus</span> <span class="o">=</span> <span class="bp">None</span>
+
+<div class="viewcode-block" id="JNTValueTransitionFsm.create_config_value"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.action.JNTValueTransitionFsm.create_config_value">[docs]</a>    <span class="k">def</span> <span class="nf">create_config_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">help</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;help&#39;</span><span class="p">,</span> <span class="s">&#39;The initial transition to apply (at boot)&#39;</span><span class="p">)</span>
+        <span class="n">default</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="s">&#39;sleep&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_config_value</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="mh">0x08</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">help</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">default</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="JNTValueTransitionFsm.create_poll_value"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.action.JNTValueTransitionFsm.create_poll_value">[docs]</a>    <span class="k">def</span> <span class="nf">create_poll_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">default</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_poll_value</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">default</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="JNTValueTransitionFsm.get_transition"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.action.JNTValueTransitionFsm.get_transition">[docs]</a>    <span class="k">def</span> <span class="nf">get_transition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node_uuid</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the last transition applied to the machine</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span>
+</div>
+<div class="viewcode-block" id="JNTValueTransitionFsm.set_transition"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.action.JNTValueTransitionFsm.set_transition">[docs]</a>    <span class="k">def</span> <span class="nf">set_transition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node_uuid</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Apply a transition</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">bus_cb</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fsm_bus</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+            <span class="n">bus_cb</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s">&quot;[</span><span class="si">%s</span><span class="s">] - Error in set_transition </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span></div></div>
+</pre></div>
 
     </div>
       

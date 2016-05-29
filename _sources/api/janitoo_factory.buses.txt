@@ -1,0 +1,22 @@
+janitoo_factory.buses package
+=============================
+
+Submodules
+----------
+
+janitoo_factory.buses.fsm module
+--------------------------------
+
+.. automodule:: janitoo_factory.buses.fsm
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: janitoo_factory.buses
+    :members:
+    :undoc-members:
+    :show-inheritance:
