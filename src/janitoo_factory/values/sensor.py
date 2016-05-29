@@ -308,6 +308,7 @@ class JNTValueSensorOrientation(JNTValueSensorInteger):
         help = kwargs.pop('help', 'An orientation sensor')
         label = kwargs.pop('label', 'Orientation')
         units = kwargs.pop('units', '°')
+        default = kwargs.pop('default', None)
         cmd_class = kwargs.pop('cmd_class', COMMAND_SENSOR_MULTILEVEL)
         JNTValueSensorInteger.__init__(self, entry_name=entry_name, help=help, label=label,
             units=units,
