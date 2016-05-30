@@ -132,9 +132,12 @@ class JNTFsmBus(JNTBus):
             self.stop_boot_timer()
         finally:
             self._fsm_boot_lock.release()
-        if self.state != self.states[0]:
-            self.nodeman.find_bus_value('transition').data = self.transitions[0]['trigger']
-        self._fsm = None
+        try:
+            if self.state != self.states[0]:
+                self.nodeman.find_bus_value('transition').data = self.transitions[0]['trigger']
+            self._fsm = None
+        except :
+            logger.exception("[%s] - Error when stopping fsm", self.__class__.__name__, self._fsm_retry)
         JNTBus.stop(self)
 
     def check_heartbeat(self):
@@ -171,6 +174,6 @@ class JNTFsmBus(JNTBus):
             else:
                 logger.info("[%s] - fsm has booted in state %s", self.__class__.__name__, self.state)
         except :
-            logger.exception("Error when trying to boot fsm at try %s", self._fsm_retry)
+            logger.exception("[%s] - Error when trying to boot fsm at try %s", self.__class__.__name__, self._fsm_retry)
         finally:
             self._fsm_boot_lock.release()
