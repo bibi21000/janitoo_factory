@@ -27,13 +27,14 @@ import logging
 #~ logging.getLogger(__name__).addHandler(logging.NullHandler())
 logger = logging.getLogger(__name__)
 
+import threading
 from pkg_resources import iter_entry_points
 
 from janitoo.bus import JNTBus
 from janitoo.fsm import HierarchicalMachine as Machine
 
 class JNTFsmBus(JNTBus):
-    """A bus managed with a fsm
+    """A bus managed by a fsm
     """
     states = [
        'booting',
@@ -49,16 +50,17 @@ class JNTFsmBus(JNTBus):
     """
 
     transitions = [
-        { 'trigger': 'work',
-            'source': '*',
-            'dest': 'working',
-        },
         { 'trigger': 'sleep',
             'source': '*',
             'dest': 'sleeping',
         },
+        { 'trigger': 'work',
+            'source': '*',
+            'dest': 'working',
+        },
     ]
     """The fsm transitions
+    - the first transition must be sleep (to tenter in sleeping mode)
     """
 
     def __init__(self, **kwargs):
@@ -69,9 +71,11 @@ class JNTFsmBus(JNTBus):
         """The finish state machine"""
         self._fsm_boot_timer = None
         """The timer that's start the finish state machine"""
-        self._fsm_timer_delay = 3
+        self._fsm_boot_lock = threading.Lock()
+        """The timer that's start the finish state machine"""
+        self._fsm_timer_delay = 2
         """The timer delay between 2 retries"""
-        self._fsm_max_retries = 5
+        self._fsm_max_retries = 4
         """The max retries to boot the fsm"""
         self._fsm_retry = 0
         """The current retry to boot the fsm"""
@@ -85,7 +89,7 @@ class JNTFsmBus(JNTBus):
         )
         poll_value = self.values[uuid].create_poll_value()
         self.values[poll_value.uuid] = poll_value
-        config_value = self.values[uuid].create_config_value()
+        config_value = self.values[uuid].create_config_value(default=self.transitions[0]['trigger'])
         self.values[config_value.uuid] = config_value
 
         uuid="{:s}_state".format(self.oid)
@@ -103,6 +107,8 @@ class JNTFsmBus(JNTBus):
         """
         self._fsm = self.create_fsm()
         JNTBus.start(self, mqttc, trigger_thread_reload_cb)
+        self._fsm_boot_timer = threading.Timer(self._fsm_timer_delay, self.on_boot_timer)
+        self._fsm_boot_timer.start()
 
     def get_state(self, node_uuid, index):
         """Get the state of the fsm
@@ -121,9 +127,13 @@ class JNTFsmBus(JNTBus):
     def stop(self):
         """Stop the bus
         """
-        self.stop_boot_timer()
-        if self.state != 'booting':
-            self.nodeman.find_bus_value('transition').data = self.states[1]
+        self._fsm_boot_lock.acquire()
+        try:
+            self.stop_boot_timer()
+        finally:
+            self._fsm_boot_lock.release()
+        if self.state != self.states[0]:
+            self.nodeman.find_bus_value('transition').data = self.transitions[0]['trigger']
         self._fsm = None
         JNTBus.stop(self)
 
@@ -145,18 +155,22 @@ class JNTFsmBus(JNTBus):
         """Make a check using a timer.
 
         """
+        self._fsm_boot_lock.acquire()
         try:
             self.stop_boot_timer()
             if self.state == 'booting':
                 if self._fsm_retry > self._fsm_max_retries:
-                    logger.errot("[%s] - Fail to boot fsm after %s retries", self.__class__.__name__, self._fsm_retry)
+                    logger.error("[%s] - Fail to boot fsm after %s retries", self.__class__.__name__, self._fsm_retry)
                 else:
                     self._fsm_retry += 1
-                    self._fsm_boot_timer = threading.Timer(self._fsm_timer_delay + self._fsm_retry*self.nodeman.slow_start)
-                    self._fsm_boot_timer.start()
                     state = self.nodeman.find_bus_value('transition_config').data
+                    logger.debug("[%s] - boot try %s with transition %s", self.__class__.__name__, self._fsm_retry, state)
                     self.nodeman.find_bus_value('transition').data = state
+                    self._fsm_boot_timer = threading.Timer(self._fsm_timer_delay + self._fsm_retry*self.nodeman.slow_start, self.on_boot_timer)
+                    self._fsm_boot_timer.start()
             else:
                 logger.info("[%s] - fsm has booted in state %s", self.__class__.__name__, self.state)
         except :
-            logger.exception("Error wheb trying to boot fsm at try %s", self._fsm_retry)
+            logger.exception("Error when trying to boot fsm at try %s", self._fsm_retry)
+        finally:
+            self._fsm_boot_lock.release()
