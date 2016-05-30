@@ -63,7 +63,7 @@ class TestRemoteBus(JNTTBus, JNTTBusCommon):
     oid = 'remote'
     bus = RemoteBus
 
-class TestRemoteBus(JNTTBus, JNTTBusCommon):
+class TestFsmBus(JNTTBus, JNTTBusCommon):
     """Test the Bus
     """
     oid = 'generic'
@@ -85,7 +85,7 @@ class TestRemoteBus(JNTTBus, JNTTBusCommon):
         jnt_options = JNTOptions(options)
 
         bus = self.bus(options=jnt_options)
-        bus.nodeman = TestRemoteBus.FakeNodeman(bus)
+        bus.nodeman = TestFsmBus.FakeNodeman(bus)
         bus._fsm_timer_delay = 2
         self.assertNotEqual(bus, None)
         bus.start(None)
