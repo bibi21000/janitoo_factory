@@ -41,6 +41,17 @@ from janitoo.runner import Runner, jnt_parse_args
 from janitoo.server import JNTServer
 from janitoo.utils import HADD_SEP, HADD
 
+import test_bus
+
+class TestHTTPBus(test_bus.TestHTTPBus):
+    pass
+
+class TestRemoteBus(test_bus.TestRemoteBus):
+    pass
+
+class TestFsmBus(test_bus.TestFsmBus):
+    pass
+
 class TestHttpSerser(JNTTDockerServer, JNTTDockerServerCommon):
     """Test the server
     """

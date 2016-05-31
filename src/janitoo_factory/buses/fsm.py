@@ -44,12 +44,15 @@ class JNTFsmBus(JNTBus):
     """The fsm states :
 
    - the first state must be booting
-   - the second is considered as the sleeping mode. We activate this state before stopping the bus.
    - do what you want with the other ones.
 
     """
 
     transitions = [
+        { 'trigger': 'boot',
+            'source': 'booting',
+            'dest': 'sleeping',
+        },
         { 'trigger': 'sleep',
             'source': '*',
             'dest': 'sleeping',
@@ -60,7 +63,9 @@ class JNTFsmBus(JNTBus):
         },
     ]
     """The fsm transitions
-    - the first transition must be sleep (to tenter in sleeping mode)
+    - the first transition is used to get out the boot state : its a good idea to check values availability in ths trigger.
+    - the second transition is used to stop the machine.
+    - do what you want with the other ones.
     """
 
     def __init__(self, **kwargs):
@@ -79,7 +84,7 @@ class JNTFsmBus(JNTBus):
         """The max retries to boot the fsm"""
         self._fsm_retry = 0
         """The current retry to boot the fsm"""
-        self.state = "booting"
+        self.state = self.states[0]
         """Initial state of the fsm"""
         uuid="{:s}_transition".format(self.oid)
         self.values[uuid] = self.value_factory['transition_fsm'](options=self.options, uuid=uuid,
@@ -122,7 +127,7 @@ class JNTFsmBus(JNTBus):
             states=self.states,
             transitions=self.transitions,
             title='Bus',
-            initial='booting')
+            initial=self.states[0])
 
     def stop(self):
         """Stop the bus
@@ -134,7 +139,7 @@ class JNTFsmBus(JNTBus):
             self._fsm_boot_lock.release()
         try:
             if self.state != self.states[0]:
-                self.nodeman.find_bus_value('transition').data = self.transitions[0]['trigger']
+                self.nodeman.find_bus_value('transition').data = self.transitions[1]['trigger']
             self._fsm = None
         except :
             logger.exception("[%s] - Error when stopping fsm", self.__class__.__name__, self._fsm_retry)
