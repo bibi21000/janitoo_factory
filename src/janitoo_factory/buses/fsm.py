@@ -78,9 +78,9 @@ class JNTFsmBus(JNTBus):
         """The timer that's start the finish state machine"""
         self._fsm_boot_lock = threading.Lock()
         """The timer that's start the finish state machine"""
-        self._fsm_timer_delay = 2
+        self._fsm_timer_delay = 3
         """The timer delay between 2 retries"""
-        self._fsm_max_retries = 4
+        self._fsm_max_retries = 5
         """The max retries to boot the fsm"""
         self._fsm_retry = 0
         """The current retry to boot the fsm"""
