@@ -120,7 +120,7 @@
 <dt id="janitoo_factory.buses.fsm.JNTFsmBus">
 <em class="property">class </em><tt class="descclassname">janitoo_factory.buses.fsm.</tt><tt class="descname">JNTFsmBus</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="../_modules/janitoo_factory/buses/fsm.html#JNTFsmBus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.buses.fsm.JNTFsmBus" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">janitoo.bus.JNTBus</span></tt></p>
-<p>A bus managed with a fsm</p>
+<p>A bus managed by a fsm</p>
 <dl class="method">
 <dt id="janitoo_factory.buses.fsm.JNTFsmBus.check_heartbeat">
 <tt class="descname">check_heartbeat</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_factory/buses/fsm.html#JNTFsmBus.check_heartbeat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.buses.fsm.JNTFsmBus.check_heartbeat" title="Permalink to this definition">¶</a></dt>
@@ -163,7 +163,6 @@
 <dd><p>The fsm states :</p>
 <ul class="simple">
 <li>the first state must be booting</li>
-<li>the second is considered as the sleeping mode. We activate this state before stopping the bus.</li>
 <li>do what you want with the other ones.</li>
 </ul>
 </dd></dl>
@@ -182,8 +181,11 @@
 
 <dl class="attribute">
 <dt id="janitoo_factory.buses.fsm.JNTFsmBus.transitions">
-<tt class="descname">transitions</tt><em class="property"> = [{'dest': 'working', 'source': '*', 'trigger': 'work'}, {'dest': 'sleeping', 'source': '*', 'trigger': 'sleep'}]</em><a class="headerlink" href="#janitoo_factory.buses.fsm.JNTFsmBus.transitions" title="Permalink to this definition">¶</a></dt>
-<dd><p>The fsm transitions</p>
+<tt class="descname">transitions</tt><em class="property"> = [{'dest': 'sleeping', 'source': 'booting', 'trigger': 'boot'}, {'dest': 'sleeping', 'source': '*', 'trigger': 'sleep'}, {'dest': 'working', 'source': '*', 'trigger': 'work'}]</em><a class="headerlink" href="#janitoo_factory.buses.fsm.JNTFsmBus.transitions" title="Permalink to this definition">¶</a></dt>
+<dd><p>The fsm transitions
+- the first transition is used to get out the boot state : its a good idea to check values availability in ths trigger.
+- the second transition is used to stop the machine.
+- do what you want with the other ones.</p>
 </dd></dl>
 
 </dd></dl>
