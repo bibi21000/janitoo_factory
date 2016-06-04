@@ -159,7 +159,11 @@
 <span class="n">COMMAND_BUTTON_BINARY</span> <span class="o">=</span> <span class="mh">0x3000</span>
 <span class="n">COMMAND_BUTTON_MULTILEVEL</span> <span class="o">=</span> <span class="mh">0x3001</span>
 <span class="n">COMMAND_FSM</span> <span class="o">=</span> <span class="mh">0x10B0</span>
+<span class="n">COMMAND_SHUTTER_BINARY</span> <span class="o">=</span> <span class="mh">0x3150</span>
+<span class="n">COMMAND_SHUTTER_MULTILEVEL</span> <span class="o">=</span> <span class="mh">0x3151</span>
 
+<span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_SHUTTER_BINARY</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;COMMAND_SHUTTER_BINARY&#39;</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_SHUTTER_MULTILEVEL</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;COMMAND_SHUTTER_MULTILEVEL&#39;</span><span class="p">)</span>
 <span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_FSM</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;COMMAND_FSM&#39;</span><span class="p">)</span>
 <span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_CONFIGURATION</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;COMMAND_CONFIGURATION&#39;</span><span class="p">)</span>
 <span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_SENSOR_BINARY</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;COMMAND_SENSOR_BINARY&#39;</span><span class="p">)</span>
@@ -190,6 +194,18 @@
 </div>
 <div class="viewcode-block" id="make_action_switch_multilevel"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.action.make_action_switch_multilevel">[docs]</a><span class="k">def</span> <span class="nf">make_action_switch_multilevel</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">JNTValueActionSwitchMultilevel</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="make_action_shutter_binary"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.action.make_action_shutter_binary">[docs]</a><span class="k">def</span> <span class="nf">make_action_shutter_binary</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">JNTValueActionShutterBinary</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="make_action_shutter_multilevel"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.action.make_action_shutter_multilevel">[docs]</a><span class="k">def</span> <span class="nf">make_action_shutter_multilevel</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">JNTValueActionShutterMultilevel</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="make_action_button_binary"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.action.make_action_button_binary">[docs]</a><span class="k">def</span> <span class="nf">make_action_button_binary</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">JNTValueActionButtonBinary</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="make_action_button_multilevel"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.action.make_action_button_multilevel">[docs]</a><span class="k">def</span> <span class="nf">make_action_button_multilevel</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">JNTValueActionButtonMultilevel</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </div>
 <div class="viewcode-block" id="make_transition_fsm"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.action.make_transition_fsm">[docs]</a><span class="k">def</span> <span class="nf">make_transition_fsm</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">JNTValueTransitionFsm</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -296,15 +312,55 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="s">&quot;action_switch_multilevel&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">help</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;help&#39;</span><span class="p">,</span> <span class="s">&#39;A switch multilevel. A byte from 0 to 100&#39;</span><span class="p">)</span>
-        <span class="n">label</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;label&#39;</span><span class="p">,</span> <span class="s">&#39;Switch&#39;</span><span class="p">)</span>
+        <span class="n">help</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;help&#39;</span><span class="p">,</span> <span class="s">&#39;A dimmer. A byte from 0 to 100&#39;</span><span class="p">)</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;label&#39;</span><span class="p">,</span> <span class="s">&#39;dimmer&#39;</span><span class="p">)</span>
         <span class="n">default</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="nb">min</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;min&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="nb">max</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;max&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
         <span class="n">JNTValueActionByte</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
             <span class="n">entry_name</span><span class="o">=</span><span class="n">entry_name</span><span class="p">,</span>
             <span class="n">help</span><span class="o">=</span><span class="n">help</span><span class="p">,</span>
             <span class="n">default</span><span class="o">=</span><span class="n">default</span><span class="p">,</span>
             <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+            <span class="nb">min</span><span class="o">=</span><span class="nb">min</span><span class="p">,</span>
+            <span class="nb">max</span><span class="o">=</span><span class="nb">max</span><span class="p">,</span>
             <span class="n">cmd_class</span><span class="o">=</span><span class="n">COMMAND_SWITCH_MULTILEVEL</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="JNTValueActionShutterBinary"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.action.JNTValueActionShutterBinary">[docs]</a><span class="k">class</span> <span class="nc">JNTValueActionShutterBinary</span><span class="p">(</span><span class="n">JNTValueActionList</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="s">&quot;action_shutter_binary&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;label&#39;</span><span class="p">,</span> <span class="s">&#39;Shutter&#39;</span><span class="p">)</span>
+        <span class="n">list_items</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;list_items&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;up&#39;</span><span class="p">,</span> <span class="s">&#39;down&#39;</span><span class="p">,</span> <span class="s">&#39;stop&#39;</span><span class="p">])</span>
+        <span class="n">help</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;help&#39;</span><span class="p">,</span> <span class="s">&#39;A shutter. Valid values are : </span><span class="si">%s</span><span class="s">&#39;</span><span class="o">%</span><span class="n">list_items</span><span class="p">)</span>
+        <span class="n">default</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">JNTValueActionList</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+            <span class="n">entry_name</span><span class="o">=</span><span class="n">entry_name</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="n">help</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="n">default</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+            <span class="n">list_items</span><span class="o">=</span><span class="n">list_items</span><span class="p">,</span>
+            <span class="n">cmd_class</span><span class="o">=</span><span class="n">COMMAND_SHUTTER_BINARY</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="JNTValueActionShutterMultilevel"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.action.JNTValueActionShutterMultilevel">[docs]</a><span class="k">class</span> <span class="nc">JNTValueActionShutterMultilevel</span><span class="p">(</span><span class="n">JNTValueActionByte</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="s">&quot;action_shutter_multilevel&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">help</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;help&#39;</span><span class="p">,</span> <span class="s">&#39;A shutter multilevel. A byte from 0 to 100&#39;</span><span class="p">)</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;label&#39;</span><span class="p">,</span> <span class="s">&#39;Shutterr&#39;</span><span class="p">)</span>
+        <span class="n">default</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="nb">min</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;min&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="nb">max</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;max&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">JNTValueActionByte</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+            <span class="n">entry_name</span><span class="o">=</span><span class="n">entry_name</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="n">help</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="n">default</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+            <span class="nb">min</span><span class="o">=</span><span class="nb">min</span><span class="p">,</span>
+            <span class="nb">max</span><span class="o">=</span><span class="nb">max</span><span class="p">,</span>
+            <span class="n">cmd_class</span><span class="o">=</span><span class="n">COMMAND_SHUTTER_MULTILEVEL</span><span class="p">,</span>
             <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </div>
 <div class="viewcode-block" id="JNTValueActionButtonBinary"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.action.JNTValueActionButtonBinary">[docs]</a><span class="k">class</span> <span class="nc">JNTValueActionButtonBinary</span><span class="p">(</span><span class="n">JNTValueActionList</span><span class="p">):</span>
