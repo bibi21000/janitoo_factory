@@ -47,7 +47,9 @@ COMMAND_SWITCH_MULTILEVEL = 0x0026
 COMMAND_BUTTON_BINARY = 0x3000
 COMMAND_BUTTON_MULTILEVEL = 0x3001
 COMMAND_FSM = 0x10B0
+COMMAND_SHUTTER = 0x3150
 
+assert(COMMAND_DESC[COMMAND_SHUTTER] == 'COMMAND_SHUTTER')
 assert(COMMAND_DESC[COMMAND_FSM] == 'COMMAND_FSM')
 assert(COMMAND_DESC[COMMAND_CONFIGURATION] == 'COMMAND_CONFIGURATION')
 assert(COMMAND_DESC[COMMAND_SENSOR_BINARY] == 'COMMAND_SENSOR_BINARY')
@@ -78,6 +80,12 @@ def make_action_switch_binary(**kwargs):
 
 def make_action_switch_multilevel(**kwargs):
     return JNTValueActionSwitchMultilevel(**kwargs)
+
+def make_action_shutter_binary(**kwargs):
+    return JNTValueActionShutterBinary(**kwargs)
+
+def make_action_shutter_multilevel(**kwargs):
+    return JNTValueActionShutterMultilevel(**kwargs)
 
 def make_transition_fsm(**kwargs):
     return JNTValueTransitionFsm(**kwargs)
@@ -184,15 +192,55 @@ class JNTValueActionSwitchMultilevel(JNTValueActionByte):
     def __init__(self, entry_name="action_switch_multilevel", **kwargs):
         """
         """
-        help = kwargs.pop('help', 'A switch multilevel. A byte from 0 to 100')
-        label = kwargs.pop('label', 'Switch')
+        help = kwargs.pop('help', 'A dimmer. A byte from 0 to 100')
+        label = kwargs.pop('label', 'dimmer')
         default = kwargs.pop('default', 0)
+        min = kwargs.pop('min', 0)
+        max = kwargs.pop('max', 0)
         JNTValueActionByte.__init__(self,
             entry_name=entry_name,
             help=help,
             default=default,
             label=label,
+            min=min,
+            max=max,
             cmd_class=COMMAND_SWITCH_MULTILEVEL,
+            **kwargs)
+
+class JNTValueActionShutterBinary(JNTValueActionList):
+    def __init__(self, entry_name="action_shutter_binary", **kwargs):
+        """
+        """
+        label = kwargs.pop('label', 'Shutter')
+        list_items = kwargs.pop('list_items', ['up', 'down', 'stop'])
+        help = kwargs.pop('help', 'A shutter. Valid values are : %s'%list_items)
+        default = kwargs.pop('default', 0)
+        JNTValueActionList.__init__(self,
+            entry_name=entry_name,
+            help=help,
+            default=default,
+            label=label,
+            list_items=list_items,
+            cmd_class=COMMAND_SHUTTER_BINARY,
+            **kwargs)
+
+class JNTValueActionShutterMultilevel(JNTValueActionByte):
+    def __init__(self, entry_name="action_shutter_multilevel", **kwargs):
+        """
+        """
+        help = kwargs.pop('help', 'A shutter multilevel. A byte from 0 to 100')
+        label = kwargs.pop('label', 'Shutterr')
+        default = kwargs.pop('default', 0)
+        min = kwargs.pop('min', 0)
+        max = kwargs.pop('max', 0)
+        JNTValueActionByte.__init__(self,
+            entry_name=entry_name,
+            help=help,
+            default=default,
+            label=label,
+            min=min,
+            max=max,
+            cmd_class=COMMAND_SHUTTER_MULTILEVEL,
             **kwargs)
 
 class JNTValueActionButtonBinary(JNTValueActionList):

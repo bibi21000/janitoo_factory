@@ -82,6 +82,16 @@ class TestActionSwitchMultilevel(JNTTFactory, JNTTFactoryCommon):
     """
     entry_name='action_switch_multilevel'
 
+class TestActionShutterBinary(JNTTFactory, JNTTFactoryCommon):
+    """Test the value factory
+    """
+    entry_name='action_shutter_binary'
+
+class TestActionShutterMultilevel(JNTTFactory, JNTTFactoryCommon):
+    """Test the value factory
+    """
+    entry_name='action_shutter_multilevel'
+
 class TestListString(JNTTFactory, JNTTFactoryCommon):
     """Test the value factory
     """
