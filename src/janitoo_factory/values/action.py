@@ -332,7 +332,6 @@ class JNTValueTransitionFsm(JNTValueActionList):
     def set_transition(self, node_uuid, index, data):
         """Apply a transition
         """
-        print data
         try:
             bus_cb = getattr(self._fsm_bus, data)
             bus_cb()
