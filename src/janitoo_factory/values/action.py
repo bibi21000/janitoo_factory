@@ -89,6 +89,12 @@ def make_action_shutter_binary(**kwargs):
 def make_action_shutter_multilevel(**kwargs):
     return JNTValueActionShutterMultilevel(**kwargs)
 
+def make_action_button_binary(**kwargs):
+    return JNTValueActionButtonBinary(**kwargs)
+
+def make_action_button_multilevel(**kwargs):
+    return JNTValueActionButtonMultilevel(**kwargs)
+
 def make_transition_fsm(**kwargs):
     return JNTValueTransitionFsm(**kwargs)
 
