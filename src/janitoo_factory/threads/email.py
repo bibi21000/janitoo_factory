@@ -31,22 +31,15 @@ __copyright__ = "Copyright © 2013-2014-2015-2016 Sébastien GALLET aka bibi2100
 import logging
 logger = logging.getLogger(__name__)
 
-import os, sys
-import threading
-from pkg_resources import get_distribution, DistributionNotFound
+import os
 from janitoo.thread import JNTBusThread
-from janitoo.thread import JNTThread
 from janitoo.options import get_option_autostart
-from janitoo.utils import HADD
-from janitoo.node import JNTNode
-from janitoo.value import JNTValue
 from janitoo.bus import JNTBus
-from janitoo.classes import COMMAND_DESC
 
 OID = 'email'
 
 def make_thread(options, force=False):
-    if get_option_autostart(options, OID) == True or force:
+    if get_option_autostart(options, OID) or force:
         return EmailThread(options)
     else:
         return None

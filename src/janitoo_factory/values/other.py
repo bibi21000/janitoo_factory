@@ -24,16 +24,10 @@ __author__ = 'Sébastien GALLET aka bibi21000'
 __email__ = 'bibi21000@gmail.com'
 __copyright__ = "Copyright © 2013-2014-2015-2016 Sébastien GALLET aka bibi21000"
 
-# Set default logging handler to avoid "No handler found" warnings.
-import os
-import threading
 import logging
 logger = logging.getLogger(__name__)
 
-from janitoo.classes import GENRE_DESC, VALUE_DESC
-from janitoo.utils import json_dumps
-from janitoo.value import JNTValue
-from janitoo.value_factory import JNTValueFactoryEntry
+from janitoo.classes import GENRE_DESC
 from janitoo_factory.values.config import JNTValueConfigString
 
 ##############################################################
