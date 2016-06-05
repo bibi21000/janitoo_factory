@@ -101,6 +101,21 @@ def make_sensor_boolean(**kwargs):
 def make_sensor_presence(**kwargs):
     return JNTValueSensorPresence(**kwargs)
 
+def make_sensor_rain_total(**kwargs):
+    return JNTValueSensorRainTotal(**kwargs)
+
+def make_sensor_rain_rate(**kwargs):
+    return JNTValueSensorRainRate(**kwargs)
+
+def make_sensor_wind_direction(**kwargs):
+    return JNTValueSensorWindDirection(**kwargs)
+
+def make_sensor_wind_average(**kwargs):
+    return JNTValueSensorWindAverage(**kwargs)
+
+def make_sensor_wind_gust(**kwargs):
+    return JNTValueSensorWindGust(**kwargs)
+
 class JNTValueSensorGeneric(JNTValueFactoryEntry):
     """
     """
@@ -253,7 +268,7 @@ class JNTValueSensorRainTotal(JNTValueSensorFloat):
         JNTValueSensorFloat.__init__(self, entry_name=entry_name, help=help, label=label, units=units,
             cmd_class=cmd_class, **kwargs)
 
-class JNTValueSensorRainTotal(JNTValueSensorFloat):
+class JNTValueSensorRainRate(JNTValueSensorFloat):
     def __init__(self, entry_name="sensor_rain_rate", **kwargs):
         """
         """

@@ -251,8 +251,10 @@ class JNTValueConfigArray(JNTValueConfigGeneric):
         help = kwargs.pop('help', 'An array of strings separated by |')
         label = kwargs.pop('label', 'Array')
         get_data_cb = kwargs.pop('get_data_cb', self._get_data_list)
+        set_data_cb = kwargs.pop('set_data_cb', self._set_data_list)
         JNTValueConfigGeneric.__init__(self, entry_name=entry_name, help=help, label=label,
             get_data_cb=get_data_cb,
+            set_data_cb=set_data_cb,
             type=0x16, **kwargs)
 
     def _get_data_list(self, node_uuid, index):
@@ -261,3 +263,9 @@ class JNTValueConfigArray(JNTValueConfigGeneric):
         data = self._get_data(node_uuid, index)
         self.instances[index]['data'] = self.convert(data)
         return self.instances[index]['data']
+
+    def _set_data_list(self, node_uuid, index, data):
+        """
+        """
+        data = data.join('|')
+        return self._set_data(node_uuid, index, data)
