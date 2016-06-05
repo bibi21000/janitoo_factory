@@ -149,7 +149,6 @@ class JNTValueActionInteger(JNTValueActionGeneric):
             entry_name=entry_name,
             help=help,
             label=label,
-            index=index,
             type=0x04,
             **kwargs)
 
@@ -268,7 +267,7 @@ class JNTValueActionButtonBinary(JNTValueActionList):
             cmd_class=COMMAND_BUTTON_BINARY,
             **kwargs)
 
-class JNTValueActionButtonMultiLevel(JNTValueActionByte):
+class JNTValueActionButtonMultilevel(JNTValueActionByte):
     def __init__(self, entry_name="action_button_mutlilevel", **kwargs):
         """
         """
