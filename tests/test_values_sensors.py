@@ -133,3 +133,27 @@ class TestSensorPresence(JNTTFactory, JNTTFactoryPollCommon):
     """
     entry_name='sensor_presence'
 
+class TestSensorRainTotal(JNTTFactory, JNTTFactoryPollCommon):
+    """Test the value factory
+    """
+    entry_name='sensor_rain_total'
+
+class TestSensorRainRate(JNTTFactory, JNTTFactoryPollCommon):
+    """Test the value factory
+    """
+    entry_name='sensor_rain_rate'
+
+class TestSensorWindDirection(JNTTFactory, JNTTFactoryPollCommon):
+    """Test the value factory
+    """
+    entry_name='sensor_wind_direction'
+
+class TestSensorWindAverage(JNTTFactory, JNTTFactoryPollCommon):
+    """Test the value factory
+    """
+    entry_name='sensor_wind_average'
+
+class TestSensorWindGust(JNTTFactory, JNTTFactoryPollCommon):
+    """Test the value factory
+    """
+    entry_name='sensor_wind_gust'

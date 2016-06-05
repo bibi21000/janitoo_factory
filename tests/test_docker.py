@@ -276,6 +276,31 @@ class TestSensorPresence(test_values_sensors.TestSensorPresence):
         test_values_sensors.TestSensorPresence.onlyDockerTest()
         test_values_sensors.TestSensorPresence.setUp(self)
 
+class TestSensorRainTotal(test_values_sensors.TestSensorRainTotal):
+    def setUp(self):
+        test_values_sensors.TestSensorRainTotal.onlyDockerTest()
+        test_values_sensors.TestSensorRainTotal.setUp(self)
+
+class TestSensorRainRate(test_values_sensors.TestSensorRainRate):
+    def setUp(self):
+        test_values_sensors.TestSensorRainRate.onlyDockerTest()
+        test_values_sensors.TestSensorRainRate.setUp(self)
+
+class TestSensorWindDirection(test_values_sensors.TestSensorWindDirection):
+    def setUp(self):
+        test_values_sensors.TestSensorWindDirection.onlyDockerTest()
+        test_values_sensors.TestSensorWindDirection.setUp(self)
+
+class TestSensorWindAverage(test_values_sensors.TestSensorWindAverage):
+    def setUp(self):
+        test_values_sensors.TestSensorWindAverage.onlyDockerTest()
+        test_values_sensors.TestSensorWindAverage.setUp(self)
+
+class TestSensorWindGust(test_values_sensors.TestSensorWindGust):
+    def setUp(self):
+        test_values_sensors.TestSensorWindGust.onlyDockerTest()
+        test_values_sensors.TestSensorWindGust.setUp(self)
+
 class TestHttpSerser(JNTTDockerServer, JNTTDockerServerCommon):
     """Test the server
     """

@@ -242,6 +242,28 @@ class JNTValueSensorDistance(JNTValueSensorFloat):
         JNTValueSensorFloat.__init__(self, entry_name=entry_name, help=help, label=label, units=units,
             cmd_class=cmd_class, **kwargs)
 
+class JNTValueSensorRainTotal(JNTValueSensorFloat):
+    def __init__(self, entry_name="sensor_rain_total", **kwargs):
+        """
+        """
+        help = kwargs.pop('help', 'A rain total sensor')
+        label = kwargs.pop('label', 'Rain total')
+        units = kwargs.pop('units', 'mm')
+        cmd_class = kwargs.pop('cmd_class', COMMAND_SENSOR_MULTILEVEL)
+        JNTValueSensorFloat.__init__(self, entry_name=entry_name, help=help, label=label, units=units,
+            cmd_class=cmd_class, **kwargs)
+
+class JNTValueSensorRainTotal(JNTValueSensorFloat):
+    def __init__(self, entry_name="sensor_rain_rate", **kwargs):
+        """
+        """
+        help = kwargs.pop('help', 'A rain rate sensor')
+        label = kwargs.pop('label', 'Rain rate')
+        units = kwargs.pop('units', 'mm/h')
+        cmd_class = kwargs.pop('cmd_class', COMMAND_SENSOR_MULTILEVEL)
+        JNTValueSensorFloat.__init__(self, entry_name=entry_name, help=help, label=label, units=units,
+            cmd_class=cmd_class, **kwargs)
+
 class JNTValueSensorString(JNTValueSensorGeneric):
     def __init__(self, entry_name="sensor_string", **kwargs):
         """
