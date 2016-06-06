@@ -264,8 +264,8 @@ class JNTValueConfigArray(JNTValueConfigGeneric):
         self.instances[index]['data'] = self.convert(data)
         return self.instances[index]['data']
 
-    def _set_data_list(self, node_uuid, index, data):
+    def _convert_list_to_string(self, data):
         """
         """
         data = data.join('|')
-        return self._set_data(node_uuid, index, data)
+        return data
