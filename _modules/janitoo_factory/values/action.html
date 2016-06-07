@@ -136,14 +136,10 @@
 <span class="n">__email__</span> <span class="o">=</span> <span class="s">&#39;bibi21000@gmail.com&#39;</span>
 <span class="n">__copyright__</span> <span class="o">=</span> <span class="s">&quot;Copyright © 2013-2014-2015-2016 Sébastien GALLET aka bibi21000&quot;</span>
 
-<span class="c"># Set default logging handler to avoid &quot;No handler found&quot; warnings.</span>
-<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
-<span class="kn">from</span> <span class="nn">janitoo.classes</span> <span class="kn">import</span> <span class="n">GENRE_DESC</span><span class="p">,</span> <span class="n">VALUE_DESC</span>
-<span class="kn">from</span> <span class="nn">janitoo.utils</span> <span class="kn">import</span> <span class="n">json_dumps</span>
-<span class="kn">from</span> <span class="nn">janitoo.value</span> <span class="kn">import</span> <span class="n">JNTValue</span>
+<span class="kn">from</span> <span class="nn">janitoo.classes</span> <span class="kn">import</span> <span class="n">VALUE_DESC</span>
 <span class="kn">from</span> <span class="nn">janitoo.value_factory</span> <span class="kn">import</span> <span class="n">JNTValueFactoryEntry</span>
 
 <span class="c">##############################################################</span>
@@ -261,7 +257,6 @@
             <span class="n">entry_name</span><span class="o">=</span><span class="n">entry_name</span><span class="p">,</span>
             <span class="n">help</span><span class="o">=</span><span class="n">help</span><span class="p">,</span>
             <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
-            <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span>
             <span class="nb">type</span><span class="o">=</span><span class="mh">0x04</span><span class="p">,</span>
             <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </div>
@@ -380,7 +375,7 @@
             <span class="n">cmd_class</span><span class="o">=</span><span class="n">COMMAND_BUTTON_BINARY</span><span class="p">,</span>
             <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="JNTValueActionButtonMultiLevel"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.action.JNTValueActionButtonMultiLevel">[docs]</a><span class="k">class</span> <span class="nc">JNTValueActionButtonMultiLevel</span><span class="p">(</span><span class="n">JNTValueActionByte</span><span class="p">):</span>
+<div class="viewcode-block" id="JNTValueActionButtonMultilevel"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.action.JNTValueActionButtonMultilevel">[docs]</a><span class="k">class</span> <span class="nc">JNTValueActionButtonMultilevel</span><span class="p">(</span><span class="n">JNTValueActionByte</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="s">&quot;action_button_mutlilevel&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -444,7 +439,6 @@
 <div class="viewcode-block" id="JNTValueTransitionFsm.set_transition"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.action.JNTValueTransitionFsm.set_transition">[docs]</a>    <span class="k">def</span> <span class="nf">set_transition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node_uuid</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Apply a transition</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">print</span> <span class="n">data</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">bus_cb</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fsm_bus</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
             <span class="n">bus_cb</span><span class="p">()</span>
