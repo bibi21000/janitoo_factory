@@ -102,9 +102,11 @@ class JNTValueActionGeneric(JNTValueFactoryEntry):
         is_readonly = kwargs.pop('is_readonly', False)
         is_writeonly = kwargs.pop('is_writeonly', False)
         index = kwargs.pop('index', 0)
+        cmd_class = kwargs.pop('cmd_class', 0x01)
         JNTValueFactoryEntry.__init__(self,
             index=index,
             genre=genre,
+            cmd_class=cmd_class,
             is_readonly=is_readonly,
             is_writeonly=is_writeonly,
             **kwargs)
@@ -182,13 +184,14 @@ class JNTValueActionSwitchBinary(JNTValueActionList):
         list_items = kwargs.pop('list_items', ['on', 'off'])
         help = kwargs.pop('help', 'A switch. Valid values are : %s'%list_items)
         default = kwargs.pop('default', 0)
+        cmd_class = kwargs.pop('cmd_class', COMMAND_SWITCH_BINARY)
         JNTValueActionList.__init__(self,
             entry_name=entry_name,
             help=help,
             default=default,
             label=label,
             list_items=list_items,
-            cmd_class=COMMAND_SWITCH_BINARY,
+            cmd_class=cmd_class,
             **kwargs)
 
 class JNTValueActionSwitchMultilevel(JNTValueActionByte):
@@ -200,6 +203,7 @@ class JNTValueActionSwitchMultilevel(JNTValueActionByte):
         default = kwargs.pop('default', 0)
         min = kwargs.pop('min', 0)
         max = kwargs.pop('max', 0)
+        cmd_class = kwargs.pop('cmd_class', COMMAND_SWITCH_MULTILEVEL)
         JNTValueActionByte.__init__(self,
             entry_name=entry_name,
             help=help,
@@ -207,7 +211,7 @@ class JNTValueActionSwitchMultilevel(JNTValueActionByte):
             label=label,
             min=min,
             max=max,
-            cmd_class=COMMAND_SWITCH_MULTILEVEL,
+            cmd_class=cmd_class,
             **kwargs)
 
 class JNTValueActionShutterBinary(JNTValueActionList):
@@ -218,13 +222,14 @@ class JNTValueActionShutterBinary(JNTValueActionList):
         list_items = kwargs.pop('list_items', ['up', 'down', 'stop'])
         help = kwargs.pop('help', 'A shutter. Valid values are : %s'%list_items)
         default = kwargs.pop('default', 0)
+        cmd_class = kwargs.pop('cmd_class', COMMAND_SHUTTER_BINARY)
         JNTValueActionList.__init__(self,
             entry_name=entry_name,
             help=help,
             default=default,
             label=label,
             list_items=list_items,
-            cmd_class=COMMAND_SHUTTER_BINARY,
+            cmd_class=cmd_class,
             **kwargs)
 
 class JNTValueActionShutterMultilevel(JNTValueActionByte):
@@ -236,6 +241,7 @@ class JNTValueActionShutterMultilevel(JNTValueActionByte):
         default = kwargs.pop('default', 0)
         min = kwargs.pop('min', 0)
         max = kwargs.pop('max', 0)
+        cmd_class = kwargs.pop('cmd_class', COMMAND_SHUTTER_MULTILEVEL)
         JNTValueActionByte.__init__(self,
             entry_name=entry_name,
             help=help,
@@ -243,7 +249,7 @@ class JNTValueActionShutterMultilevel(JNTValueActionByte):
             label=label,
             min=min,
             max=max,
-            cmd_class=COMMAND_SHUTTER_MULTILEVEL,
+            cmd_class=cmd_class,
             **kwargs)
 
 class JNTValueActionButtonBinary(JNTValueActionList):
@@ -254,13 +260,14 @@ class JNTValueActionButtonBinary(JNTValueActionList):
         label = kwargs.pop('label', 'Button')
         list_items = kwargs.pop('list_items', ['on', 'off'])
         default = kwargs.pop('default', 'off')
+        cmd_class = kwargs.pop('cmd_class', COMMAND_BUTTON_BINARY)
         JNTValueActionList.__init__(self,
             entry_name=entry_name,
             help=help,
             label=label,
             default=default,
             list_items=list_items,
-            cmd_class=COMMAND_BUTTON_BINARY,
+            cmd_class=cmd_class,
             **kwargs)
 
 class JNTValueActionButtonMultilevel(JNTValueActionByte):
@@ -270,12 +277,13 @@ class JNTValueActionButtonMultilevel(JNTValueActionByte):
         help = kwargs.pop('help', 'A button')
         label = kwargs.pop('label', 'Button')
         default = kwargs.pop('default', 'off')
+        cmd_class = kwargs.pop('cmd_class', COMMAND_BUTTON_MULTILEVEL)
         JNTValueActionByte.__init__(self,
             entry_name=entry_name,
             help=help,
             label=label,
             default=default,
-            cmd_class=COMMAND_BUTTON_MULTILEVEL,
+            cmd_class=cmd_class,
             **kwargs)
 
 class JNTValueTransitionFsm(JNTValueActionList):
@@ -292,11 +300,12 @@ class JNTValueTransitionFsm(JNTValueActionList):
         list_items = kwargs.pop('list_items', ['sleep','work'])
         get_data_cb = kwargs.pop('get_data_cb', self.get_transition)
         set_data_cb = kwargs.pop('set_data_cb', self.set_transition)
+        cmd_class = kwargs.pop('cmd_class', COMMAND_FSM)
         JNTValueActionList.__init__(self,
             entry_name=entry_name, genre=genre,
             get_data_cb=get_data_cb, set_data_cb=set_data_cb,
             list_items=list_items,
-            cmd_class=COMMAND_FSM,
+            cmd_class=cmd_class,
             help=help,
             label=label,
             **kwargs)
