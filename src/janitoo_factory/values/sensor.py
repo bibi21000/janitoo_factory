@@ -116,6 +116,9 @@ def make_sensor_wind_average(**kwargs):
 def make_sensor_wind_gust(**kwargs):
     return JNTValueSensorWindGust(**kwargs)
 
+def make_sensor_minute(**kwargs):
+    return JNTValueSensorMinute(**kwargs)
+
 class JNTValueSensorGeneric(JNTValueFactoryEntry):
     """
     """
@@ -374,6 +377,19 @@ class JNTValueSensorOrientation(JNTValueSensorInteger):
         help = kwargs.pop('help', 'An orientation sensor')
         label = kwargs.pop('label', 'Orientation')
         units = kwargs.pop('units', '°')
+        default = kwargs.pop('default', None)
+        cmd_class = kwargs.pop('cmd_class', COMMAND_SENSOR_MULTILEVEL)
+        JNTValueSensorInteger.__init__(self, entry_name=entry_name, help=help, label=label,
+            units=units,
+            cmd_class=cmd_class, **kwargs)
+
+class JNTValueSensorMinute(JNTValueSensorInteger):
+    def __init__(self, entry_name="sensor_minute", **kwargs):
+        """
+        """
+        help = kwargs.pop('help', 'An minutes sensor')
+        label = kwargs.pop('label', 'Minutes')
+        units = kwargs.pop('min', '°')
         default = kwargs.pop('default', None)
         cmd_class = kwargs.pop('cmd_class', COMMAND_SENSOR_MULTILEVEL)
         JNTValueSensorInteger.__init__(self, entry_name=entry_name, help=help, label=label,

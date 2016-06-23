@@ -157,3 +157,13 @@ class TestSensorWindGust(JNTTFactory, JNTTFactoryPollCommon):
     """Test the value factory
     """
     entry_name='sensor_wind_gust'
+
+class TestSensorWindGust(JNTTFactory, JNTTFactoryPollCommon):
+    """Test the value factory
+    """
+    entry_name='sensor_wind_gust'
+
+class TestSensorMinute(JNTTFactory, JNTTFactoryPollCommon):
+    """Test the value factory
+    """
+    entry_name='sensor_minute'

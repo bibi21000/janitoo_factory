@@ -89,6 +89,7 @@ janitoo_entry_points = {
         "sensor_memory = janitoo_factory.values.sensor:make_sensor_memory",
         "sensor_boolean = janitoo_factory.values.sensor:make_sensor_boolean",
         "sensor_presence = janitoo_factory.values.sensor:make_sensor_presence",
+        "sensor_minute = janitoo_factory.values.sensor:make_sensor_minute",
         "sensor_rain_total = janitoo_factory.values.sensor:make_sensor_rain_total",
         "sensor_rain_rate = janitoo_factory.values.sensor:make_sensor_rain_rate",
         "sensor_wind_direction = janitoo_factory.values.sensor:make_sensor_wind_direction",
