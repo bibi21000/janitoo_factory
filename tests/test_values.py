@@ -107,6 +107,11 @@ class TestListString(JNTTFactory, JNTTFactoryCommon):
     """
     entry_name='action_list'
 
+class TestPrimaryController(JNTTFactory, JNTTFactoryCommon):
+    """Test the value factory
+    """
+    entry_name='primary_controller'
+
 class TestActionFsm(JNTTFactory, JNTTFactoryConfigCommon, JNTTFactoryPollCommon):
     """Test the value factory
     """

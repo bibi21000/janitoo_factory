@@ -118,6 +118,7 @@ janitoo_entry_points = {
         "sensor_basic_float = janitoo_factory.values.basic:make_sensor_float",
         "sensor_basic_integer = janitoo_factory.values.basic:make_sensor_integer",
         "sensor_basic_byte = janitoo_factory.values.basic:make_sensor_byte",
+        "primary_controller = janitoo_factory.values.basic:make_primary_controller",
     ],
 }
 
