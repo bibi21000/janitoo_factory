@@ -42,9 +42,9 @@ from janitoo.classes import COMMAND_DESC
 COMMAND_CONFIGURATION = 0x0070
 COMMAND_SENSOR_BINARY = 0x0030
 COMMAND_SENSOR_MULTILEVEL = 0x0031
-COMMAND_PRIMARY_CONTROLLER = 0x1051
+COMMAND_NETWORK_CONTROLLER = 0x1051
 
-assert(COMMAND_PRIMARY_CONTROLLER[COMMAND_PRIMARY_CONTROLLER] == 'COMMAND_PRIMARY_CONTROLLER')
+assert(COMMAND_DESC[COMMAND_NETWORK_CONTROLLER] == 'COMMAND_NETWORK_CONTROLLER')
 assert(COMMAND_DESC[COMMAND_CONFIGURATION] == 'COMMAND_CONFIGURATION')
 assert(COMMAND_DESC[COMMAND_SENSOR_BINARY] == 'COMMAND_SENSOR_BINARY')
 assert(COMMAND_DESC[COMMAND_SENSOR_MULTILEVEL] == 'COMMAND_SENSOR_MULTILEVEL')
@@ -59,8 +59,8 @@ def make_sensor_byte(**kwargs):
 def make_sensor_float(**kwargs):
     return JNTValueSensorFloat(**kwargs)
 
-def make_primary_controller(**kwargs):
-    return JNTValuePrimaryController(**kwargs)
+def make_network_controller(**kwargs):
+    return JNTValueNetworkController(**kwargs)
 
 class JNTValueSensorGeneric(JNTValueFactoryEntry):
     """
@@ -83,15 +83,16 @@ class JNTValueSensorGeneric(JNTValueFactoryEntry):
         default = kwargs.pop('default', 30)
         return self._create_poll_value(default=default, **kwargs)
 
-class JNTValuePrimaryController(JNTValueSensorGeneric):
-    def __init__(self, entry_name="primary_controller", **kwargs):
+class JNTValueNetworkController(JNTValueSensorGeneric):
+    def __init__(self, entry_name="network_controller", **kwargs):
         """
         """
         help = kwargs.pop('help', 'Primary/secondary network controller')
         label = kwargs.pop('label', 'Network controller')
-        cmd_class = kwargs.pop('cmd_class', COMMAND_PRIMARY_CONTROLLER)
+        cmd_class = kwargs.pop('cmd_class', COMMAND_NETWORK_CONTROLLER)
+        list_tiems = kwargs.pop('list_tiems', ['primary', 'secondary'])
         JNTValueSensorGeneric.__init__(self, entry_name=entry_name, help=help, label=label,
-            cmd_class=cmd_class, type=0x01, **kwargs)
+            cmd_class=cmd_class, type=0x05, **kwargs)
 
 class JNTValueSensorFloat(JNTValueSensorGeneric):
     def __init__(self, entry_name="sensor_float", **kwargs):
