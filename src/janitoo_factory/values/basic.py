@@ -83,16 +83,24 @@ class JNTValueSensorGeneric(JNTValueFactoryEntry):
         default = kwargs.pop('default', 30)
         return self._create_poll_value(default=default, **kwargs)
 
-class JNTValueNetworkController(JNTValueSensorGeneric):
+class JNTValueNetworkController(JNTValueFactoryEntry):
     def __init__(self, entry_name="network_controller", **kwargs):
         """
         """
+        genre = kwargs.pop('genre', 0x04)
         help = kwargs.pop('help', 'Primary/secondary network controller')
         label = kwargs.pop('label', 'Network controller')
         cmd_class = kwargs.pop('cmd_class', COMMAND_NETWORK_CONTROLLER)
         list_tiems = kwargs.pop('list_tiems', ['primary', 'secondary'])
-        JNTValueSensorGeneric.__init__(self, entry_name=entry_name, help=help, label=label,
-            cmd_class=cmd_class, type=0x05, **kwargs)
+        JNTValueFactoryEntry.__init__(self,
+            entry_name=entry_name,
+            genre=genre,
+            help=help,
+            label=label,
+            list_tiems=list_tiems,
+            cmd_class=cmd_class,
+            type=0x05,
+            **kwargs)
 
 class JNTValueSensorFloat(JNTValueSensorGeneric):
     def __init__(self, entry_name="sensor_float", **kwargs):
