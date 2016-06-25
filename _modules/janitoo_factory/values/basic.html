@@ -154,7 +154,9 @@
 <span class="n">COMMAND_CONFIGURATION</span> <span class="o">=</span> <span class="mh">0x0070</span>
 <span class="n">COMMAND_SENSOR_BINARY</span> <span class="o">=</span> <span class="mh">0x0030</span>
 <span class="n">COMMAND_SENSOR_MULTILEVEL</span> <span class="o">=</span> <span class="mh">0x0031</span>
+<span class="n">COMMAND_NETWORK_CONTROLLER</span> <span class="o">=</span> <span class="mh">0x1051</span>
 
+<span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_NETWORK_CONTROLLER</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;COMMAND_NETWORK_CONTROLLER&#39;</span><span class="p">)</span>
 <span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_CONFIGURATION</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;COMMAND_CONFIGURATION&#39;</span><span class="p">)</span>
 <span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_SENSOR_BINARY</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;COMMAND_SENSOR_BINARY&#39;</span><span class="p">)</span>
 <span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_SENSOR_MULTILEVEL</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;COMMAND_SENSOR_MULTILEVEL&#39;</span><span class="p">)</span>
@@ -168,6 +170,9 @@
 </div>
 <div class="viewcode-block" id="make_sensor_float"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.basic.make_sensor_float">[docs]</a><span class="k">def</span> <span class="nf">make_sensor_float</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">JNTValueSensorFloat</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="make_network_controller"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.basic.make_network_controller">[docs]</a><span class="k">def</span> <span class="nf">make_network_controller</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">JNTValueNetworkController</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </div>
 <div class="viewcode-block" id="JNTValueSensorGeneric"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.basic.JNTValueSensorGeneric">[docs]</a><span class="k">class</span> <span class="nc">JNTValueSensorGeneric</span><span class="p">(</span><span class="n">JNTValueFactoryEntry</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -190,6 +195,25 @@
         <span class="n">default</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_poll_value</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">default</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </div></div>
+<div class="viewcode-block" id="JNTValueNetworkController"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.basic.JNTValueNetworkController">[docs]</a><span class="k">class</span> <span class="nc">JNTValueNetworkController</span><span class="p">(</span><span class="n">JNTValueFactoryEntry</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="s">&quot;network_controller&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">genre</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;genre&#39;</span><span class="p">,</span> <span class="mh">0x04</span><span class="p">)</span>
+        <span class="n">help</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;help&#39;</span><span class="p">,</span> <span class="s">&#39;Primary/secondary network controller&#39;</span><span class="p">)</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;label&#39;</span><span class="p">,</span> <span class="s">&#39;Network controller&#39;</span><span class="p">)</span>
+        <span class="n">cmd_class</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;cmd_class&#39;</span><span class="p">,</span> <span class="n">COMMAND_NETWORK_CONTROLLER</span><span class="p">)</span>
+        <span class="n">list_tiems</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;list_tiems&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;primary&#39;</span><span class="p">,</span> <span class="s">&#39;secondary&#39;</span><span class="p">])</span>
+        <span class="n">JNTValueFactoryEntry</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+            <span class="n">entry_name</span><span class="o">=</span><span class="n">entry_name</span><span class="p">,</span>
+            <span class="n">genre</span><span class="o">=</span><span class="n">genre</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="n">help</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+            <span class="n">list_tiems</span><span class="o">=</span><span class="n">list_tiems</span><span class="p">,</span>
+            <span class="n">cmd_class</span><span class="o">=</span><span class="n">cmd_class</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="mh">0x05</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</div>
 <div class="viewcode-block" id="JNTValueSensorFloat"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.basic.JNTValueSensorFloat">[docs]</a><span class="k">class</span> <span class="nc">JNTValueSensorFloat</span><span class="p">(</span><span class="n">JNTValueSensorGeneric</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="s">&quot;sensor_float&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
