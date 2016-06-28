@@ -131,5 +131,6 @@ class TestRemoteThread(JNTTThreadRun, JNTTThreadRunCommon):
             self.assertEqual(1, wvalue.get_length())
             self.assertEqual(['switch','0','0x0025','1','0'], wvalue.get_value_config())
             self.assertEqual(None, wvalue.get_value_config(index=1))
+            self.assertEqual(True, False)
         finally:
             self.thread.stop()
