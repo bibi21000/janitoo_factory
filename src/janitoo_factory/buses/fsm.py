@@ -141,6 +141,8 @@ class JNTFsmBus(JNTBus):
             if self.state != self.states[0]:
                 self.nodeman.find_bus_value('transition').data = self.transitions[1]['trigger']
             self._fsm = None
+            if hasattr(self, "get_graph"):
+                delattr(self, "get_graph")
         except :
             logger.exception("[%s] - Error when stopping fsm", self.__class__.__name__, self._fsm_retry)
         JNTBus.stop(self)
