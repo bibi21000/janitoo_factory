@@ -33,8 +33,6 @@ import threading
 import logging
 from pkg_resources import iter_entry_points
 import mock
-import ConfigParser
-from ConfigParser import RawConfigParser
 
 sys.path.insert(0,os.path.dirname(__name__))
 
@@ -129,9 +127,9 @@ class TestActionFsm(JNTTFactory, JNTTFactoryConfigCommon, JNTTFactoryPollCommon)
         bus = JNTFsmBus(oid='test_bus')
         node_uuid='test_node'
         main_value = self.get_main_value(node_uuid=node_uuid)
-        print main_value
+        print(main_value)
         config_value = main_value.create_config_value()
-        print config_value
+        print(config_value)
         main_value.set_config(node_uuid, 0, 'working')
         self.assertEqual('working', main_value.get_config(node_uuid, 0))
         #~ self.assertTrue(main_value.ping_ip(node_uuid, 0))

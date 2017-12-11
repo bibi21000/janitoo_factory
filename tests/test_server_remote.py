@@ -62,13 +62,13 @@ class TestRemoteSerser(JNTTServer, JNTTServerCommon):
         time.sleep(65)
         self.assertNotInLogfile('^ERROR ')
         self.assertInLogfile('Connected to broker')
-        print "Reload server"
+        print("Reload server")
         self.server.reload()
         time.sleep(2)
         self.assertHeartbeatNodes(hadds=self.hadds)
         time.sleep(30)
         self.assertNotInLogfile('^ERROR ')
-        print "Reload threads"
+        print("Reload threads")
         self.server.reload_threads()
         time.sleep(2)
         self.assertHeartbeatNodes(hadds=self.hadds)

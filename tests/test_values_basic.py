@@ -33,8 +33,6 @@ import threading
 import logging
 from pkg_resources import iter_entry_points
 import mock
-import ConfigParser
-from ConfigParser import RawConfigParser
 
 from janitoo_nosetests import JNTTBase
 from janitoo_nosetests.values import JNTTFactory, JNTTFactoryCommon, JNTTFactoryPollCommon, JNTTFactoryConfigCommon

@@ -76,7 +76,7 @@ class TestFsmBus(JNTTBus, JNTTBusCommon):
             self.bus = bus
 
         def find_bus_value(self, value):
-            print self.bus.values["generic_%s"%value].to_dict()
+            print(self.bus.values["generic_%s"%value].to_dict())
             return self.bus.values["generic_%s"%value]
 
     def test_100_bus_fsm_boot(self):
@@ -94,7 +94,7 @@ class TestFsmBus(JNTTBus, JNTTBusCommon):
         while i<30 and bus.state == 'booting':
             time.sleep(0.5)
             i += 1
-            print bus.state
+            print(bus.state)
         self.assertEqual('sleeping', bus.state)
         bus.work()
         time.sleep(0.25)
