@@ -41,282 +41,284 @@ from janitoo.runner import Runner, jnt_parse_args
 from janitoo.server import JNTServer
 from janitoo.utils import HADD_SEP, HADD
 
+JNTTBase.onlyDockerTest()
+
 from .test_bus import TestHTTPBus, TestRemoteBus, TestFsmBus
 
-class TestHTTPBusD(TestHTTPBus):
-    def setUp(self):
-        TestHTTPBus.onlyDockerTest()
-        TestHTTPBus.setUp(self)
+#~ class TestHTTPBusD(TestHTTPBus):
+    #~ def setUp(self):
+        #~ TestHTTPBus.onlyDockerTest()
+        #~ TestHTTPBus.setUp(self)
 
-class TestRemoteBusD(TestRemoteBus):
-    def setUp(self):
-        TestRemoteBus.onlyDockerTest()
-        TestRemoteBus.setUp(self)
+#~ class TestRemoteBusD(TestRemoteBus):
+    #~ def setUp(self):
+        #~ TestRemoteBus.onlyDockerTest()
+        #~ TestRemoteBus.setUp(self)
 
-class TestFsmBusD(TestFsmBus):
-    def setUp(self):
-        TestFsmBus.onlyDockerTest()
-        TestFsmBus.setUp(self)
+#~ class TestFsmBusD(TestFsmBus):
+    #~ def setUp(self):
+        #~ TestFsmBus.onlyDockerTest()
+        #~ TestFsmBus.setUp(self)
 
 from .test_values import TestRreadValue, TestRwriteValue
 
-class TestRreadValueD(TestRreadValue):
-    def setUp(self):
-        TestRreadValue.onlyDockerTest()
-        TestRreadValue.setUp(self)
+#~ class TestRreadValueD(TestRreadValue):
+    #~ def setUp(self):
+        #~ TestRreadValue.onlyDockerTest()
+        #~ TestRreadValue.setUp(self)
 
-class TestRwriteValueD(TestRwriteValue):
-    def setUp(self):
-        TestRwriteValue.onlyDockerTest()
-        TestRwriteValue.setUp(self)
+#~ class TestRwriteValueD(TestRwriteValue):
+    #~ def setUp(self):
+        #~ TestRwriteValue.onlyDockerTest()
+        #~ TestRwriteValue.setUp(self)
 
 from .test_values import TestActionString, TestActionBoolean, TestActionInteger, TestActionSwitchBinary
 from .test_values import TestActionSwitchBinary, TestActionSwitchMultilevel
 from .test_values import TestActionShutterBinary, TestActionShutterMultilevel
 from .test_values import TestActionButtonBinary, TestActionButtonMultilevel
 
-class TestActionStringD(TestActionString):
-    def setUp(self):
-        TestActionString.onlyDockerTest()
-        TestActionString.setUp(self)
+#~ class TestActionStringD(TestActionString):
+    #~ def setUp(self):
+        #~ TestActionString.onlyDockerTest()
+        #~ TestActionString.setUp(self)
 
-class TestActionBooleanD(TestActionBoolean):
-    def setUp(self):
-        TestActionBoolean.onlyDockerTest()
-        TestActionBoolean.setUp(self)
+#~ class TestActionBooleanD(TestActionBoolean):
+    #~ def setUp(self):
+        #~ TestActionBoolean.onlyDockerTest()
+        #~ TestActionBoolean.setUp(self)
 
-class TestActionIntegerD(TestActionInteger):
-    def setUp(self):
-        TestActionInteger.onlyDockerTest()
-        TestActionInteger.setUp(self)
+#~ class TestActionIntegerD(TestActionInteger):
+    #~ def setUp(self):
+        #~ TestActionInteger.onlyDockerTest()
+        #~ TestActionInteger.setUp(self)
 
-class TestActionSwitchBinaryD(TestActionSwitchBinary):
-    def setUp(self):
-        TestActionSwitchBinary.onlyDockerTest()
-        TestActionSwitchBinary.setUp(self)
+#~ class TestActionSwitchBinaryD(TestActionSwitchBinary):
+    #~ def setUp(self):
+        #~ TestActionSwitchBinary.onlyDockerTest()
+        #~ TestActionSwitchBinary.setUp(self)
 
-class TestActionSwitchMultilevelD(TestActionSwitchMultilevel):
-    def setUp(self):
-        TestActionSwitchMultilevel.onlyDockerTest()
-        TestActionSwitchMultilevel.setUp(self)
+#~ class TestActionSwitchMultilevelD(TestActionSwitchMultilevel):
+    #~ def setUp(self):
+        #~ TestActionSwitchMultilevel.onlyDockerTest()
+        #~ TestActionSwitchMultilevel.setUp(self)
 
-class TestActionShutterBinaryD(TestActionShutterBinary):
-    def setUp(self):
-        TestActionShutterBinary.onlyDockerTest()
-        TestActionShutterBinary.setUp(self)
+#~ class TestActionShutterBinaryD(TestActionShutterBinary):
+    #~ def setUp(self):
+        #~ TestActionShutterBinary.onlyDockerTest()
+        #~ TestActionShutterBinary.setUp(self)
 
-class TestActionShutterMultilevelD(TestActionShutterMultilevel):
-    def setUp(self):
-        TestActionShutterMultilevel.onlyDockerTest()
-        TestActionShutterMultilevel.setUp(self)
+#~ class TestActionShutterMultilevelD(TestActionShutterMultilevel):
+    #~ def setUp(self):
+        #~ TestActionShutterMultilevel.onlyDockerTest()
+        #~ TestActionShutterMultilevel.setUp(self)
 
-class TestActionButtonBinaryD(TestActionButtonBinary):
-    def setUp(self):
-        TestActionButtonBinary.onlyDockerTest()
-        TestActionButtonBinary.setUp(self)
+#~ class TestActionButtonBinaryD(TestActionButtonBinary):
+    #~ def setUp(self):
+        #~ TestActionButtonBinary.onlyDockerTest()
+        #~ TestActionButtonBinary.setUp(self)
 
-class TestActionButtonMultilevelD(TestActionButtonMultilevel):
-    def setUp(self):
-        TestActionButtonMultilevel.onlyDockerTest()
-        TestActionButtonMultilevel.setUp(self)
+#~ class TestActionButtonMultilevelD(TestActionButtonMultilevel):
+    #~ def setUp(self):
+        #~ TestActionButtonMultilevel.onlyDockerTest()
+        #~ TestActionButtonMultilevel.setUp(self)
 
 from .test_values import TestListString
 
-class TestListStringD(TestListString):
-    def setUp(self):
-        TestListString.onlyDockerTest()
-        TestListString.setUp(self)
+#~ class TestListStringD(TestListString):
+    #~ def setUp(self):
+        #~ TestListString.onlyDockerTest()
+        #~ TestListString.setUp(self)
 
 from .test_values import TestActionFsm
 
-class TestActionFsmD(TestActionFsm):
-    def setUp(self):
-        TestActionFsm.onlyDockerTest()
-        TestActionFsm.setUp(self)
+#~ class TestActionFsmD(TestActionFsm):
+    #~ def setUp(self):
+        #~ TestActionFsm.onlyDockerTest()
+        #~ TestActionFsm.setUp(self)
 
 from .test_values_basic import TestSensorFloat, TestSensorByte, TestSensorInteger
 
-class TestSensorFloatD(TestSensorFloat):
-    def setUp(self):
-        TestSensorFloat.onlyDockerTest()
-        TestSensorFloat.setUp(self)
+#~ class TestSensorFloatD(TestSensorFloat):
+    #~ def setUp(self):
+        #~ TestSensorFloat.onlyDockerTest()
+        #~ TestSensorFloat.setUp(self)
 
-class TestSensorByteD(TestSensorByte):
-    def setUp(self):
-        TestSensorByte.onlyDockerTest()
-        TestSensorByte.setUp(self)
+#~ class TestSensorByteD(TestSensorByte):
+    #~ def setUp(self):
+        #~ TestSensorByte.onlyDockerTest()
+        #~ TestSensorByte.setUp(self)
 
-class TestSensorIntegerD(TestSensorInteger):
-    def setUp(self):
-        TestSensorInteger.onlyDockerTest()
-        TestSensorInteger.setUp(self)
+#~ class TestSensorIntegerD(TestSensorInteger):
+    #~ def setUp(self):
+        #~ TestSensorInteger.onlyDockerTest()
+        #~ TestSensorInteger.setUp(self)
 
 from .test_values_config import TestConfigString, TestConfigPassword, TestConfigInteger, TestConfigByte
 from .test_values_config import TestConfigList, TestConfigArray, TestConfigBoolean, TestConfigFloat
 
-class TestConfigStringD(TestConfigString):
-    def setUp(self):
-        TestConfigString.onlyDockerTest()
-        TestConfigString.setUp(self)
+#~ class TestConfigStringD(TestConfigString):
+    #~ def setUp(self):
+        #~ TestConfigString.onlyDockerTest()
+        #~ TestConfigString.setUp(self)
 
-class TestConfigPasswordD(TestConfigPassword):
-    def setUp(self):
-        TestConfigPassword.onlyDockerTest()
-        TestConfigPassword.setUp(self)
+#~ class TestConfigPasswordD(TestConfigPassword):
+    #~ def setUp(self):
+        #~ TestConfigPassword.onlyDockerTest()
+        #~ TestConfigPassword.setUp(self)
 
-class TestConfigIntegerD(TestConfigInteger):
-    def setUp(self):
-        TestConfigInteger.onlyDockerTest()
-        TestConfigInteger.setUp(self)
+#~ class TestConfigIntegerD(TestConfigInteger):
+    #~ def setUp(self):
+        #~ TestConfigInteger.onlyDockerTest()
+        #~ TestConfigInteger.setUp(self)
 
-class TestConfigByteD(TestConfigByte):
-    def setUp(self):
-        TestConfigByte.onlyDockerTest()
-        TestConfigByte.setUp(self)
+#~ class TestConfigByteD(TestConfigByte):
+    #~ def setUp(self):
+        #~ TestConfigByte.onlyDockerTest()
+        #~ TestConfigByte.setUp(self)
 
-class TestConfigListD(TestConfigList):
-    def setUp(self):
-        TestConfigList.onlyDockerTest()
-        TestConfigList.setUp(self)
+#~ class TestConfigListD(TestConfigList):
+    #~ def setUp(self):
+        #~ TestConfigList.onlyDockerTest()
+        #~ TestConfigList.setUp(self)
 
-class TestConfigArrayD(TestConfigArray):
-    def setUp(self):
-        TestConfigArray.onlyDockerTest()
-        TestConfigArray.setUp(self)
+#~ class TestConfigArrayD(TestConfigArray):
+    #~ def setUp(self):
+        #~ TestConfigArray.onlyDockerTest()
+        #~ TestConfigArray.setUp(self)
 
-class TestConfigBooleanD(TestConfigBoolean):
-    def setUp(self):
-        TestConfigBoolean.onlyDockerTest()
-        TestConfigBoolean.setUp(self)
+#~ class TestConfigBooleanD(TestConfigBoolean):
+    #~ def setUp(self):
+        #~ TestConfigBoolean.onlyDockerTest()
+        #~ TestConfigBoolean.setUp(self)
 
-class TestConfigFloatD(TestConfigFloat):
-    def setUp(self):
-        TestConfigFloat.onlyDockerTest()
-        TestConfigFloat.setUp(self)
+#~ class TestConfigFloatD(TestConfigFloat):
+    #~ def setUp(self):
+        #~ TestConfigFloat.onlyDockerTest()
+        #~ TestConfigFloat.setUp(self)
 
 from .test_values_sensors import TestSensorTemperature, TestSensorAltitude, TestSensorVoltage, TestSensorCurrent
 from .test_values_sensors import TestSensorPercent, TestSensorFrequency, TestSensorHumidity, TestSensorPressure
 
-class TestSensorTemperatureD(TestSensorTemperature):
-    def setUp(self):
-        TestSensorTemperature.onlyDockerTest()
-        TestSensorTemperature.setUp(self)
+#~ class TestSensorTemperatureD(TestSensorTemperature):
+    #~ def setUp(self):
+        #~ TestSensorTemperature.onlyDockerTest()
+        #~ TestSensorTemperature.setUp(self)
 
-class TestSensorAltitudeD(TestSensorAltitude):
-    def setUp(self):
-        TestSensorAltitude.onlyDockerTest()
-        TestSensorAltitude.setUp(self)
+#~ class TestSensorAltitudeD(TestSensorAltitude):
+    #~ def setUp(self):
+        #~ TestSensorAltitude.onlyDockerTest()
+        #~ TestSensorAltitude.setUp(self)
 
-class TestSensorVoltageD(TestSensorVoltage):
-    def setUp(self):
-        TestSensorVoltage.onlyDockerTest()
-        TestSensorVoltage.setUp(self)
+#~ class TestSensorVoltageD(TestSensorVoltage):
+    #~ def setUp(self):
+        #~ TestSensorVoltage.onlyDockerTest()
+        #~ TestSensorVoltage.setUp(self)
 
-class TestSensorCurrentD(TestSensorCurrent):
-    def setUp(self):
-        TestSensorCurrent.onlyDockerTest()
-        TestSensorCurrent.setUp(self)
+#~ class TestSensorCurrentD(TestSensorCurrent):
+    #~ def setUp(self):
+        #~ TestSensorCurrent.onlyDockerTest()
+        #~ TestSensorCurrent.setUp(self)
 
-class TestSensorPercentD(TestSensorPercent):
-    def setUp(self):
-        TestSensorPercent.onlyDockerTest()
-        TestSensorPercent.setUp(self)
+#~ class TestSensorPercentD(TestSensorPercent):
+    #~ def setUp(self):
+        #~ TestSensorPercent.onlyDockerTest()
+        #~ TestSensorPercent.setUp(self)
 
-class TestSensorFrequencyD(TestSensorFrequency):
-    def setUp(self):
-        TestSensorFrequency.onlyDockerTest()
-        TestSensorFrequency.setUp(self)
+#~ class TestSensorFrequencyD(TestSensorFrequency):
+    #~ def setUp(self):
+        #~ TestSensorFrequency.onlyDockerTest()
+        #~ TestSensorFrequency.setUp(self)
 
-class TestSensorHumidityD(TestSensorHumidity):
-    def setUp(self):
-        TestSensorHumidity.onlyDockerTest()
-        TestSensorHumidity.setUp(self)
+#~ class TestSensorHumidityD(TestSensorHumidity):
+    #~ def setUp(self):
+        #~ TestSensorHumidity.onlyDockerTest()
+        #~ TestSensorHumidity.setUp(self)
 
-class TestSensorPressureD(TestSensorPressure):
-    def setUp(self):
-        TestSensorPressure.onlyDockerTest()
-        TestSensorPressure.setUp(self)
+#~ class TestSensorPressureD(TestSensorPressure):
+    #~ def setUp(self):
+        #~ TestSensorPressure.onlyDockerTest()
+        #~ TestSensorPressure.setUp(self)
 
 from .test_values_sensors import TestSensorDistance, TestSensorRotationSpeed, TestSensorString, TestSensorFloat
 from .test_values_sensors import TestSensorList, TestSensorByte, TestSensorInteger, TestSensorMemory
 
-class TestSensorDistanceD(TestSensorDistance):
-    def setUp(self):
-        TestSensorDistance.onlyDockerTest()
-        TestSensorDistance.setUp(self)
+#~ class TestSensorDistanceD(TestSensorDistance):
+    #~ def setUp(self):
+        #~ TestSensorDistance.onlyDockerTest()
+        #~ TestSensorDistance.setUp(self)
 
-class TestSensorRotationSpeedD(TestSensorRotationSpeed):
-    def setUp(self):
-        TestSensorRotationSpeed.onlyDockerTest()
-        TestSensorRotationSpeed.setUp(self)
+#~ class TestSensorRotationSpeedD(TestSensorRotationSpeed):
+    #~ def setUp(self):
+        #~ TestSensorRotationSpeed.onlyDockerTest()
+        #~ TestSensorRotationSpeed.setUp(self)
 
-class TestSensorStringD(TestSensorString):
-    def setUp(self):
-        TestSensorString.onlyDockerTest()
-        TestSensorString.setUp(self)
+#~ class TestSensorStringD(TestSensorString):
+    #~ def setUp(self):
+        #~ TestSensorString.onlyDockerTest()
+        #~ TestSensorString.setUp(self)
 
-class TestSensorFloatD(TestSensorFloat):
-    def setUp(self):
-        TestSensorFloat.onlyDockerTest()
-        TestSensorFloat.setUp(self)
+#~ class TestSensorFloatD(TestSensorFloat):
+    #~ def setUp(self):
+        #~ TestSensorFloat.onlyDockerTest()
+        #~ TestSensorFloat.setUp(self)
 
-class TestSensorListD(TestSensorList):
-    def setUp(self):
-        TestSensorList.onlyDockerTest()
-        TestSensorList.setUp(self)
+#~ class TestSensorListD(TestSensorList):
+    #~ def setUp(self):
+        #~ TestSensorList.onlyDockerTest()
+        #~ TestSensorList.setUp(self)
 
-class TestSensorByteD(TestSensorByte):
-    def setUp(self):
-        TestSensorByte.onlyDockerTest()
-        TestSensorByte.setUp(self)
+#~ class TestSensorByteD(TestSensorByte):
+    #~ def setUp(self):
+        #~ TestSensorByte.onlyDockerTest()
+        #~ TestSensorByte.setUp(self)
 
-class TestSensorIntegerD(TestSensorInteger):
-    def setUp(self):
-        TestSensorInteger.onlyDockerTest()
-        TestSensorInteger.setUp(self)
+#~ class TestSensorIntegerD(TestSensorInteger):
+    #~ def setUp(self):
+        #~ TestSensorInteger.onlyDockerTest()
+        #~ TestSensorInteger.setUp(self)
 
-class TestSensorMemoryD(TestSensorMemory):
-    def setUp(self):
-        TestSensorMemory.onlyDockerTest()
-        TestSensorMemory.setUp(self)
+#~ class TestSensorMemoryD(TestSensorMemory):
+    #~ def setUp(self):
+        #~ TestSensorMemory.onlyDockerTest()
+        #~ TestSensorMemory.setUp(self)
 
 from .test_values_sensors import TestSensorOrientation, TestSensorPresence, TestSensorRainTotal, TestSensorRainRate
 from .test_values_sensors import TestSensorWindDirection, TestSensorWindAverage, TestSensorWindGust
 
-class TestSensorOrientationD(TestSensorOrientation):
-    def setUp(self):
-        TestSensorOrientation.onlyDockerTest()
-        TestSensorOrientation.setUp(self)
+#~ class TestSensorOrientationD(TestSensorOrientation):
+    #~ def setUp(self):
+        #~ TestSensorOrientation.onlyDockerTest()
+        #~ TestSensorOrientation.setUp(self)
 
-class TestSensorPresenceD(TestSensorPresence):
-    def setUp(self):
-        TestSensorPresence.onlyDockerTest()
-        TestSensorPresence.setUp(self)
+#~ class TestSensorPresenceD(TestSensorPresence):
+    #~ def setUp(self):
+        #~ TestSensorPresence.onlyDockerTest()
+        #~ TestSensorPresence.setUp(self)
 
-class TestSensorRainTotalD(TestSensorRainTotal):
-    def setUp(self):
-        TestSensorRainTotal.onlyDockerTest()
-        TestSensorRainTotal.setUp(self)
+#~ class TestSensorRainTotalD(TestSensorRainTotal):
+    #~ def setUp(self):
+        #~ TestSensorRainTotal.onlyDockerTest()
+        #~ TestSensorRainTotal.setUp(self)
 
-class TestSensorRainRateD(TestSensorRainRate):
-    def setUp(self):
-        TestSensorRainRate.onlyDockerTest()
-        TestSensorRainRate.setUp(self)
+#~ class TestSensorRainRateD(TestSensorRainRate):
+    #~ def setUp(self):
+        #~ TestSensorRainRate.onlyDockerTest()
+        #~ TestSensorRainRate.setUp(self)
 
-class TestSensorWindDirectionD(TestSensorWindDirection):
-    def setUp(self):
-        TestSensorWindDirection.onlyDockerTest()
-        TestSensorWindDirection.setUp(self)
+#~ class TestSensorWindDirectionD(TestSensorWindDirection):
+    #~ def setUp(self):
+        #~ TestSensorWindDirection.onlyDockerTest()
+        #~ TestSensorWindDirection.setUp(self)
 
-class TestSensorWindAverageD(TestSensorWindAverage):
-    def setUp(self):
-        TestSensorWindAverage.onlyDockerTest()
-        TestSensorWindAverage.setUp(self)
+#~ class TestSensorWindAverageD(TestSensorWindAverage):
+    #~ def setUp(self):
+        #~ TestSensorWindAverage.onlyDockerTest()
+        #~ TestSensorWindAverage.setUp(self)
 
-class TestSensorWindGustD(TestSensorWindGust):
-    def setUp(self):
-        TestSensorWindGust.onlyDockerTest()
-        TestSensorWindGust.setUp(self)
+#~ class TestSensorWindGustD(TestSensorWindGust):
+    #~ def setUp(self):
+        #~ TestSensorWindGust.onlyDockerTest()
+        #~ TestSensorWindGust.setUp(self)
 
 class TestHttpSerser(JNTTDockerServer, JNTTDockerServerCommon):
     """Test the server
