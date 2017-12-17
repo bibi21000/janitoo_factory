@@ -86,6 +86,8 @@ class JNTFsmBus(JNTBus):
         """The current retry to boot the fsm"""
         self.state = self.states[0]
         """Initial state of the fsm"""
+        self._bus_lock = threading.Lock()
+        """A lock for the bus"""
         uuid="{:s}_transition".format(self.oid)
         self.values[uuid] = self.value_factory['transition_fsm'](options=self.options, uuid=uuid,
             node_uuid=self.uuid,
@@ -184,3 +186,17 @@ class JNTFsmBus(JNTBus):
             logger.exception("[%s] - Error when trying to boot fsm at try %s", self.__class__.__name__, self._fsm_retry)
         finally:
             self._fsm_boot_lock.release()
+
+    def bus_acquire(self, blocking=True):
+        """Get a lock on the bus"""
+        if self._bus_lock.acquire(blocking):
+            return True
+        return False
+
+    def bus_release(self):
+        """Release a lock on the bus"""
+        self._bus_lock.release()
+
+    def bus_locked(self):
+        """Get status of the lock"""
+        return self._bus_lock.locked()
