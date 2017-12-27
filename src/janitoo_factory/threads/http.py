@@ -349,6 +349,7 @@ class HttpResourceComponent(JNTComponent):
             dirname = self.options.data['home_dir']
         dirname = os.path.join(dirname, "public")
         dirname = os.path.join(dirname, self.path)
+        logger.debug("[%s] - start node uuid:%s", self.__class__.__name__, self.uuid)
         self.deploy_resource(dirname)
         return JNTComponent.start(self, mqttc)
 
