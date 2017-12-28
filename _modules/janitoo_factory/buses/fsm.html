@@ -5,13 +5,11 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>janitoo_factory.buses.fsm &mdash; janitoo_factory 0.0.8 documentation</title>
+    <title>janitoo_factory.buses.fsm &#8212; janitoo_factory 0.0.8 documentation</title>
     
-    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/css/lightbox.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/bootswatch-3.3.4/united/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -19,7 +17,8 @@
         VERSION:     '0.0.8',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
@@ -30,17 +29,17 @@
     <script type="text/javascript" src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
     <script type="text/javascript" src="../../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="janitoo_factory 0.0.8 documentation" href="../../../index.html" />
-    <link rel="up" title="Module code" href="../../index.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
     <div class="container">
@@ -110,48 +109,48 @@
     <div class="col-md-12 content">
       
   <h1>Source code for janitoo_factory.buses.fsm</h1><div class="highlight"><pre>
-<span class="c"># -*- coding: utf-8 -*-</span>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;The fsm bus</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="n">__license__</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
-<span class="s">    This file is part of Janitoo.</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    This file is part of Janitoo.</span>
 
-<span class="s">    Janitoo is free software: you can redistribute it and/or modify</span>
-<span class="s">    it under the terms of the GNU General Public License as published by</span>
-<span class="s">    the Free Software Foundation, either version 3 of the License, or</span>
-<span class="s">    (at your option) any later version.</span>
+<span class="s2">    Janitoo is free software: you can redistribute it and/or modify</span>
+<span class="s2">    it under the terms of the GNU General Public License as published by</span>
+<span class="s2">    the Free Software Foundation, either version 3 of the License, or</span>
+<span class="s2">    (at your option) any later version.</span>
 
-<span class="s">    Janitoo is distributed in the hope that it will be useful,</span>
-<span class="s">    but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
-<span class="s">    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
-<span class="s">    GNU General Public License for more details.</span>
+<span class="s2">    Janitoo is distributed in the hope that it will be useful,</span>
+<span class="s2">    but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="s2">    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="s2">    GNU General Public License for more details.</span>
 
-<span class="s">    You should have received a copy of the GNU General Public License</span>
-<span class="s">    along with Janitoo. If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="s2">    You should have received a copy of the GNU General Public License</span>
+<span class="s2">    along with Janitoo. If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
 
-<span class="s">&quot;&quot;&quot;</span>
-<span class="n">__author__</span> <span class="o">=</span> <span class="s">&#39;Sébastien GALLET aka bibi21000&#39;</span>
-<span class="n">__email__</span> <span class="o">=</span> <span class="s">&#39;bibi21000@gmail.com&#39;</span>
-<span class="n">__copyright__</span> <span class="o">=</span> <span class="s">&quot;Copyright © 2013-2014-2015-2016 Sébastien GALLET aka bibi21000&quot;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Sébastien GALLET aka bibi21000&#39;</span>
+<span class="n">__email__</span> <span class="o">=</span> <span class="s1">&#39;bibi21000@gmail.com&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;Copyright © 2013-2014-2015-2016 Sébastien GALLET aka bibi21000&quot;</span>
 
 <span class="kn">import</span> <span class="nn">logging</span>
-<span class="c">#~ logging.getLogger(__name__).addHandler(logging.NullHandler())</span>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="c1">#~ logging.getLogger(__name__).addHandler(logging.NullHandler())</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">threading</span>
-<span class="kn">from</span> <span class="nn">pkg_resources</span> <span class="kn">import</span> <span class="n">iter_entry_points</span>
+<span class="kn">from</span> <span class="nn">pkg_resources</span> <span class="k">import</span> <span class="n">iter_entry_points</span>
 
-<span class="kn">from</span> <span class="nn">janitoo.bus</span> <span class="kn">import</span> <span class="n">JNTBus</span>
-<span class="kn">from</span> <span class="nn">janitoo.fsm</span> <span class="kn">import</span> <span class="n">HierarchicalMachine</span> <span class="k">as</span> <span class="n">Machine</span>
+<span class="kn">from</span> <span class="nn">janitoo.bus</span> <span class="k">import</span> <span class="n">JNTBus</span>
+<span class="kn">from</span> <span class="nn">janitoo.fsm</span> <span class="k">import</span> <span class="n">HierarchicalMachine</span> <span class="k">as</span> <span class="n">Machine</span>
 
 <div class="viewcode-block" id="JNTFsmBus"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus">[docs]</a><span class="k">class</span> <span class="nc">JNTFsmBus</span><span class="p">(</span><span class="n">JNTBus</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A bus managed by a fsm</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">states</span> <span class="o">=</span> <span class="p">[</span>
-       <span class="s">&#39;booting&#39;</span><span class="p">,</span>
-       <span class="s">&#39;sleeping&#39;</span><span class="p">,</span>
-       <span class="s">&#39;working&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;booting&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;sleeping&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;working&#39;</span><span class="p">,</span>
     <span class="p">]</span>
     <span class="sd">&quot;&quot;&quot;The fsm states :</span>
 
@@ -161,17 +160,17 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">transitions</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="p">{</span> <span class="s">&#39;trigger&#39;</span><span class="p">:</span> <span class="s">&#39;boot&#39;</span><span class="p">,</span>
-            <span class="s">&#39;source&#39;</span><span class="p">:</span> <span class="s">&#39;booting&#39;</span><span class="p">,</span>
-            <span class="s">&#39;dest&#39;</span><span class="p">:</span> <span class="s">&#39;sleeping&#39;</span><span class="p">,</span>
+        <span class="p">{</span> <span class="s1">&#39;trigger&#39;</span><span class="p">:</span> <span class="s1">&#39;boot&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;source&#39;</span><span class="p">:</span> <span class="s1">&#39;booting&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;dest&#39;</span><span class="p">:</span> <span class="s1">&#39;sleeping&#39;</span><span class="p">,</span>
         <span class="p">},</span>
-        <span class="p">{</span> <span class="s">&#39;trigger&#39;</span><span class="p">:</span> <span class="s">&#39;sleep&#39;</span><span class="p">,</span>
-            <span class="s">&#39;source&#39;</span><span class="p">:</span> <span class="s">&#39;*&#39;</span><span class="p">,</span>
-            <span class="s">&#39;dest&#39;</span><span class="p">:</span> <span class="s">&#39;sleeping&#39;</span><span class="p">,</span>
+        <span class="p">{</span> <span class="s1">&#39;trigger&#39;</span><span class="p">:</span> <span class="s1">&#39;sleep&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;source&#39;</span><span class="p">:</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;dest&#39;</span><span class="p">:</span> <span class="s1">&#39;sleeping&#39;</span><span class="p">,</span>
         <span class="p">},</span>
-        <span class="p">{</span> <span class="s">&#39;trigger&#39;</span><span class="p">:</span> <span class="s">&#39;work&#39;</span><span class="p">,</span>
-            <span class="s">&#39;source&#39;</span><span class="p">:</span> <span class="s">&#39;*&#39;</span><span class="p">,</span>
-            <span class="s">&#39;dest&#39;</span><span class="p">:</span> <span class="s">&#39;working&#39;</span><span class="p">,</span>
+        <span class="p">{</span> <span class="s1">&#39;trigger&#39;</span><span class="p">:</span> <span class="s1">&#39;work&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;source&#39;</span><span class="p">:</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;dest&#39;</span><span class="p">:</span> <span class="s1">&#39;working&#39;</span><span class="p">,</span>
         <span class="p">},</span>
     <span class="p">]</span>
     <span class="sd">&quot;&quot;&quot;The fsm transitions</span>
@@ -183,10 +182,10 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">JNTBus</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_fsm</span> <span class="o">=</span>  <span class="bp">None</span>
+        <span class="n">JNTBus</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fsm</span> <span class="o">=</span>  <span class="kc">None</span>
         <span class="sd">&quot;&quot;&quot;The finish state machine&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_timer</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_timer</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="sd">&quot;&quot;&quot;The timer that&#39;s start the finish state machine&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
         <span class="sd">&quot;&quot;&quot;The timer that&#39;s start the finish state machine&quot;&quot;&quot;</span>
@@ -198,49 +197,51 @@
         <span class="sd">&quot;&quot;&quot;The current retry to boot the fsm&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">states</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="sd">&quot;&quot;&quot;Initial state of the fsm&quot;&quot;&quot;</span>
-        <span class="n">uuid</span><span class="o">=</span><span class="s">&quot;{:s}_transition&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">oid</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">uuid</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value_factory</span><span class="p">[</span><span class="s">&#39;transition_fsm&#39;</span><span class="p">](</span><span class="n">options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">uuid</span><span class="o">=</span><span class="n">uuid</span><span class="p">,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_bus_lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+        <span class="sd">&quot;&quot;&quot;A lock for the bus&quot;&quot;&quot;</span>
+        <span class="n">uuid</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:s}</span><span class="s2">_transition&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">oid</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">uuid</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value_factory</span><span class="p">[</span><span class="s1">&#39;transition_fsm&#39;</span><span class="p">](</span><span class="n">options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">uuid</span><span class="o">=</span><span class="n">uuid</span><span class="p">,</span>
             <span class="n">node_uuid</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span>
-            <span class="n">list_items</span><span class="o">=</span><span class="p">[</span> <span class="n">v</span><span class="p">[</span><span class="s">&#39;trigger&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">transitions</span> <span class="p">],</span>
+            <span class="n">list_items</span><span class="o">=</span><span class="p">[</span> <span class="n">v</span><span class="p">[</span><span class="s1">&#39;trigger&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">transitions</span> <span class="p">],</span>
             <span class="n">fsm_bus</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">poll_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">uuid</span><span class="p">]</span><span class="o">.</span><span class="n">create_poll_value</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">poll_value</span><span class="o">.</span><span class="n">uuid</span><span class="p">]</span> <span class="o">=</span> <span class="n">poll_value</span>
-        <span class="n">config_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">uuid</span><span class="p">]</span><span class="o">.</span><span class="n">create_config_value</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">transitions</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;trigger&#39;</span><span class="p">])</span>
+        <span class="n">config_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">uuid</span><span class="p">]</span><span class="o">.</span><span class="n">create_config_value</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">transitions</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;trigger&#39;</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">config_value</span><span class="o">.</span><span class="n">uuid</span><span class="p">]</span> <span class="o">=</span> <span class="n">config_value</span>
 
-        <span class="n">uuid</span><span class="o">=</span><span class="s">&quot;{:s}_state&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">oid</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">uuid</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value_factory</span><span class="p">[</span><span class="s">&#39;sensor_string&#39;</span><span class="p">](</span><span class="n">options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">uuid</span><span class="o">=</span><span class="n">uuid</span><span class="p">,</span>
+        <span class="n">uuid</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:s}</span><span class="s2">_state&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">oid</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">uuid</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value_factory</span><span class="p">[</span><span class="s1">&#39;sensor_string&#39;</span><span class="p">](</span><span class="n">options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">uuid</span><span class="o">=</span><span class="n">uuid</span><span class="p">,</span>
             <span class="n">node_uuid</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">genre</span> <span class="o">=</span> <span class="mh">0x01</span><span class="p">,</span>
             <span class="n">get_data_cb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_state</span><span class="p">,</span>
-            <span class="n">help</span><span class="o">=</span><span class="s">&#39;The state of the fsm.&#39;</span><span class="p">,</span>
-            <span class="n">label</span><span class="o">=</span><span class="s">&#39;State&#39;</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s1">&#39;The state of the fsm.&#39;</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s1">&#39;State&#39;</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">poll_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">uuid</span><span class="p">]</span><span class="o">.</span><span class="n">create_poll_value</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">poll_value</span><span class="o">.</span><span class="n">uuid</span><span class="p">]</span> <span class="o">=</span> <span class="n">poll_value</span>
 
-<div class="viewcode-block" id="JNTFsmBus.start"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus.start">[docs]</a>    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mqttc</span><span class="p">,</span> <span class="n">trigger_thread_reload_cb</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="JNTFsmBus.start"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus.start">[docs]</a>    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mqttc</span><span class="p">,</span> <span class="n">trigger_thread_reload_cb</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Start the bus</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_fsm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_fsm</span><span class="p">()</span>
         <span class="n">JNTBus</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mqttc</span><span class="p">,</span> <span class="n">trigger_thread_reload_cb</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_timer</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fsm_timer_delay</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_boot_timer</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-</div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span></div>
+
 <div class="viewcode-block" id="JNTFsmBus.get_state"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus.get_state">[docs]</a>    <span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node_uuid</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get the state of the fsm</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span>
-</div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span></div>
+
 <div class="viewcode-block" id="JNTFsmBus.create_fsm"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus.create_fsm">[docs]</a>    <span class="k">def</span> <span class="nf">create_fsm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create the fsm</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Machine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
             <span class="n">states</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">states</span><span class="p">,</span>
             <span class="n">transitions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">transitions</span><span class="p">,</span>
-            <span class="n">title</span><span class="o">=</span><span class="s">&#39;Bus&#39;</span><span class="p">,</span>
-            <span class="n">initial</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">states</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</div>
+            <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Bus&#39;</span><span class="p">,</span>
+            <span class="n">initial</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">states</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
+
 <div class="viewcode-block" id="JNTFsmBus.stop"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus.stop">[docs]</a>    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Stop the bus</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -251,26 +252,28 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_lock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">states</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">nodeman</span><span class="o">.</span><span class="n">find_bus_value</span><span class="p">(</span><span class="s">&#39;transition&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transitions</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">&#39;trigger&#39;</span><span class="p">]</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_fsm</span> <span class="o">=</span> <span class="bp">None</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nodeman</span><span class="o">.</span><span class="n">find_bus_value</span><span class="p">(</span><span class="s1">&#39;transition&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transitions</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;trigger&#39;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_fsm</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;get_graph&quot;</span><span class="p">):</span>
+                <span class="nb">delattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;get_graph&quot;</span><span class="p">)</span>
         <span class="k">except</span> <span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s">&quot;[</span><span class="si">%s</span><span class="s">] - Error when stopping fsm&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_retry</span><span class="p">)</span>
-        <span class="n">JNTBus</span><span class="o">.</span><span class="n">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-</div>
+            <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">] - Error when stopping fsm&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_retry</span><span class="p">)</span>
+        <span class="n">JNTBus</span><span class="o">.</span><span class="n">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="JNTFsmBus.check_heartbeat"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus.check_heartbeat">[docs]</a>    <span class="k">def</span> <span class="nf">check_heartbeat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Check that the fsm is started</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">!=</span> <span class="s">&#39;booting&#39;</span>
-</div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">!=</span> <span class="s1">&#39;booting&#39;</span></div>
+
 <div class="viewcode-block" id="JNTFsmBus.stop_boot_timer"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus.stop_boot_timer">[docs]</a>    <span class="k">def</span> <span class="nf">stop_boot_timer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Stop the boot timer</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_timer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_timer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_timer</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_timer</span> <span class="o">=</span> <span class="bp">None</span>
-</div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_timer</span> <span class="o">=</span> <span class="kc">None</span></div>
+
 <div class="viewcode-block" id="JNTFsmBus.on_boot_timer"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus.on_boot_timer">[docs]</a>    <span class="k">def</span> <span class="nf">on_boot_timer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Make a check using a timer.</span>
 
@@ -278,22 +281,36 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">stop_boot_timer</span><span class="p">()</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="s">&#39;booting&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="s1">&#39;booting&#39;</span><span class="p">:</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_retry</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_max_retries</span><span class="p">:</span>
-                    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&quot;[</span><span class="si">%s</span><span class="s">] - Fail to boot fsm after </span><span class="si">%s</span><span class="s"> retries&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_retry</span><span class="p">)</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">] - Fail to boot fsm after </span><span class="si">%s</span><span class="s2"> retries&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_retry</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_retry</span> <span class="o">+=</span> <span class="mi">1</span>
-                    <span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodeman</span><span class="o">.</span><span class="n">find_bus_value</span><span class="p">(</span><span class="s">&#39;transition_config&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">data</span>
-                    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;[</span><span class="si">%s</span><span class="s">] - boot try </span><span class="si">%s</span><span class="s"> with transition </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_retry</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">nodeman</span><span class="o">.</span><span class="n">find_bus_value</span><span class="p">(</span><span class="s">&#39;transition&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">state</span>
+                    <span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodeman</span><span class="o">.</span><span class="n">find_bus_value</span><span class="p">(</span><span class="s1">&#39;transition_config&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">data</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">] - boot try </span><span class="si">%s</span><span class="s2"> with transition </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_retry</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">nodeman</span><span class="o">.</span><span class="n">find_bus_value</span><span class="p">(</span><span class="s1">&#39;transition&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">state</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_timer</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fsm_timer_delay</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_retry</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nodeman</span><span class="o">.</span><span class="n">slow_start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_boot_timer</span><span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;[</span><span class="si">%s</span><span class="s">] - fsm has booted in state </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">] - fsm has booted in state </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
         <span class="k">except</span> <span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s">&quot;[</span><span class="si">%s</span><span class="s">] - Error when trying to boot fsm at try </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_retry</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">] - Error when trying to boot fsm at try </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_retry</span><span class="p">)</span>
         <span class="k">finally</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_lock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span></div></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_lock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="JNTFsmBus.bus_acquire"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus.bus_acquire">[docs]</a>    <span class="k">def</span> <span class="nf">bus_acquire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">blocking</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get a lock on the bus&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bus_lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">(</span><span class="n">blocking</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+<div class="viewcode-block" id="JNTFsmBus.bus_release"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus.bus_release">[docs]</a>    <span class="k">def</span> <span class="nf">bus_release</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Release a lock on the bus&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_bus_lock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="JNTFsmBus.bus_locked"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus.bus_locked">[docs]</a>    <span class="k">def</span> <span class="nf">bus_locked</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get status of the lock&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bus_lock</span><span class="o">.</span><span class="n">locked</span><span class="p">()</span></div></div>
 </pre></div>
 
     </div>
@@ -308,7 +325,7 @@
     </p>
     <p>
         &copy; Copyright 2014,2015,2016 Sébastien GALLET aka bibi2100 &lt;bibi21000@gmail.com&gt;.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.3.<br/>
     </p>
   </div>
 </footer>

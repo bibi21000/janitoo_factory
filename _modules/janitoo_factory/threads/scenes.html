@@ -5,13 +5,11 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>janitoo_factory.threads.scenes &mdash; janitoo_factory 0.0.8 documentation</title>
+    <title>janitoo_factory.threads.scenes &#8212; janitoo_factory 0.0.8 documentation</title>
     
-    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/css/lightbox.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/bootswatch-3.3.4/united/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -19,7 +17,8 @@
         VERSION:     '0.0.8',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
@@ -30,17 +29,17 @@
     <script type="text/javascript" src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
     <script type="text/javascript" src="../../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="janitoo_factory 0.0.8 documentation" href="../../../index.html" />
-    <link rel="up" title="Module code" href="../../index.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
     <div class="container">
@@ -110,7 +109,7 @@
     <div class="col-md-12 content">
       
   <h1>Source code for janitoo_factory.threads.scenes</h1><div class="highlight"><pre>
-<span class="c"># -*- coding: utf-8 -*-</span>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;The Raspberry hardware worker</span>
 
 <span class="sd">The scene manager</span>
@@ -122,55 +121,55 @@
 
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="n">__license__</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
-<span class="s">    This file is part of Janitoo.</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    This file is part of Janitoo.</span>
 
-<span class="s">    Janitoo is free software: you can redistribute it and/or modify</span>
-<span class="s">    it under the terms of the GNU General Public License as published by</span>
-<span class="s">    the Free Software Foundation, either version 3 of the License, or</span>
-<span class="s">    (at your option) any later version.</span>
+<span class="s2">    Janitoo is free software: you can redistribute it and/or modify</span>
+<span class="s2">    it under the terms of the GNU General Public License as published by</span>
+<span class="s2">    the Free Software Foundation, either version 3 of the License, or</span>
+<span class="s2">    (at your option) any later version.</span>
 
-<span class="s">    Janitoo is distributed in the hope that it will be useful,</span>
-<span class="s">    but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
-<span class="s">    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
-<span class="s">    GNU General Public License for more details.</span>
+<span class="s2">    Janitoo is distributed in the hope that it will be useful,</span>
+<span class="s2">    but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="s2">    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="s2">    GNU General Public License for more details.</span>
 
-<span class="s">    You should have received a copy of the GNU General Public License</span>
-<span class="s">    along with Janitoo. If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="s2">    You should have received a copy of the GNU General Public License</span>
+<span class="s2">    along with Janitoo. If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
 
-<span class="s">&quot;&quot;&quot;</span>
-<span class="n">__author__</span> <span class="o">=</span> <span class="s">&#39;Sébastien GALLET aka bibi21000&#39;</span>
-<span class="n">__email__</span> <span class="o">=</span> <span class="s">&#39;bibi21000@gmail.com&#39;</span>
-<span class="n">__copyright__</span> <span class="o">=</span> <span class="s">&quot;Copyright © 2013-2014-2015-2016 Sébastien GALLET aka bibi21000&quot;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Sébastien GALLET aka bibi21000&#39;</span>
+<span class="n">__email__</span> <span class="o">=</span> <span class="s1">&#39;bibi21000@gmail.com&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;Copyright © 2013-2014-2015-2016 Sébastien GALLET aka bibi21000&quot;</span>
 
-<span class="c"># Set default logging handler to avoid &quot;No handler found&quot; warnings.</span>
+<span class="c1"># Set default logging handler to avoid &quot;No handler found&quot; warnings.</span>
 <span class="kn">import</span> <span class="nn">logging</span>
-<span class="k">try</span><span class="p">:</span>  <span class="c"># Python 2.7+                                   # pragma: no cover</span>
-    <span class="kn">from</span> <span class="nn">logging</span> <span class="kn">import</span> <span class="n">NullHandler</span>                   <span class="c"># pragma: no cover</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>                                   <span class="c"># pragma: no cover</span>
-    <span class="k">class</span> <span class="nc">NullHandler</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">Handler</span><span class="p">):</span>               <span class="c"># pragma: no cover</span>
-        <span class="sd">&quot;&quot;&quot;NullHandler logger for python 2.6&quot;&quot;&quot;</span>       <span class="c"># pragma: no cover</span>
-        <span class="k">def</span> <span class="nf">emit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">):</span>                       <span class="c"># pragma: no cover</span>
-            <span class="k">pass</span>                                      <span class="c"># pragma: no cover</span>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>  <span class="c1"># Python 2.7+                                   # pragma: no cover</span>
+    <span class="kn">from</span> <span class="nn">logging</span> <span class="k">import</span> <span class="n">NullHandler</span>                   <span class="c1"># pragma: no cover</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>                                   <span class="c1"># pragma: no cover</span>
+    <span class="k">class</span> <span class="nc">NullHandler</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">Handler</span><span class="p">):</span>               <span class="c1"># pragma: no cover</span>
+        <span class="sd">&quot;&quot;&quot;NullHandler logger for python 2.6&quot;&quot;&quot;</span>       <span class="c1"># pragma: no cover</span>
+        <span class="k">def</span> <span class="nf">emit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">):</span>                       <span class="c1"># pragma: no cover</span>
+            <span class="k">pass</span>                                      <span class="c1"># pragma: no cover</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">threading</span>
-<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
-<span class="kn">from</span> <span class="nn">pkg_resources</span> <span class="kn">import</span> <span class="n">get_distribution</span><span class="p">,</span> <span class="n">DistributionNotFound</span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="k">import</span> <span class="n">randint</span>
+<span class="kn">from</span> <span class="nn">pkg_resources</span> <span class="k">import</span> <span class="n">get_distribution</span><span class="p">,</span> <span class="n">DistributionNotFound</span>
 
-<span class="kn">from</span> <span class="nn">janitoo.thread</span> <span class="kn">import</span> <span class="n">JNTBusThread</span>
-<span class="kn">from</span> <span class="nn">janitoo.options</span> <span class="kn">import</span> <span class="n">get_option_autostart</span>
-<span class="kn">from</span> <span class="nn">janitoo.utils</span> <span class="kn">import</span> <span class="n">HADD</span>
-<span class="kn">from</span> <span class="nn">janitoo.node</span> <span class="kn">import</span> <span class="n">JNTNode</span>
-<span class="kn">from</span> <span class="nn">janitoo.bus</span> <span class="kn">import</span> <span class="n">JNTBus</span>
-<span class="kn">from</span> <span class="nn">janitoo.component</span> <span class="kn">import</span> <span class="n">JNTComponent</span>
-<span class="kn">from</span> <span class="nn">janitoo.value</span> <span class="kn">import</span> <span class="n">JNTValue</span><span class="p">,</span> <span class="n">value_config_poll</span>
+<span class="kn">from</span> <span class="nn">janitoo.thread</span> <span class="k">import</span> <span class="n">JNTBusThread</span>
+<span class="kn">from</span> <span class="nn">janitoo.options</span> <span class="k">import</span> <span class="n">get_option_autostart</span>
+<span class="kn">from</span> <span class="nn">janitoo.utils</span> <span class="k">import</span> <span class="n">HADD</span>
+<span class="kn">from</span> <span class="nn">janitoo.node</span> <span class="k">import</span> <span class="n">JNTNode</span>
+<span class="kn">from</span> <span class="nn">janitoo.bus</span> <span class="k">import</span> <span class="n">JNTBus</span>
+<span class="kn">from</span> <span class="nn">janitoo.component</span> <span class="k">import</span> <span class="n">JNTComponent</span>
+<span class="kn">from</span> <span class="nn">janitoo.value</span> <span class="k">import</span> <span class="n">JNTValue</span><span class="p">,</span> <span class="n">value_config_poll</span>
 
-<span class="c">##############################################################</span>
-<span class="c">#Check that we are in sync with the official command classes</span>
-<span class="c">#Must be implemented for non-regression</span>
-<span class="kn">from</span> <span class="nn">janitoo.classes</span> <span class="kn">import</span> <span class="n">COMMAND_DESC</span>
+<span class="c1">##############################################################</span>
+<span class="c1">#Check that we are in sync with the official command classes</span>
+<span class="c1">#Must be implemented for non-regression</span>
+<span class="kn">from</span> <span class="nn">janitoo.classes</span> <span class="k">import</span> <span class="n">COMMAND_DESC</span>
 
 <span class="n">COMMAND_METER</span> <span class="o">=</span> <span class="mh">0x0032</span>
 <span class="n">COMMAND_CONFIGURATION</span> <span class="o">=</span> <span class="mh">0x0070</span>
@@ -178,24 +177,24 @@
 <span class="n">COMMAND_SCENE_ACTUATOR_CONF</span> <span class="o">=</span> <span class="mh">0x002C</span>
 <span class="n">COMMAND_SCENE_CONTROLLER_CONF</span> <span class="o">=</span> <span class="mh">0x002D</span>
 
-<span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_METER</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;COMMAND_METER&#39;</span><span class="p">)</span>
-<span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_SCENE_ACTIVATION</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;COMMAND_SCENE_ACTIVATION&#39;</span><span class="p">)</span>
-<span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_SCENE_ACTUATOR_CONF</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;COMMAND_SCENE_ACTUATOR_CONF&#39;</span><span class="p">)</span>
-<span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_SCENE_CONTROLLER_CONF</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;COMMAND_SCENE_CONTROLLER_CONF&#39;</span><span class="p">)</span>
-<span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_CONFIGURATION</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;COMMAND_CONFIGURATION&#39;</span><span class="p">)</span>
-<span class="c">##############################################################</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_METER</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;COMMAND_METER&#39;</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_SCENE_ACTIVATION</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;COMMAND_SCENE_ACTIVATION&#39;</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_SCENE_ACTUATOR_CONF</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;COMMAND_SCENE_ACTUATOR_CONF&#39;</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_SCENE_CONTROLLER_CONF</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;COMMAND_SCENE_CONTROLLER_CONF&#39;</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_CONFIGURATION</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;COMMAND_CONFIGURATION&#39;</span><span class="p">)</span>
+<span class="c1">##############################################################</span>
 
-<span class="n">OID</span> <span class="o">=</span> <span class="s">&#39;scenes&#39;</span>
+<span class="n">OID</span> <span class="o">=</span> <span class="s1">&#39;scenes&#39;</span>
 
-<div class="viewcode-block" id="make_thread"><a class="viewcode-back" href="../../../api/janitoo_factory.threads.html#janitoo_factory.threads.scenes.make_thread">[docs]</a><span class="k">def</span> <span class="nf">make_thread</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">get_option_autostart</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">OID</span><span class="p">)</span> <span class="o">==</span> <span class="bp">True</span> <span class="ow">or</span> <span class="n">force</span><span class="p">:</span>
+<div class="viewcode-block" id="make_thread"><a class="viewcode-back" href="../../../api/janitoo_factory.threads.html#janitoo_factory.threads.scenes.make_thread">[docs]</a><span class="k">def</span> <span class="nf">make_thread</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">get_option_autostart</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">OID</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span> <span class="ow">or</span> <span class="n">force</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">ScenesThread</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">None</span>
-</div>
+        <span class="k">return</span> <span class="kc">None</span></div>
+
 <div class="viewcode-block" id="make_scene"><a class="viewcode-back" href="../../../api/janitoo_factory.threads.html#janitoo_factory.threads.scenes.make_scene">[docs]</a><span class="k">def</span> <span class="nf">make_scene</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">SceneComponent</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</div>
+    <span class="k">return</span> <span class="n">SceneComponent</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="ScenesThread"><a class="viewcode-back" href="../../../api/janitoo_factory.threads.html#janitoo_factory.threads.scenes.ScenesThread">[docs]</a><span class="k">class</span> <span class="nc">ScenesThread</span><span class="p">(</span><span class="n">JNTBusThread</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;The Hardware thread</span>
 
@@ -204,127 +203,127 @@
         <span class="sd">&quot;&quot;&quot;Build the bus</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">section</span> <span class="o">=</span> <span class="n">OID</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">bus</span> <span class="o">=</span> <span class="n">ScenesBus</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">oid</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;Scene Manager bus&#39;</span><span class="p">,</span> <span class="n">product_name</span><span class="o">=</span><span class="s">&quot;Scene controller&quot;</span><span class="p">,</span> <span class="n">product_type</span><span class="o">=</span><span class="s">&quot;Core thread&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bus</span> <span class="o">=</span> <span class="n">ScenesBus</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">oid</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Scene Manager bus&#39;</span><span class="p">,</span> <span class="n">product_name</span><span class="o">=</span><span class="s2">&quot;Scene controller&quot;</span><span class="p">,</span> <span class="n">product_type</span><span class="o">=</span><span class="s2">&quot;Core thread&quot;</span><span class="p">)</span></div></div>
 
-</div></div>
+
 <div class="viewcode-block" id="ScenesBus"><a class="viewcode-back" href="../../../api/janitoo_factory.threads.html#janitoo_factory.threads.scenes.ScenesBus">[docs]</a><span class="k">class</span> <span class="nc">ScenesBus</span><span class="p">(</span><span class="n">JNTBus</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A pseudo-bus to manage all scenes</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">manager_id</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">manager_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        :param int manager_id: the id of the manager</span>
 <span class="sd">        :param kwargs: parameters</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">JNTBus</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">manager_id</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">JNTBus</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">manager_id</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">manager_id</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">9999</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">manager_id</span> <span class="o">=</span> <span class="n">manager_id</span>
-        <span class="k">for</span> <span class="n">cls</span> <span class="ow">in</span> <span class="p">[</span><span class="n">COMMAND_SCENE_CONTROLLER_CONF</span><span class="p">,</span> <span class="n">COMMAND_SCENE_ACTUATOR_CONF</span><span class="p">,</span> <span class="n">COMMAND_CONFIGURATION</span><span class="p">]:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">cmd_classes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cls</span><span class="p">)</span>
-        <span class="n">uuid</span> <span class="o">=</span> <span class="s">&#39;manager_id&#39;</span>
+        <span class="k">for</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="p">[</span><span class="n">COMMAND_SCENE_CONTROLLER_CONF</span><span class="p">,</span> <span class="n">COMMAND_SCENE_ACTUATOR_CONF</span><span class="p">,</span> <span class="n">COMMAND_CONFIGURATION</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cmd_classes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+        <span class="n">uuid</span> <span class="o">=</span> <span class="s1">&#39;manager_id&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">uuid</span><span class="p">]</span> <span class="o">=</span> <span class="n">JNTValue</span><span class="p">(</span> <span class="n">uuid</span><span class="o">=</span><span class="n">uuid</span><span class="p">,</span>
-                    <span class="n">help</span><span class="o">=</span><span class="s">&#39;The id of the scene manager&#39;</span><span class="p">,</span>
-                    <span class="n">label</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">uuid</span><span class="p">,</span>
+                    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;The id of the scene manager&#39;</span><span class="p">,</span>
+                    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">uuid</span><span class="p">,</span>
                     <span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                     <span class="n">cmd_class</span><span class="o">=</span><span class="mh">0x0070</span><span class="p">,</span>
                     <span class="n">genre</span><span class="o">=</span><span class="mh">0x03</span><span class="p">,</span>
                     <span class="nb">type</span><span class="o">=</span><span class="mh">0x02</span><span class="p">,</span>
                     <span class="n">set_data_cb</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">set_config_manager_id</span><span class="p">,</span>
                     <span class="n">get_data_cb</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_config_manager_id</span><span class="p">,</span>
-                    <span class="n">is_writeonly</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
-                    <span class="n">is_readonly</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                    <span class="n">is_writeonly</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">is_readonly</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                     <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                     <span class="p">)</span>
-        <span class="n">uuid</span> <span class="o">=</span> <span class="s">&quot;add_scene&quot;</span>
+        <span class="n">uuid</span> <span class="o">=</span> <span class="s2">&quot;add_scene&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">uuid</span><span class="p">]</span> <span class="o">=</span> <span class="n">JNTValue</span><span class="p">(</span> <span class="n">uuid</span><span class="o">=</span><span class="n">uuid</span><span class="p">,</span>
-                    <span class="n">help</span><span class="o">=</span><span class="s">&#39;Add the scene&#39;</span><span class="p">,</span>
-                    <span class="n">label</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">uuid</span><span class="p">,</span>
-                    <span class="n">units</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+                    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Add the scene&#39;</span><span class="p">,</span>
+                    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">uuid</span><span class="p">,</span>
+                    <span class="n">units</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
                     <span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                     <span class="n">cmd_class</span><span class="o">=</span><span class="n">COMMAND_SCENE_CONTROLLER_CONF</span><span class="p">,</span>
                     <span class="n">genre</span><span class="o">=</span><span class="mh">0x05</span><span class="p">,</span>
                     <span class="nb">type</span><span class="o">=</span><span class="mh">0x15</span><span class="p">,</span>
                     <span class="n">set_data_cb</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">add_scene</span><span class="p">,</span>
-                    <span class="n">is_writeonly</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                    <span class="n">is_writeonly</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                     <span class="n">node_uuid</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span>
                     <span class="p">)</span>
-        <span class="n">uuid</span> <span class="o">=</span> <span class="s">&quot;remove_scene&quot;</span>
+        <span class="n">uuid</span> <span class="o">=</span> <span class="s2">&quot;remove_scene&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">uuid</span><span class="p">]</span> <span class="o">=</span> <span class="n">JNTValue</span><span class="p">(</span> <span class="n">uuid</span><span class="o">=</span><span class="n">uuid</span><span class="p">,</span>
-                    <span class="n">help</span><span class="o">=</span><span class="s">&#39;Remove the scene&#39;</span><span class="p">,</span>
-                    <span class="n">label</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">uuid</span><span class="p">,</span>
-                    <span class="n">units</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+                    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Remove the scene&#39;</span><span class="p">,</span>
+                    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">uuid</span><span class="p">,</span>
+                    <span class="n">units</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
                     <span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                     <span class="n">cmd_class</span><span class="o">=</span><span class="n">COMMAND_SCENE_CONTROLLER_CONF</span><span class="p">,</span>
                     <span class="n">genre</span><span class="o">=</span><span class="mh">0x05</span><span class="p">,</span>
                     <span class="nb">type</span><span class="o">=</span><span class="mh">0x15</span><span class="p">,</span>
                     <span class="n">set_data_cb</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">remove_scene</span><span class="p">,</span>
-                    <span class="n">is_writeonly</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                    <span class="n">is_writeonly</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                     <span class="n">node_uuid</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span>
                     <span class="p">)</span>
-        <span class="n">uuid</span> <span class="o">=</span> <span class="s">&quot;get_num_scenes&quot;</span>
+        <span class="n">uuid</span> <span class="o">=</span> <span class="s2">&quot;get_num_scenes&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">uuid</span><span class="p">]</span> <span class="o">=</span> <span class="n">JNTValue</span><span class="p">(</span> <span class="n">uuid</span><span class="o">=</span><span class="n">uuid</span><span class="p">,</span>
-                    <span class="n">help</span><span class="o">=</span><span class="s">&#39;Get the number of scenes&#39;</span><span class="p">,</span>
-                    <span class="n">label</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">uuid</span><span class="p">,</span>
-                    <span class="n">units</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+                    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Get the number of scenes&#39;</span><span class="p">,</span>
+                    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">uuid</span><span class="p">,</span>
+                    <span class="n">units</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
                     <span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                     <span class="n">cmd_class</span><span class="o">=</span><span class="n">COMMAND_SCENE_CONTROLLER_CONF</span><span class="p">,</span>
                     <span class="n">genre</span><span class="o">=</span><span class="mh">0x05</span><span class="p">,</span>
                     <span class="nb">type</span><span class="o">=</span><span class="mh">0x15</span><span class="p">,</span>
                     <span class="n">set_data_cb</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_num_scenes</span><span class="p">,</span>
-                    <span class="n">is_writeonly</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                    <span class="n">is_writeonly</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                     <span class="n">node_uuid</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span>
                     <span class="p">)</span>
-        <span class="n">uuid</span> <span class="o">=</span> <span class="s">&quot;get_scene&quot;</span>
+        <span class="n">uuid</span> <span class="o">=</span> <span class="s2">&quot;get_scene&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">uuid</span><span class="p">]</span> <span class="o">=</span> <span class="n">JNTValue</span><span class="p">(</span> <span class="n">uuid</span><span class="o">=</span><span class="n">uuid</span><span class="p">,</span>
-                    <span class="n">help</span><span class="o">=</span><span class="s">&#39;Get all the values in a scene&#39;</span><span class="p">,</span>
-                    <span class="n">label</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">uuid</span><span class="p">,</span>
-                    <span class="n">units</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+                    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Get all the values in a scene&#39;</span><span class="p">,</span>
+                    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">uuid</span><span class="p">,</span>
+                    <span class="n">units</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
                     <span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                     <span class="n">cmd_class</span><span class="o">=</span><span class="n">COMMAND_SCENE_CONTROLLER_CONF</span><span class="p">,</span>
                     <span class="n">genre</span><span class="o">=</span><span class="mh">0x05</span><span class="p">,</span>
                     <span class="nb">type</span><span class="o">=</span><span class="mh">0x15</span><span class="p">,</span>
                     <span class="n">set_data_cb</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_scene</span><span class="p">,</span>
-                    <span class="n">is_writeonly</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                    <span class="n">is_writeonly</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                     <span class="n">node_uuid</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span>
                     <span class="p">)</span>
-        <span class="n">uuid</span> <span class="o">=</span> <span class="s">&quot;add_value_to_scene&quot;</span>
+        <span class="n">uuid</span> <span class="o">=</span> <span class="s2">&quot;add_value_to_scene&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">uuid</span><span class="p">]</span> <span class="o">=</span> <span class="n">JNTValue</span><span class="p">(</span> <span class="n">uuid</span><span class="o">=</span><span class="n">uuid</span><span class="p">,</span>
-                    <span class="n">help</span><span class="o">=</span><span class="s">&#39;Add a value to a scene&#39;</span><span class="p">,</span>
-                    <span class="n">label</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">uuid</span><span class="p">,</span>
-                    <span class="n">units</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+                    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Add a value to a scene&#39;</span><span class="p">,</span>
+                    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">uuid</span><span class="p">,</span>
+                    <span class="n">units</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
                     <span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                     <span class="n">cmd_class</span><span class="o">=</span><span class="n">COMMAND_SCENE_CONTROLLER_CONF</span><span class="p">,</span>
                     <span class="n">genre</span><span class="o">=</span><span class="mh">0x05</span><span class="p">,</span>
                     <span class="nb">type</span><span class="o">=</span><span class="mh">0x15</span><span class="p">,</span>
                     <span class="n">set_data_cb</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">add_value_to_scene</span><span class="p">,</span>
-                    <span class="n">is_writeonly</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                    <span class="n">is_writeonly</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                     <span class="n">node_uuid</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span>
                     <span class="p">)</span>
-        <span class="n">uuid</span> <span class="o">=</span> <span class="s">&quot;set_value_in_scene&quot;</span>
+        <span class="n">uuid</span> <span class="o">=</span> <span class="s2">&quot;set_value_in_scene&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">uuid</span><span class="p">]</span> <span class="o">=</span> <span class="n">JNTValue</span><span class="p">(</span> <span class="n">uuid</span><span class="o">=</span><span class="n">uuid</span><span class="p">,</span>
-                    <span class="n">help</span><span class="o">=</span><span class="s">&#39;Set a value in a scene&#39;</span><span class="p">,</span>
-                    <span class="n">label</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">uuid</span><span class="p">,</span>
-                    <span class="n">units</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+                    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Set a value in a scene&#39;</span><span class="p">,</span>
+                    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">uuid</span><span class="p">,</span>
+                    <span class="n">units</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
                     <span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                     <span class="n">cmd_class</span><span class="o">=</span><span class="n">COMMAND_SCENE_CONTROLLER_CONF</span><span class="p">,</span>
                     <span class="n">genre</span><span class="o">=</span><span class="mh">0x05</span><span class="p">,</span>
                     <span class="nb">type</span><span class="o">=</span><span class="mh">0x15</span><span class="p">,</span>
                     <span class="n">set_data_cb</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">set_value_in_scene</span><span class="p">,</span>
-                    <span class="n">is_writeonly</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                    <span class="n">is_writeonly</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                     <span class="n">node_uuid</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span>
                     <span class="p">)</span>
-        <span class="n">uuid</span> <span class="o">=</span> <span class="s">&quot;remove_value_from_scene&quot;</span>
+        <span class="n">uuid</span> <span class="o">=</span> <span class="s2">&quot;remove_value_from_scene&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">uuid</span><span class="p">]</span> <span class="o">=</span> <span class="n">JNTValue</span><span class="p">(</span> <span class="n">uuid</span><span class="o">=</span><span class="n">uuid</span><span class="p">,</span>
-                    <span class="n">help</span><span class="o">=</span><span class="s">&#39;Remove a value from a scene&#39;</span><span class="p">,</span>
-                    <span class="n">label</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">uuid</span><span class="p">,</span>
-                    <span class="n">units</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+                    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Remove a value from a scene&#39;</span><span class="p">,</span>
+                    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">uuid</span><span class="p">,</span>
+                    <span class="n">units</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
                     <span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                     <span class="n">cmd_class</span><span class="o">=</span><span class="n">COMMAND_SCENE_CONTROLLER_CONF</span><span class="p">,</span>
                     <span class="n">genre</span><span class="o">=</span><span class="mh">0x05</span><span class="p">,</span>
                     <span class="nb">type</span><span class="o">=</span><span class="mh">0x15</span><span class="p">,</span>
                     <span class="n">set_data_cb</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">remove_value_from_scene</span><span class="p">,</span>
-                    <span class="n">is_writeonly</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                    <span class="n">is_writeonly</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                     <span class="n">node_uuid</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span>
                     <span class="p">)</span>
 
@@ -333,78 +332,78 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">manager_id</span> <span class="o">=</span> <span class="n">data</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="s">&#39;manager_id&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">manager_id</span><span class="p">)</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trigger_thread_reload_cb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="s1">&#39;manager_id&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">manager_id</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trigger_thread_reload_cb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_trigger_thread_reload_cb</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="o">.</span><span class="n">config_timeout</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s">&#39;Exception when writing config manager_id&#39;</span><span class="p">)</span>
-</div>
+            <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s1">&#39;Exception when writing config manager_id&#39;</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="ScenesBus.get_config_manager_id"><a class="viewcode-back" href="../../../api/janitoo_factory.threads.html#janitoo_factory.threads.scenes.ScenesBus.get_config_manager_id">[docs]</a>    <span class="k">def</span> <span class="nf">get_config_manager_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node_uuid</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">manager_id</span> <span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="s">&#39;manager_id&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">manager_id</span> <span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="s1">&#39;manager_id&#39;</span><span class="p">)</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">manager_id</span>
         <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s">&#39;Exception when retrieving config manager_id&#39;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">None</span>
-</div>
+            <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s1">&#39;Exception when retrieving config manager_id&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
+
 <div class="viewcode-block" id="ScenesBus.add_scene"><a class="viewcode-back" href="../../../api/janitoo_factory.threads.html#janitoo_factory.threads.scenes.ScenesBus.add_scene">[docs]</a>    <span class="k">def</span> <span class="nf">add_scene</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create a scene with name. Also have an uuid (index) on the controller</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">pass</span>
-</div>
+        <span class="k">pass</span></div>
+
 <div class="viewcode-block" id="ScenesBus.remove_scene"><a class="viewcode-back" href="../../../api/janitoo_factory.threads.html#janitoo_factory.threads.scenes.ScenesBus.remove_scene">[docs]</a>    <span class="k">def</span> <span class="nf">remove_scene</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Delete the scene at index</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">pass</span>
-</div>
+        <span class="k">pass</span></div>
+
 <div class="viewcode-block" id="ScenesBus.get_num_scenes"><a class="viewcode-back" href="../../../api/janitoo_factory.threads.html#janitoo_factory.threads.scenes.ScenesBus.get_num_scenes">[docs]</a>    <span class="k">def</span> <span class="nf">get_num_scenes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the number of scene in the controller</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">pass</span>
-</div>
+        <span class="k">pass</span></div>
+
 <div class="viewcode-block" id="ScenesBus.get_scene"><a class="viewcode-back" href="../../../api/janitoo_factory.threads.html#janitoo_factory.threads.scenes.ScenesBus.get_scene">[docs]</a>    <span class="k">def</span> <span class="nf">get_scene</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return all the values attached to the scene</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">pass</span>
-</div>
+        <span class="k">pass</span></div>
+
 <div class="viewcode-block" id="ScenesBus.add_value_to_scene"><a class="viewcode-back" href="../../../api/janitoo_factory.threads.html#janitoo_factory.threads.scenes.ScenesBus.add_value_to_scene">[docs]</a>    <span class="k">def</span> <span class="nf">add_value_to_scene</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">hadd</span><span class="p">,</span> <span class="n">value_uuid</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Add a value to an existing scene.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">pass</span>
-</div>
+        <span class="k">pass</span></div>
+
 <div class="viewcode-block" id="ScenesBus.set_value_in_scene"><a class="viewcode-back" href="../../../api/janitoo_factory.threads.html#janitoo_factory.threads.scenes.ScenesBus.set_value_in_scene">[docs]</a>    <span class="k">def</span> <span class="nf">set_value_in_scene</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">hadd</span><span class="p">,</span> <span class="n">value_uuid</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Update a value in an existing scene.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">pass</span>
-</div>
+        <span class="k">pass</span></div>
+
 <div class="viewcode-block" id="ScenesBus.remove_value_from_scene"><a class="viewcode-back" href="../../../api/janitoo_factory.threads.html#janitoo_factory.threads.scenes.ScenesBus.remove_value_from_scene">[docs]</a>    <span class="k">def</span> <span class="nf">remove_value_from_scene</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">hadd</span><span class="p">,</span> <span class="n">value_uuid</span> <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Remove a value from a scene</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">pass</span>
-</div></div>
+        <span class="k">pass</span></div></div>
+
 <div class="viewcode-block" id="SceneComponent"><a class="viewcode-back" href="../../../api/janitoo_factory.threads.html#janitoo_factory.threads.scenes.SceneComponent">[docs]</a><span class="k">class</span> <span class="nc">SceneComponent</span><span class="p">(</span><span class="n">JNTComponent</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This component hold a scene and all values attached to it</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bus</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">addr</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="n">JNTComponent</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;scenes.scene&#39;</span><span class="p">,</span> <span class="n">bus</span><span class="o">=</span><span class="n">bus</span><span class="p">,</span> <span class="n">addr</span><span class="o">=</span><span class="n">addr</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&quot;A janitoo scene&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bus</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">addr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">JNTComponent</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;scenes.scene&#39;</span><span class="p">,</span> <span class="n">bus</span><span class="o">=</span><span class="n">bus</span><span class="p">,</span> <span class="n">addr</span><span class="o">=</span><span class="n">addr</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;A janitoo scene&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">values_in_scene</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="sd">&quot;&quot;&quot;The values attached to the scene</span>
 <span class="sd">        {(hadd,value_uuid) : {&#39;hadd&#39;:&#39;0000/0000&#39;, &#39;value_uuid&#39;:&#39;dim_swt_ff&#39;,&#39;data:&#39;26&#39;}}</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">uuid</span> <span class="o">=</span> <span class="s">&quot;activate&quot;</span>
+        <span class="n">uuid</span> <span class="o">=</span> <span class="s2">&quot;activate&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">uuid</span><span class="p">]</span> <span class="o">=</span> <span class="n">JNTValue</span><span class="p">(</span> <span class="n">uuid</span><span class="o">=</span><span class="n">uuid</span><span class="p">,</span>
-                    <span class="n">help</span><span class="o">=</span><span class="s">&#39;Activate the scene&#39;</span><span class="p">,</span>
-                    <span class="n">label</span><span class="o">=</span><span class="s">&#39;activate&#39;</span><span class="p">,</span>
-                    <span class="n">units</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+                    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Activate the scene&#39;</span><span class="p">,</span>
+                    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;activate&#39;</span><span class="p">,</span>
+                    <span class="n">units</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
                     <span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                     <span class="n">cmd_class</span><span class="o">=</span><span class="n">COMMAND_SCENE_ACTIVATION</span><span class="p">,</span>
                     <span class="n">genre</span><span class="o">=</span><span class="mh">0x02</span><span class="p">,</span>
                     <span class="nb">type</span><span class="o">=</span><span class="mh">0x04</span><span class="p">,</span>
                     <span class="n">set_data_cb</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">activate</span><span class="p">,</span>
-                    <span class="n">is_writeonly</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                    <span class="n">is_writeonly</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                     <span class="n">node_uuid</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span>
                     <span class="p">)</span>
 
@@ -426,7 +425,7 @@
     </p>
     <p>
         &copy; Copyright 2014,2015,2016 Sébastien GALLET aka bibi2100 &lt;bibi21000@gmail.com&gt;.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.3.<br/>
     </p>
   </div>
 </footer>

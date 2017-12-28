@@ -5,13 +5,11 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>janitoo_factory.values.config &mdash; janitoo_factory 0.0.8 documentation</title>
+    <title>janitoo_factory.values.config &#8212; janitoo_factory 0.0.8 documentation</title>
     
-    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/sphinxcontrib-images/LightBox2/lightbox2/css/lightbox.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/bootswatch-3.3.4/united/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -19,7 +17,8 @@
         VERSION:     '0.0.8',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
@@ -30,17 +29,17 @@
     <script type="text/javascript" src="../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
     <script type="text/javascript" src="../../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="janitoo_factory 0.0.8 documentation" href="../../../index.html" />
-    <link rel="up" title="Module code" href="../../index.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
     <div class="container">
@@ -110,94 +109,94 @@
     <div class="col-md-12 content">
       
   <h1>Source code for janitoo_factory.values.config</h1><div class="highlight"><pre>
-<span class="c"># -*- coding: utf-8 -*-</span>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;The value</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="n">__license__</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
-<span class="s">    This file is part of Janitoo.</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    This file is part of Janitoo.</span>
 
-<span class="s">    Janitoo is free software: you can redistribute it and/or modify</span>
-<span class="s">    it under the terms of the GNU General Public License as published by</span>
-<span class="s">    the Free Software Foundation, either version 3 of the License, or</span>
-<span class="s">    (at your option) any later version.</span>
+<span class="s2">    Janitoo is free software: you can redistribute it and/or modify</span>
+<span class="s2">    it under the terms of the GNU General Public License as published by</span>
+<span class="s2">    the Free Software Foundation, either version 3 of the License, or</span>
+<span class="s2">    (at your option) any later version.</span>
 
-<span class="s">    Janitoo is distributed in the hope that it will be useful,</span>
-<span class="s">    but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
-<span class="s">    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
-<span class="s">    GNU General Public License for more details.</span>
+<span class="s2">    Janitoo is distributed in the hope that it will be useful,</span>
+<span class="s2">    but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="s2">    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="s2">    GNU General Public License for more details.</span>
 
-<span class="s">    You should have received a copy of the GNU General Public License</span>
-<span class="s">    along with Janitoo. If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="s2">    You should have received a copy of the GNU General Public License</span>
+<span class="s2">    along with Janitoo. If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
 
-<span class="s">&quot;&quot;&quot;</span>
-<span class="n">__author__</span> <span class="o">=</span> <span class="s">&#39;Sébastien GALLET aka bibi21000&#39;</span>
-<span class="n">__email__</span> <span class="o">=</span> <span class="s">&#39;bibi21000@gmail.com&#39;</span>
-<span class="n">__copyright__</span> <span class="o">=</span> <span class="s">&quot;Copyright © 2013-2014-2015-2016 Sébastien GALLET aka bibi21000&quot;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Sébastien GALLET aka bibi21000&#39;</span>
+<span class="n">__email__</span> <span class="o">=</span> <span class="s1">&#39;bibi21000@gmail.com&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;Copyright © 2013-2014-2015-2016 Sébastien GALLET aka bibi21000&quot;</span>
 
-<span class="c"># Set default logging handler to avoid &quot;No handler found&quot; warnings.</span>
+<span class="c1"># Set default logging handler to avoid &quot;No handler found&quot; warnings.</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">logging</span>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
-<span class="kn">from</span> <span class="nn">janitoo.classes</span> <span class="kn">import</span> <span class="n">GENRE_DESC</span><span class="p">,</span> <span class="n">VALUE_DESC</span>
-<span class="kn">from</span> <span class="nn">janitoo.utils</span> <span class="kn">import</span> <span class="n">json_dumps</span>
-<span class="kn">from</span> <span class="nn">janitoo.value</span> <span class="kn">import</span> <span class="n">JNTValue</span>
-<span class="kn">from</span> <span class="nn">janitoo.value_factory</span> <span class="kn">import</span> <span class="n">JNTValueFactoryEntry</span>
+<span class="kn">from</span> <span class="nn">janitoo.classes</span> <span class="k">import</span> <span class="n">GENRE_DESC</span><span class="p">,</span> <span class="n">VALUE_DESC</span>
+<span class="kn">from</span> <span class="nn">janitoo.utils</span> <span class="k">import</span> <span class="n">json_dumps</span>
+<span class="kn">from</span> <span class="nn">janitoo.value</span> <span class="k">import</span> <span class="n">JNTValue</span>
+<span class="kn">from</span> <span class="nn">janitoo.value_factory</span> <span class="k">import</span> <span class="n">JNTValueFactoryEntry</span>
 
-<span class="c">##############################################################</span>
-<span class="c">#Check that we are in sync with the official command classes</span>
-<span class="c">#Must be implemented for non-regression</span>
-<span class="kn">from</span> <span class="nn">janitoo.classes</span> <span class="kn">import</span> <span class="n">COMMAND_DESC</span>
+<span class="c1">##############################################################</span>
+<span class="c1">#Check that we are in sync with the official command classes</span>
+<span class="c1">#Must be implemented for non-regression</span>
+<span class="kn">from</span> <span class="nn">janitoo.classes</span> <span class="k">import</span> <span class="n">COMMAND_DESC</span>
 
 <span class="n">COMMAND_CONFIGURATION</span> <span class="o">=</span> <span class="mh">0x0070</span>
 <span class="n">COMMAND_SENSOR_BINARY</span> <span class="o">=</span> <span class="mh">0x0030</span>
 <span class="n">COMMAND_SENSOR_MULTILEVEL</span> <span class="o">=</span> <span class="mh">0x0031</span>
 
-<span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_CONFIGURATION</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;COMMAND_CONFIGURATION&#39;</span><span class="p">)</span>
-<span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_SENSOR_BINARY</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;COMMAND_SENSOR_BINARY&#39;</span><span class="p">)</span>
-<span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_SENSOR_MULTILEVEL</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;COMMAND_SENSOR_MULTILEVEL&#39;</span><span class="p">)</span>
-<span class="c">##############################################################</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_CONFIGURATION</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;COMMAND_CONFIGURATION&#39;</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_SENSOR_BINARY</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;COMMAND_SENSOR_BINARY&#39;</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">COMMAND_DESC</span><span class="p">[</span><span class="n">COMMAND_SENSOR_MULTILEVEL</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;COMMAND_SENSOR_MULTILEVEL&#39;</span><span class="p">)</span>
+<span class="c1">##############################################################</span>
 
 <div class="viewcode-block" id="make_config_string"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.config.make_config_string">[docs]</a><span class="k">def</span> <span class="nf">make_config_string</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">JNTValueConfigString</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</div>
+    <span class="k">return</span> <span class="n">JNTValueConfigString</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="make_config_password"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.config.make_config_password">[docs]</a><span class="k">def</span> <span class="nf">make_config_password</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">JNTValueConfigPassword</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</div>
+    <span class="k">return</span> <span class="n">JNTValueConfigPassword</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="make_config_integer"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.config.make_config_integer">[docs]</a><span class="k">def</span> <span class="nf">make_config_integer</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">JNTValueConfigInteger</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</div>
+    <span class="k">return</span> <span class="n">JNTValueConfigInteger</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="make_config_byte"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.config.make_config_byte">[docs]</a><span class="k">def</span> <span class="nf">make_config_byte</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">JNTValueConfigByte</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</div>
+    <span class="k">return</span> <span class="n">JNTValueConfigByte</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="make_config_float"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.config.make_config_float">[docs]</a><span class="k">def</span> <span class="nf">make_config_float</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">JNTValueConfigFloat</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</div>
+    <span class="k">return</span> <span class="n">JNTValueConfigFloat</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="make_config_boolean"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.config.make_config_boolean">[docs]</a><span class="k">def</span> <span class="nf">make_config_boolean</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">JNTValueConfigBoolean</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</div>
+    <span class="k">return</span> <span class="n">JNTValueConfigBoolean</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="make_config_array"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.config.make_config_array">[docs]</a><span class="k">def</span> <span class="nf">make_config_array</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">JNTValueConfigArray</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</div>
+    <span class="k">return</span> <span class="n">JNTValueConfigArray</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="make_config_list"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.config.make_config_list">[docs]</a><span class="k">def</span> <span class="nf">make_config_list</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">JNTValueConfigList</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</div>
+    <span class="k">return</span> <span class="n">JNTValueConfigList</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="JNTValueConfigGeneric"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.config.JNTValueConfigGeneric">[docs]</a><span class="k">class</span> <span class="nc">JNTValueConfigGeneric</span><span class="p">(</span><span class="n">JNTValueFactoryEntry</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">get_data_cb</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;get_data_cb&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_data</span><span class="p">)</span>
-        <span class="n">set_data_cb</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;set_data_cb&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_data</span><span class="p">)</span>
-        <span class="n">cmd_class</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;cmd_class&#39;</span><span class="p">,</span> <span class="n">COMMAND_CONFIGURATION</span><span class="p">)</span>
-        <span class="n">genre</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;genre&#39;</span><span class="p">,</span> <span class="mh">0x03</span><span class="p">)</span>
-        <span class="n">is_readonly</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;is_readonly&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
-        <span class="n">is_writeonly</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;is_writeonly&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
-        <span class="n">index</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;index&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="n">JNTValueFactoryEntry</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+        <span class="n">get_data_cb</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;get_data_cb&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_data</span><span class="p">)</span>
+        <span class="n">set_data_cb</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;set_data_cb&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_data</span><span class="p">)</span>
+        <span class="n">cmd_class</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;cmd_class&#39;</span><span class="p">,</span> <span class="n">COMMAND_CONFIGURATION</span><span class="p">)</span>
+        <span class="n">genre</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;genre&#39;</span><span class="p">,</span> <span class="mh">0x03</span><span class="p">)</span>
+        <span class="n">is_readonly</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;is_readonly&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">is_writeonly</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;is_writeonly&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">JNTValueFactoryEntry</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
             <span class="n">get_data_cb</span><span class="o">=</span><span class="n">get_data_cb</span><span class="p">,</span> <span class="n">set_data_cb</span><span class="o">=</span><span class="n">set_data_cb</span><span class="p">,</span>
             <span class="n">cmd_class</span><span class="o">=</span><span class="n">COMMAND_CONFIGURATION</span><span class="p">,</span>
             <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">genre</span><span class="o">=</span><span class="n">genre</span><span class="p">,</span>
@@ -211,87 +210,87 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">index</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">instances</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">!=</span> <span class="n">data</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="n">node_uuid</span><span class="p">,</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">_</span><span class="si">%s</span><span class="s">&#39;</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">index</span><span class="p">),</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">&#39;</span><span class="o">%</span><span class="n">data</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="n">node_uuid</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">_</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">index</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="n">data</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s">&#39;Exception when writing </span><span class="si">%s</span><span class="s">_</span><span class="si">%s</span><span class="s"> for node </span><span class="si">%s</span><span class="s">&#39;</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">node_uuid</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s1">&#39;Exception when writing </span><span class="si">%s</span><span class="s1">_</span><span class="si">%s</span><span class="s1"> for node </span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">node_uuid</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">_get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node_uuid</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">index</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="k">if</span> <span class="s">&#39;data&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">]:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">if</span> <span class="s1">&#39;data&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-            <span class="n">stop</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="n">stop</span> <span class="o">=</span> <span class="kc">False</span>
             <span class="k">while</span> <span class="ow">not</span> <span class="n">stop</span><span class="p">:</span>
-                <span class="c">#~ logger.debug(&#39;index %s, instances %s&#39;%(i, self.instances))</span>
-                <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">instances</span> <span class="ow">or</span> <span class="s">&#39;data&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;data&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="c1">#~ logger.debug(&#39;index %s, instances %s&#39;%(i, self.instances))</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">instances</span> <span class="ow">or</span> <span class="s1">&#39;data&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                     <span class="k">try</span><span class="p">:</span>
-                        <span class="c">#~ print &quot;index, node_uuid&quot;, node_uuid, index</span>
-                        <span class="c">#~ print &quot;instance&quot;, i, self.instances</span>
-                        <span class="c">#~ print &#39;uuid : %s_%s&#39;%(self.uuid, i)</span>
-                        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="n">node_uuid</span><span class="p">,</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">_</span><span class="si">%s</span><span class="s">&#39;</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
-                        <span class="c">#~ print &quot;data2&quot;, data</span>
-                        <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                        <span class="c1">#~ print &quot;index, node_uuid&quot;, node_uuid, index</span>
+                        <span class="c1">#~ print &quot;instance&quot;, i, self.instances</span>
+                        <span class="c1">#~ print &#39;uuid : %s_%s&#39;%(self.uuid, i)</span>
+                        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="n">node_uuid</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">_</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+                        <span class="c1">#~ print &quot;data2&quot;, data</span>
+                        <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                             <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">:</span>
                                 <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-                            <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
                         <span class="k">else</span><span class="p">:</span>
-                            <span class="n">stop</span> <span class="o">=</span> <span class="bp">True</span>
-                        <span class="c">#~ logger.debug(&#39;index %s, instances %s&#39;%(i, self.instances))</span>
+                            <span class="n">stop</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="c1">#~ logger.debug(&#39;index %s, instances %s&#39;%(i, self.instances))</span>
                     <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-                        <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s">&#39;Catched exception when retrieving </span><span class="si">%s</span><span class="s">_</span><span class="si">%s</span><span class="s"> for self.instances : </span><span class="si">%s</span><span class="s">&#39;</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">))</span>
-                        <span class="n">stop</span> <span class="o">=</span> <span class="bp">True</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s1">&#39;Catched exception when retrieving </span><span class="si">%s</span><span class="s1">_</span><span class="si">%s</span><span class="s1"> for self.instances : </span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">))</span>
+                        <span class="n">stop</span> <span class="o">=</span> <span class="kc">True</span>
                 <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="c">#~ print &quot;last&quot;, self.instances[index][&#39;data&#39;]</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s">&#39;data&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="c1">#~ print &quot;last&quot;, self.instances[index][&#39;data&#39;]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="n">node_uuid</span><span class="p">,</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">_</span><span class="si">%s</span><span class="s">&#39;</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">index</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="n">node_uuid</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">_</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">index</span><span class="p">))</span>
             <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s">&#39;Exception when retrieving </span><span class="si">%s</span><span class="s">_</span><span class="si">%s</span><span class="s"> for node </span><span class="si">%s</span><span class="s">&#39;</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">node_uuid</span><span class="p">))</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s">&#39;data&#39;</span><span class="p">]</span>
-</div>
+                <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s1">&#39;Exception when retrieving </span><span class="si">%s</span><span class="s1">_</span><span class="si">%s</span><span class="s1"> for node </span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">node_uuid</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span></div>
+
 <div class="viewcode-block" id="JNTValueConfigString"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.config.JNTValueConfigString">[docs]</a><span class="k">class</span> <span class="nc">JNTValueConfigString</span><span class="p">(</span><span class="n">JNTValueConfigGeneric</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="s">&quot;config_string&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="s2">&quot;config_string&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">help</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;help&#39;</span><span class="p">,</span> <span class="s">&#39;A string&#39;</span><span class="p">)</span>
-        <span class="n">label</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;label&#39;</span><span class="p">,</span> <span class="s">&#39;String&#39;</span><span class="p">)</span>
-        <span class="n">JNTValueConfigGeneric</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="n">entry_name</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">help</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
-            <span class="nb">type</span><span class="o">=</span><span class="mh">0x08</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</div>
+        <span class="n">help</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;help&#39;</span><span class="p">,</span> <span class="s1">&#39;A string&#39;</span><span class="p">)</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="s1">&#39;String&#39;</span><span class="p">)</span>
+        <span class="n">JNTValueConfigGeneric</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="n">entry_name</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">help</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="mh">0x08</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="JNTValueConfigList"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.config.JNTValueConfigList">[docs]</a><span class="k">class</span> <span class="nc">JNTValueConfigList</span><span class="p">(</span><span class="n">JNTValueConfigGeneric</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="s">&quot;config_list&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="s2">&quot;config_list&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">help</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;help&#39;</span><span class="p">,</span> <span class="s">&#39;A string&#39;</span><span class="p">)</span>
-        <span class="n">label</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;label&#39;</span><span class="p">,</span> <span class="s">&#39;String&#39;</span><span class="p">)</span>
-        <span class="n">list_items</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;list_items&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;value1&#39;</span><span class="p">,</span> <span class="s">&#39;value2&#39;</span><span class="p">])</span>
-        <span class="n">JNTValueConfigGeneric</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="n">entry_name</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">help</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
-            <span class="nb">type</span><span class="o">=</span><span class="mh">0x05</span><span class="p">,</span> <span class="n">list_items</span><span class="o">=</span><span class="n">list_items</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</div>
+        <span class="n">help</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;help&#39;</span><span class="p">,</span> <span class="s1">&#39;A string&#39;</span><span class="p">)</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="s1">&#39;String&#39;</span><span class="p">)</span>
+        <span class="n">list_items</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;list_items&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;value1&#39;</span><span class="p">,</span> <span class="s1">&#39;value2&#39;</span><span class="p">])</span>
+        <span class="n">JNTValueConfigGeneric</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="n">entry_name</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">help</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="mh">0x05</span><span class="p">,</span> <span class="n">list_items</span><span class="o">=</span><span class="n">list_items</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="JNTValueConfigPassword"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.config.JNTValueConfigPassword">[docs]</a><span class="k">class</span> <span class="nc">JNTValueConfigPassword</span><span class="p">(</span><span class="n">JNTValueConfigGeneric</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="s">&quot;config_password&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="s2">&quot;config_password&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">help</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;help&#39;</span><span class="p">,</span> <span class="s">&#39;A password&#39;</span><span class="p">)</span>
-        <span class="n">label</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;label&#39;</span><span class="p">,</span> <span class="s">&#39;Password&#39;</span><span class="p">)</span>
-        <span class="n">JNTValueConfigGeneric</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="n">entry_name</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">help</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
-            <span class="nb">type</span><span class="o">=</span><span class="mh">0x14</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</div>
+        <span class="n">help</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;help&#39;</span><span class="p">,</span> <span class="s1">&#39;A password&#39;</span><span class="p">)</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="s1">&#39;Password&#39;</span><span class="p">)</span>
+        <span class="n">JNTValueConfigGeneric</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="n">entry_name</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">help</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="mh">0x14</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="JNTValueConfigBoolean"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.config.JNTValueConfigBoolean">[docs]</a><span class="k">class</span> <span class="nc">JNTValueConfigBoolean</span><span class="p">(</span><span class="n">JNTValueConfigGeneric</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="s">&quot;config_boolean&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="s2">&quot;config_boolean&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">help</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;help&#39;</span><span class="p">,</span> <span class="s">&#39;A boolean&#39;</span><span class="p">)</span>
-        <span class="n">label</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;label&#39;</span><span class="p">,</span> <span class="s">&#39;Bool&#39;</span><span class="p">)</span>
-        <span class="n">get_data_cb</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;get_data_cb&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_data_bool</span><span class="p">)</span>
-        <span class="n">JNTValueConfigGeneric</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="n">entry_name</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">help</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+        <span class="n">help</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;help&#39;</span><span class="p">,</span> <span class="s1">&#39;A boolean&#39;</span><span class="p">)</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="s1">&#39;Bool&#39;</span><span class="p">)</span>
+        <span class="n">get_data_cb</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;get_data_cb&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_data_bool</span><span class="p">)</span>
+        <span class="n">JNTValueConfigGeneric</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="n">entry_name</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">help</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
             <span class="n">get_data_cb</span><span class="o">=</span><span class="n">get_data_cb</span><span class="p">,</span>
             <span class="nb">type</span><span class="o">=</span><span class="mh">0x01</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
@@ -299,17 +298,17 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_data</span><span class="p">(</span><span class="n">node_uuid</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s">&#39;data&#39;</span><span class="p">]</span>
-</div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span></div>
+
 <div class="viewcode-block" id="JNTValueConfigInteger"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.config.JNTValueConfigInteger">[docs]</a><span class="k">class</span> <span class="nc">JNTValueConfigInteger</span><span class="p">(</span><span class="n">JNTValueConfigGeneric</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="s">&quot;config_integer&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="s2">&quot;config_integer&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">help</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;help&#39;</span><span class="p">,</span> <span class="s">&#39;An integer&#39;</span><span class="p">)</span>
-        <span class="n">label</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;label&#39;</span><span class="p">,</span> <span class="s">&#39;Int&#39;</span><span class="p">)</span>
-        <span class="n">get_data_cb</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;get_data_cb&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_data_integer</span><span class="p">)</span>
-        <span class="n">JNTValueConfigGeneric</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="n">entry_name</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">help</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+        <span class="n">help</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;help&#39;</span><span class="p">,</span> <span class="s1">&#39;An integer&#39;</span><span class="p">)</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="s1">&#39;Int&#39;</span><span class="p">)</span>
+        <span class="n">get_data_cb</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;get_data_cb&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_data_integer</span><span class="p">)</span>
+        <span class="n">JNTValueConfigGeneric</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="n">entry_name</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">help</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
             <span class="n">get_data_cb</span><span class="o">=</span><span class="n">get_data_cb</span><span class="p">,</span>
             <span class="nb">type</span><span class="o">=</span><span class="mh">0x04</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
@@ -317,17 +316,17 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_data</span><span class="p">(</span><span class="n">node_uuid</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s">&#39;data&#39;</span><span class="p">]</span>
-</div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span></div>
+
 <div class="viewcode-block" id="JNTValueConfigByte"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.config.JNTValueConfigByte">[docs]</a><span class="k">class</span> <span class="nc">JNTValueConfigByte</span><span class="p">(</span><span class="n">JNTValueConfigGeneric</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="s">&quot;config_byte&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="s2">&quot;config_byte&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">help</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;help&#39;</span><span class="p">,</span> <span class="s">&#39;A byte&#39;</span><span class="p">)</span>
-        <span class="n">label</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;label&#39;</span><span class="p">,</span> <span class="s">&#39;Byte&#39;</span><span class="p">)</span>
-        <span class="n">get_data_cb</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;get_data_cb&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_data_byte</span><span class="p">)</span>
-        <span class="n">JNTValueConfigGeneric</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="n">entry_name</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">help</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+        <span class="n">help</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;help&#39;</span><span class="p">,</span> <span class="s1">&#39;A byte&#39;</span><span class="p">)</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="s1">&#39;Byte&#39;</span><span class="p">)</span>
+        <span class="n">get_data_cb</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;get_data_cb&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_data_byte</span><span class="p">)</span>
+        <span class="n">JNTValueConfigGeneric</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="n">entry_name</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">help</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
             <span class="n">get_data_cb</span><span class="o">=</span><span class="n">get_data_cb</span><span class="p">,</span>
             <span class="nb">type</span><span class="o">=</span><span class="mh">0x02</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
@@ -335,17 +334,17 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_data</span><span class="p">(</span><span class="n">node_uuid</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s">&#39;data&#39;</span><span class="p">]</span>
-</div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span></div>
+
 <div class="viewcode-block" id="JNTValueConfigFloat"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.config.JNTValueConfigFloat">[docs]</a><span class="k">class</span> <span class="nc">JNTValueConfigFloat</span><span class="p">(</span><span class="n">JNTValueConfigGeneric</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="s">&quot;config_float&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="s2">&quot;config_float&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">help</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;help&#39;</span><span class="p">,</span> <span class="s">&#39;A float&#39;</span><span class="p">)</span>
-        <span class="n">label</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;label&#39;</span><span class="p">,</span> <span class="s">&#39;Float&#39;</span><span class="p">)</span>
-        <span class="n">get_data_cb</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;get_data_cb&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_data_float</span><span class="p">)</span>
-        <span class="n">JNTValueConfigGeneric</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="n">entry_name</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">help</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+        <span class="n">help</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;help&#39;</span><span class="p">,</span> <span class="s1">&#39;A float&#39;</span><span class="p">)</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="s1">&#39;Float&#39;</span><span class="p">)</span>
+        <span class="n">get_data_cb</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;get_data_cb&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_data_float</span><span class="p">)</span>
+        <span class="n">JNTValueConfigGeneric</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="n">entry_name</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">help</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
             <span class="n">get_data_cb</span><span class="o">=</span><span class="n">get_data_cb</span><span class="p">,</span>
             <span class="nb">type</span><span class="o">=</span><span class="mh">0x03</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
@@ -353,33 +352,33 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_data</span><span class="p">(</span><span class="n">node_uuid</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s">&#39;data&#39;</span><span class="p">]</span>
-</div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span></div>
+
 <div class="viewcode-block" id="JNTValueConfigArray"><a class="viewcode-back" href="../../../api/janitoo_factory.values.html#janitoo_factory.values.config.JNTValueConfigArray">[docs]</a><span class="k">class</span> <span class="nc">JNTValueConfigArray</span><span class="p">(</span><span class="n">JNTValueConfigGeneric</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="s">&quot;config_array&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="s2">&quot;config_array&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">help</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;help&#39;</span><span class="p">,</span> <span class="s">&#39;An array of strings separated by |&#39;</span><span class="p">)</span>
-        <span class="n">label</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;label&#39;</span><span class="p">,</span> <span class="s">&#39;Array&#39;</span><span class="p">)</span>
-        <span class="n">get_data_cb</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;get_data_cb&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_data_list</span><span class="p">)</span>
-        <span class="c">#~ set_data_cb = kwargs.pop(&#39;set_data_cb&#39;, self._set_data_list)</span>
-        <span class="n">JNTValueConfigGeneric</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="n">entry_name</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">help</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+        <span class="n">help</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;help&#39;</span><span class="p">,</span> <span class="s1">&#39;An array of strings separated by |&#39;</span><span class="p">)</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="s1">&#39;Array&#39;</span><span class="p">)</span>
+        <span class="n">get_data_cb</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;get_data_cb&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_data_list</span><span class="p">)</span>
+        <span class="c1">#~ set_data_cb = kwargs.pop(&#39;set_data_cb&#39;, self._set_data_list)</span>
+        <span class="n">JNTValueConfigGeneric</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_name</span><span class="o">=</span><span class="n">entry_name</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">help</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
             <span class="n">get_data_cb</span><span class="o">=</span><span class="n">get_data_cb</span><span class="p">,</span>
-            <span class="c">#~ set_data_cb=set_data_cb,</span>
+            <span class="c1">#~ set_data_cb=set_data_cb,</span>
             <span class="nb">type</span><span class="o">=</span><span class="mh">0x16</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_get_data_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node_uuid</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_data</span><span class="p">(</span><span class="n">node_uuid</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s">&#39;data&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">_convert_list_to_string</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">&#39;|&#39;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">data</span></div>
 </pre></div>
 
@@ -395,7 +394,7 @@
     </p>
     <p>
         &copy; Copyright 2014,2015,2016 Sébastien GALLET aka bibi2100 &lt;bibi21000@gmail.com&gt;.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.3.<br/>
     </p>
   </div>
 </footer>

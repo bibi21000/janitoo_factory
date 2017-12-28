@@ -1,0 +1,20 @@
+janitoo_factory package
+=======================
+
+Subpackages
+-----------
+
+.. toctree::
+
+    janitoo_factory.buses
+    janitoo_factory.components
+    janitoo_factory.threads
+    janitoo_factory.values
+
+Module contents
+---------------
+
+.. automodule:: janitoo_factory
+    :members:
+    :undoc-members:
+    :show-inheritance:
