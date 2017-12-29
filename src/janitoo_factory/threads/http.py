@@ -405,12 +405,12 @@ class BasicResourceComponent(HttpResourceComponent):
         #~ print self._bus.get_resource_path() % self.path
         return self._bus.get_resource_path() % '%s/' % self.path
 
-    def deploy_resource(self, destination):
+    def deploy_resource(self, destination, package_name=None):
         """
         """
         for subdir in DEPLOY_DIRS:
             try:
-                source = os.path.join(self.resource_filename('public'), subdir)
+                source = os.path.join(self.resource_filename(path='public', package_name=package_name), subdir)
                 logger.debug('[%s] - public source = %s', self.__class__.__name__, source)
                 #~ print '[%s] - public source = %s' % (self.__class__.__name__, source)
                 if not os.path.exists(os.path.join(destination,subdir)):
@@ -420,7 +420,7 @@ class BasicResourceComponent(HttpResourceComponent):
             except Exception:
                 logger.exception('[%s] - Exception in deploy_resource', self.__class__.__name__)
         try:
-            source = os.path.join(self.resource_filename('public'), "html")
+            source = os.path.join(self.resource_filename(path='public', package_name=package_name), "html")
             logger.debug('[%s] - public html source = %s', self.__class__.__name__, source)
             if os.path.isdir(source):
                 src_files = os.listdir(source)
@@ -479,7 +479,7 @@ class DocumentationResourceComponent(HttpResourceComponent):
         """
         """
         try:
-            source = self.resource_filename('docs')
+            source = self.resource_filename(path='docs', package_name=package_name)
             logger.debug('[%s] - doc source = %s', self.__class__.__name__, source)
             if os.path.isdir(source):
                 #~ if os.path.isfile(source):
