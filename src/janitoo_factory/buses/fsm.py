@@ -28,6 +28,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 import threading
+import time
 from pkg_resources import iter_entry_points
 
 from janitoo.bus import JNTBus
@@ -38,6 +39,7 @@ class JNTFsmBus(JNTBus):
     """
     states = [
        'booting',
+       'halted',
        'sleeping',
        'working',
     ]
@@ -60,6 +62,10 @@ class JNTFsmBus(JNTBus):
         { 'trigger': 'work',
             'source': '*',
             'dest': 'working',
+        },
+        { 'trigger': 'halt',
+            'source': '*',
+            'dest': 'halted',
         },
     ]
     """The fsm transitions
@@ -109,11 +115,11 @@ class JNTFsmBus(JNTBus):
         poll_value = self.values[uuid].create_poll_value(default=60)
         self.values[poll_value.uuid] = poll_value
 
-    def start(self, mqttc, trigger_thread_reload_cb=None):
+    def start(self, mqttc, trigger_thread_reload_cb=None, **kwargs):
         """Start the bus
         """
         self._fsm = self.create_fsm()
-        JNTBus.start(self, mqttc, trigger_thread_reload_cb)
+        JNTBus.start(self, mqttc, trigger_thread_reload_cb, **kwargs)
         self._fsm_boot_timer = threading.Timer(self._fsm_timer_delay, self.on_boot_timer)
         self._fsm_boot_timer.start()
 
@@ -131,7 +137,7 @@ class JNTFsmBus(JNTBus):
             title='Bus',
             initial=self.states[0])
 
-    def stop(self):
+    def stop(self, **kwargs):
         """Stop the bus
         """
         self._fsm_boot_lock.acquire()
@@ -140,20 +146,21 @@ class JNTFsmBus(JNTBus):
         finally:
             self._fsm_boot_lock.release()
         try:
-            if self.state != self.states[0]:
-                self.nodeman.find_bus_value('transition').data = self.transitions[1]['trigger']
-            self._fsm = None
+            #~ AttributeError: 'NoneType' object has no attribute 'halt'
+            #~ if self.state != self.states[0]:
+                #~ self.nodeman.find_bus_value('transition').data = self.transitions[1]['trigger']
             if hasattr(self, "get_graph"):
                 delattr(self, "get_graph")
+            self._fsm = None
         except :
             logger.exception("[%s] - Error when stopping fsm", self.__class__.__name__, self._fsm_retry)
-        JNTBus.stop(self)
+        JNTBus.stop(self, **kwargs)
 
     def check_heartbeat(self):
         """Check that the fsm is started
 
         """
-        return self.state != 'booting'
+        return self.state not in [ 'booting', 'halted' ]
 
     def stop_boot_timer(self):
         """Stop the boot timer
