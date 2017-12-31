@@ -277,10 +277,10 @@ class HttpBus(JNTBus):
         elif data == "reload":
             self.reload_http_server()
 
-    def start(self, mqttc, trigger_thread_reload_cb=None):
+    def start(self, mqttc, trigger_thread_reload_cb=None, **kwargs):
         """ Start the bus"""
         self.start_http_server()
-        JNTBus.start(self, mqttc, trigger_thread_reload_cb)
+        JNTBus.start(self, mqttc, trigger_thread_reload_cb, **kwargs)
 
     def reload_http_server(self):
         """ Reload the http server """
@@ -305,9 +305,9 @@ class HttpBus(JNTBus):
         finally:
             self.http_release()
 
-    def stop(self):
+    def stop(self, **kwargs):
         """ Stop the bus """
-        JNTBus.stop(self)
+        JNTBus.stop(self, **kwargs)
         self.stop_http_server()
 
     def stop_http_server(self):
