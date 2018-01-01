@@ -118,6 +118,8 @@ class JNTFsmBus(JNTBus):
     def start(self, mqttc, trigger_thread_reload_cb=None, **kwargs):
         """Start the bus
         """
+        if hasattr(self, "get_graph"):
+            delattr(self, "get_graph")
         self._fsm = self.create_fsm()
         JNTBus.start(self, mqttc, trigger_thread_reload_cb, **kwargs)
         self._fsm_boot_timer = threading.Timer(self._fsm_timer_delay, self.on_boot_timer)
@@ -147,6 +149,8 @@ class JNTFsmBus(JNTBus):
         if hasattr(self, "get_graph"):
             delattr(self, "get_graph")
         self._fsm_boot_lock.acquire()
+        event = kwargs.get('event', threading.Event())
+        logger.info("[%s] - Stop the node manager with event %s", self.__class__.__name__, event)
         try:
             self.stop_boot_timer()
         finally:
@@ -157,6 +161,7 @@ class JNTFsmBus(JNTBus):
                 self.nodeman.find_bus_value('transition').data = self.transitions[1]['trigger']
         except :
             logger.exception("[%s] - Error when stopping fsm", self.__class__.__name__, self._fsm_retry)
+        event.wait(0.5)
         self._fsm = None
         JNTBus.stop(self, **kwargs)
 
