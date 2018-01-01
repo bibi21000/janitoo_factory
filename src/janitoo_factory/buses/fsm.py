@@ -63,7 +63,7 @@ class JNTFsmBus(JNTBus):
             'source': '*',
             'dest': 'working',
         },
-        { 'trigger': 'halt',
+        { 'trigger': 'stop',
             'source': '*',
             'dest': 'halted',
         },
@@ -147,8 +147,11 @@ class JNTFsmBus(JNTBus):
             self._fsm_boot_lock.release()
         try:
             #~ AttributeError: 'NoneType' object has no attribute 'halt'
-            #~ if self.state != self.states[0]:
-                #~ self.nodeman.find_bus_value('transition').data = self.transitions[1]['trigger']
+            if self.state != self.states[1]:
+                self.nodeman.find_bus_value('transition').data = self.transitions[1]['trigger']
+        except :
+            logger.exception("[%s] - Error when stopping fsm", self.__class__.__name__, self._fsm_retry)
+        try:
             if hasattr(self, "get_graph"):
                 delattr(self, "get_graph")
             self._fsm = None
