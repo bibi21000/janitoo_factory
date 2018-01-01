@@ -128,6 +128,10 @@ class JNTFsmBus(JNTBus):
         """
         return self.state
 
+    def publish_state():
+        """ """
+        self.nodeman.publish_poll(None, self.nodeman.find_bus_value('state'))
+        
     def create_fsm(self):
         """Create the fsm
         """
@@ -140,16 +144,13 @@ class JNTFsmBus(JNTBus):
     def stop(self, **kwargs):
         """Stop the bus
         """
+        if hasattr(self, "get_graph"):
+            delattr(self, "get_graph")
         self._fsm_boot_lock.acquire()
         try:
             self.stop_boot_timer()
         finally:
             self._fsm_boot_lock.release()
-        try:
-            if hasattr(self, "get_graph"):
-                delattr(self, "get_graph")
-        except :
-            logger.exception("[%s] - Error when stopping fsm", self.__class__.__name__, self._fsm_retry)
         try:
             #~ AttributeError: 'NoneType' object has no attribute 'halt'
             if self.state != self.states[1]:
@@ -197,16 +198,16 @@ class JNTFsmBus(JNTBus):
         finally:
             self._fsm_boot_lock.release()
 
-    def bus_acquire(self, blocking=True):
+    def fsm_bus_acquire(self, blocking=True):
         """Get a lock on the bus"""
         if self._bus_lock.acquire(blocking):
             return True
         return False
 
-    def bus_release(self):
+    def fsm_bus_release(self):
         """Release a lock on the bus"""
         self._bus_lock.release()
 
-    def bus_locked(self):
+    def fsm_bus_locked(self):
         """Get status of the lock"""
         return self._bus_lock.locked()
