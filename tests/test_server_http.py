@@ -100,3 +100,4 @@ class TestHttpSerser(JNTTServer, JNTTServerCommon):
 
     def test_012_start_reload_threads_stop(self):
         self.skip_012_start_reload_threads_stop()
+        self.assertNotInLogfile('^ERROR ')
