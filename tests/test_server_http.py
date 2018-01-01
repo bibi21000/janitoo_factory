@@ -97,3 +97,6 @@ class TestHttpSerser(JNTTServer, JNTTServerCommon):
             self.assertUpdateValue(type='system', data=2, cmd_class=0x70, genre=0x04, uuid='config_timeout', node_hadd=self.hadd_ctrl, client_hadd='9999/0000', is_writeonly=True)
         finally:
             self.stop()
+
+    def test_012_start_reload_threads_stop(self):
+        self.skip_012_start_reload_threads_stop()
