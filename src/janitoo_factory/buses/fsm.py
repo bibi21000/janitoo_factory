@@ -55,6 +55,10 @@ class JNTFsmBus(JNTBus):
             'source': 'booting',
             'dest': 'sleeping',
         },
+        { 'trigger': 'halt',
+            'source': '*',
+            'dest': 'halted',
+        },
         { 'trigger': 'sleep',
             'source': '*',
             'dest': 'sleeping',
@@ -62,10 +66,6 @@ class JNTFsmBus(JNTBus):
         { 'trigger': 'work',
             'source': '*',
             'dest': 'working',
-        },
-        { 'trigger': 'stop',
-            'source': '*',
-            'dest': 'halted',
         },
     ]
     """The fsm transitions
@@ -130,9 +130,11 @@ class JNTFsmBus(JNTBus):
         """
         return self.state
 
-    def publish_state():
+    def publish_state(self, state=None):
         """ """
-        self.nodeman.publish_poll(None, self.nodeman.find_bus_value('state'))
+        if state is None:
+            state = self.nodeman.find_bus_value('state')
+        self.nodeman.publish_poll(None, state)
         
     def create_fsm(self):
         """Create the fsm
@@ -146,6 +148,8 @@ class JNTFsmBus(JNTBus):
     def stop(self, **kwargs):
         """Stop the bus
         """
+        if hasattr(self, "halt"):
+            self.halt()
         if hasattr(self, "get_graph"):
             delattr(self, "get_graph")
         self._fsm_boot_lock.acquire()
@@ -155,12 +159,6 @@ class JNTFsmBus(JNTBus):
             self.stop_boot_timer()
         finally:
             self._fsm_boot_lock.release()
-        try:
-            #~ AttributeError: 'NoneType' object has no attribute 'halt'
-            if self.state != self.states[1]:
-                self.nodeman.find_bus_value('transition').data = self.transitions[1]['trigger']
-        except :
-            logger.exception("[%s] - Error when stopping fsm", self.__class__.__name__, self._fsm_retry)
         event.wait(0.25)
         self._fsm = None
         JNTBus.stop(self, **kwargs)
@@ -216,3 +214,12 @@ class JNTFsmBus(JNTBus):
     def fsm_bus_locked(self):
         """Get status of the lock"""
         return self._bus_lock.locked()
+
+    def on_enter_halted(self):
+        """
+        """
+        logger.info("[%s] - on_enter_halted", self.__class__.__name__)
+        try:
+            self.publish_state()
+        except Exception:
+            logger.exception("[%s] - Error when publishing state", self.__class__.__name__)
