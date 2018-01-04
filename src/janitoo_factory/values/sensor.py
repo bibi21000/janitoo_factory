@@ -53,6 +53,9 @@ def make_sensor_altitude(**kwargs):
 def make_sensor_voltage(**kwargs):
     return JNTValueSensorVoltage(**kwargs)
 
+def make_sensor_power(**kwargs):
+    return JNTValueSensorPower(**kwargs)
+
 def make_sensor_current(**kwargs):
     return JNTValueSensorCurrent(**kwargs)
 
