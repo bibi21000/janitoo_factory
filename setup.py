@@ -73,6 +73,7 @@ janitoo_entry_points = {
         "sensor_pressure = janitoo_factory.values.sensor:make_sensor_pressure",
         "sensor_temperature = janitoo_factory.values.sensor:make_sensor_temperature",
         "sensor_altitude = janitoo_factory.values.sensor:make_sensor_altitude",
+        "sensor_power = janitoo_factory.values.sensor:make_sensor_power",
         "sensor_voltage = janitoo_factory.values.sensor:make_sensor_voltage",
         "sensor_float = janitoo_factory.values.sensor:make_sensor_float",
         "sensor_current = janitoo_factory.values.sensor:make_sensor_current",

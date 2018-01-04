@@ -205,6 +205,17 @@ class JNTValueSensorCurrent(JNTValueSensorFloat):
         JNTValueSensorFloat.__init__(self, entry_name=entry_name, help=help, label=label, units=units,
             cmd_class=cmd_class, **kwargs)
 
+class JNTValueSensorPower(JNTValueSensorFloat):
+    def __init__(self, entry_name="sensor_power", **kwargs):
+        """
+        """
+        help = kwargs.pop('help', 'A power sensor')
+        label = kwargs.pop('label', 'Power')
+        units = kwargs.pop('units', 'W')
+        cmd_class = kwargs.pop('cmd_class', COMMAND_SENSOR_MULTILEVEL)
+        JNTValueSensorFloat.__init__(self, entry_name=entry_name, help=help, label=label, units=units,
+            cmd_class=cmd_class, **kwargs)
+
 class JNTValueSensorPercent(JNTValueSensorFloat):
     def __init__(self, entry_name="sensor_percent", **kwargs):
         """

@@ -56,6 +56,11 @@ class TestSensorVoltage(JNTTFactory, JNTTFactoryPollCommon):
     """
     entry_name='sensor_voltage'
 
+class TestSensorPower(JNTTFactory, JNTTFactoryPollCommon):
+    """Test the value factory
+    """
+    entry_name='sensor_power'
+
 class TestSensorCurrent(JNTTFactory, JNTTFactoryPollCommon):
     """Test the value factory
     """
