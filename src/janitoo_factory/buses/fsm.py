@@ -37,47 +37,48 @@ from janitoo.fsm import HierarchicalMachine as Machine
 class JNTFsmBus(JNTBus):
     """A bus managed by a fsm
     """
-    states = [
-       'booting',
-       'halted',
-       'sleeping',
-       'working',
-    ]
-    """The fsm states :
-
-   - the first state must be booting
-   - do what you want with the other ones.
-
-    """
-
-    transitions = [
-        { 'trigger': 'boot',
-            'source': 'booting',
-            'dest': 'sleeping',
-        },
-        { 'trigger': 'halt',
-            'source': '*',
-            'dest': 'halted',
-        },
-        { 'trigger': 'sleep',
-            'source': '*',
-            'dest': 'sleeping',
-        },
-        { 'trigger': 'work',
-            'source': '*',
-            'dest': 'working',
-        },
-    ]
-    """The fsm transitions
-    - the first transition is used to get out the boot state : its a good idea to check values availability in ths trigger.
-    - the second transition is used to stop the machine.
-    - do what you want with the other ones.
-    """
 
     def __init__(self, **kwargs):
         """
         """
         JNTBus.__init__(self, **kwargs)
+        self.states = [
+           'booting',
+           'halted',
+           'sleeping',
+           'working',
+        ]
+        """The fsm states :
+
+       - the first state must be booting
+       - do what you want with the other ones.
+
+        """
+
+        self.transitions = [
+            { 'trigger': 'boot',
+                'source': 'booting',
+                'dest': 'sleeping',
+            },
+            { 'trigger': 'halt',
+                'source': '*',
+                'dest': 'halted',
+            },
+            { 'trigger': 'sleep',
+                'source': '*',
+                'dest': 'sleeping',
+            },
+            { 'trigger': 'work',
+                'source': '*',
+                'dest': 'working',
+            },
+        ]
+        """The fsm transitions
+        - the first transition is used to get out the boot state : its a good idea to check values availability in ths trigger.
+        - the second transition is used to stop the machine.
+        - do what you want with the other ones.
+        """
+
         self._fsm =  None
         """The finish state machine"""
         self._fsm_boot_timer = None
