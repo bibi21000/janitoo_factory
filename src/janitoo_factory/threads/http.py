@@ -318,7 +318,7 @@ class HttpBus(JNTBus):
                 try:
                     self.http_server.stop()
                 except Exception:
-                    logger.exception("[%s] - stop_server:%s", self.__class__.__name__)
+                    logger.exception("[%s] - stop_server", self.__class__.__name__)
                 self.http_server = None
                 self.update_attrs('http_server', self.http_server)
                 return True
@@ -475,7 +475,7 @@ class DocumentationResourceComponent(HttpResourceComponent):
         poll_value = self.values[uuid].create_poll_value(default=1800)
         self.values[poll_value.uuid] = poll_value
 
-    def deploy_resource(self, destination):
+    def deploy_resource(self, destination, package_name=None):
         """
         """
         try:
