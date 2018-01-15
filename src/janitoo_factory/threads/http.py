@@ -359,7 +359,7 @@ class HttpResourceComponent(JNTComponent):
         """
         return JNTComponent.stop(self)
 
-    def deploy_resource(self, destination):
+    def deploy_resource(self, destination, package_name=None):
         """
         """
         pass
