@@ -33,7 +33,7 @@ import os
 import threading
 from distutils.dir_util import copy_tree
 import shutil
-from pkg_resources import get_distribution, DistributionNotFound, resource_filename
+from pkg_resources import get_distribution, resource_filename
 
 from janitoo.compat import HTTPServer
 from janitoo.compat import SimpleHTTPRequestHandler

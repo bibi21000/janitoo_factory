@@ -27,7 +27,6 @@ __copyright__ = "Copyright © 2013-2014-2015-2016 Sébastien GALLET aka bibi2100
 import logging
 logger = logging.getLogger(__name__)
 
-from janitoo.classes import VALUE_DESC
 from janitoo.value_factory import JNTValueFactoryEntry
 
 ##############################################################
@@ -144,38 +143,38 @@ class JNTValueConfigString(JNTValueConfigGeneric):
     def __init__(self, entry_name="config_string", **kwargs):
         """
         """
-        help = kwargs.pop('help', 'A string')
+        hhelp = kwargs.pop('help', 'A string')
         label = kwargs.pop('label', 'String')
-        JNTValueConfigGeneric.__init__(self, entry_name=entry_name, help=help, label=label,
+        JNTValueConfigGeneric.__init__(self, entry_name=entry_name, help=hhelp, label=label,
             type=0x08, **kwargs)
 
 class JNTValueConfigList(JNTValueConfigGeneric):
     def __init__(self, entry_name="config_list", **kwargs):
         """
         """
-        help = kwargs.pop('help', 'A string')
+        hhelp = kwargs.pop('help', 'A string')
         label = kwargs.pop('label', 'String')
         list_items = kwargs.pop('list_items', ['value1', 'value2'])
-        JNTValueConfigGeneric.__init__(self, entry_name=entry_name, help=help, label=label,
+        JNTValueConfigGeneric.__init__(self, entry_name=entry_name, help=hhelp, label=label,
             type=0x05, list_items=list_items, **kwargs)
 
 class JNTValueConfigPassword(JNTValueConfigGeneric):
     def __init__(self, entry_name="config_password", **kwargs):
         """
         """
-        help = kwargs.pop('help', 'A password')
+        hhelp = kwargs.pop('help', 'A password')
         label = kwargs.pop('label', 'Password')
-        JNTValueConfigGeneric.__init__(self, entry_name=entry_name, help=help, label=label,
+        JNTValueConfigGeneric.__init__(self, entry_name=entry_name, help=hhelp, label=label,
             type=0x14, **kwargs)
 
 class JNTValueConfigBoolean(JNTValueConfigGeneric):
     def __init__(self, entry_name="config_boolean", **kwargs):
         """
         """
-        help = kwargs.pop('help', 'A boolean')
+        hhelp = kwargs.pop('help', 'A boolean')
         label = kwargs.pop('label', 'Bool')
         get_data_cb = kwargs.pop('get_data_cb', self._get_data_bool)
-        JNTValueConfigGeneric.__init__(self, entry_name=entry_name, help=help, label=label,
+        JNTValueConfigGeneric.__init__(self, entry_name=entry_name, help=hhelp, label=label,
             get_data_cb=get_data_cb,
             type=0x01, **kwargs)
 
@@ -190,10 +189,10 @@ class JNTValueConfigInteger(JNTValueConfigGeneric):
     def __init__(self, entry_name="config_integer", **kwargs):
         """
         """
-        help = kwargs.pop('help', 'An integer')
+        hhelp = kwargs.pop('help', 'An integer')
         label = kwargs.pop('label', 'Int')
         get_data_cb = kwargs.pop('get_data_cb', self._get_data_integer)
-        JNTValueConfigGeneric.__init__(self, entry_name=entry_name, help=help, label=label,
+        JNTValueConfigGeneric.__init__(self, entry_name=entry_name, help=hhelp, label=label,
             get_data_cb=get_data_cb,
             type=0x04, **kwargs)
 
@@ -208,10 +207,10 @@ class JNTValueConfigByte(JNTValueConfigGeneric):
     def __init__(self, entry_name="config_byte", **kwargs):
         """
         """
-        help = kwargs.pop('help', 'A byte')
+        hhelp = kwargs.pop('help', 'A byte')
         label = kwargs.pop('label', 'Byte')
         get_data_cb = kwargs.pop('get_data_cb', self._get_data_byte)
-        JNTValueConfigGeneric.__init__(self, entry_name=entry_name, help=help, label=label,
+        JNTValueConfigGeneric.__init__(self, entry_name=entry_name, help=hhelp, label=label,
             get_data_cb=get_data_cb,
             type=0x02, **kwargs)
 
@@ -226,10 +225,10 @@ class JNTValueConfigFloat(JNTValueConfigGeneric):
     def __init__(self, entry_name="config_float", **kwargs):
         """
         """
-        help = kwargs.pop('help', 'A float')
+        hhelp = kwargs.pop('help', 'A float')
         label = kwargs.pop('label', 'Float')
         get_data_cb = kwargs.pop('get_data_cb', self._get_data_float)
-        JNTValueConfigGeneric.__init__(self, entry_name=entry_name, help=help, label=label,
+        JNTValueConfigGeneric.__init__(self, entry_name=entry_name, help=hhelp, label=label,
             get_data_cb=get_data_cb,
             type=0x03, **kwargs)
 
@@ -244,11 +243,11 @@ class JNTValueConfigArray(JNTValueConfigGeneric):
     def __init__(self, entry_name="config_array", **kwargs):
         """
         """
-        help = kwargs.pop('help', 'An array of strings separated by |')
+        hhelp = kwargs.pop('help', 'An array of strings separated by |')
         label = kwargs.pop('label', 'Array')
         get_data_cb = kwargs.pop('get_data_cb', self._get_data_list)
         #~ set_data_cb = kwargs.pop('set_data_cb', self._set_data_list)
-        JNTValueConfigGeneric.__init__(self, entry_name=entry_name, help=help, label=label,
+        JNTValueConfigGeneric.__init__(self, entry_name=entry_name, help=hhelp, label=label,
             get_data_cb=get_data_cb,
             #~ set_data_cb=set_data_cb,
             type=0x16, **kwargs)

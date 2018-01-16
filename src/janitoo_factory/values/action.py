@@ -27,7 +27,6 @@ __copyright__ = "Copyright © 2013-2014-2015-2016 Sébastien GALLET aka bibi2100
 import logging
 logger = logging.getLogger(__name__)
 
-from janitoo.classes import VALUE_DESC
 from janitoo.value_factory import JNTValueFactoryEntry
 
 ##############################################################
@@ -115,11 +114,11 @@ class JNTValueActionString(JNTValueActionGeneric):
     def __init__(self, entry_name="action_string", **kwargs):
         """
         """
-        help = kwargs.pop('help', 'A string')
+        hhelp = kwargs.pop('help', 'A string')
         label = kwargs.pop('label', 'String')
         JNTValueActionGeneric.__init__(self,
             entry_name=entry_name,
-            help=help,
+            help=hhelp,
             label=label,
             type=0x08,
             **kwargs)
@@ -128,11 +127,11 @@ class JNTValueActionByte(JNTValueActionGeneric):
     def __init__(self, entry_name="action_byte", **kwargs):
         """
         """
-        help = kwargs.pop('help', 'A byte')
+        hhelp = kwargs.pop('help', 'A byte')
         label = kwargs.pop('label', 'Byte')
         JNTValueActionGeneric.__init__(self,
             entry_name=entry_name,
-            help=help,
+            help=hhelp,
             label=label,
             type=0x02,
             **kwargs)
@@ -141,11 +140,11 @@ class JNTValueActionInteger(JNTValueActionGeneric):
     def __init__(self, entry_name="action_integer", **kwargs):
         """
         """
-        help = kwargs.pop('help', 'An integer')
+        hhelp = kwargs.pop('help', 'An integer')
         label = kwargs.pop('label', 'Integer')
         JNTValueActionGeneric.__init__(self,
             entry_name=entry_name,
-            help=help,
+            help=hhelp,
             label=label,
             type=0x04,
             **kwargs)
@@ -154,11 +153,11 @@ class JNTValueActionBoolean(JNTValueActionGeneric):
     def __init__(self, entry_name="action_boolean", **kwargs):
         """
         """
-        help = kwargs.pop('help', 'A boolean')
+        hhelp = kwargs.pop('help', 'A boolean')
         label = kwargs.pop('label', 'Boolean')
         JNTValueActionGeneric.__init__(self,
             entry_name=entry_name,
-            help=help,
+            help=hhelp,
             label=label,
             type=0x04,
             **kwargs)
@@ -167,11 +166,11 @@ class JNTValueActionList(JNTValueActionGeneric):
     def __init__(self, entry_name="action_list", **kwargs):
         """
         """
-        help = kwargs.pop('help', 'A string')
+        hhelp = kwargs.pop('help', 'A string')
         label = kwargs.pop('label', 'String')
         JNTValueActionGeneric.__init__(self,
             entry_name=entry_name,
-            help=help,
+            help=hhelp,
             label=label,
             type=0x05,
             **kwargs)
@@ -182,12 +181,12 @@ class JNTValueActionSwitchBinary(JNTValueActionList):
         """
         label = kwargs.pop('label', 'Switch')
         list_items = kwargs.pop('list_items', ['on', 'off'])
-        help = kwargs.pop('help', 'A switch. Valid values are : %s'%list_items)
+        hhelp = kwargs.pop('help', 'A switch. Valid values are : %s'%list_items)
         default = kwargs.pop('default', 0)
         cmd_class = kwargs.pop('cmd_class', COMMAND_SWITCH_BINARY)
         JNTValueActionList.__init__(self,
             entry_name=entry_name,
-            help=help,
+            help=hhelp,
             default=default,
             label=label,
             list_items=list_items,
@@ -198,7 +197,7 @@ class JNTValueActionSwitchMultilevel(JNTValueActionByte):
     def __init__(self, entry_name="action_switch_multilevel", **kwargs):
         """
         """
-        help = kwargs.pop('help', 'A dimmer. A byte from 0 to 100')
+        hhelp = kwargs.pop('help', 'A dimmer. A byte from 0 to 100')
         label = kwargs.pop('label', 'dimmer')
         default = kwargs.pop('default', 0)
         min = kwargs.pop('min', 0)
@@ -206,7 +205,7 @@ class JNTValueActionSwitchMultilevel(JNTValueActionByte):
         cmd_class = kwargs.pop('cmd_class', COMMAND_SWITCH_MULTILEVEL)
         JNTValueActionByte.__init__(self,
             entry_name=entry_name,
-            help=help,
+            help=hhelp,
             default=default,
             label=label,
             min=min,
@@ -220,12 +219,12 @@ class JNTValueActionShutterBinary(JNTValueActionList):
         """
         label = kwargs.pop('label', 'Shutter')
         list_items = kwargs.pop('list_items', ['up', 'down', 'stop'])
-        help = kwargs.pop('help', 'A shutter. Valid values are : %s'%list_items)
+        hhelp = kwargs.pop('help', 'A shutter. Valid values are : %s'%list_items)
         default = kwargs.pop('default', 0)
         cmd_class = kwargs.pop('cmd_class', COMMAND_SHUTTER_BINARY)
         JNTValueActionList.__init__(self,
             entry_name=entry_name,
-            help=help,
+            help=hhelp,
             default=default,
             label=label,
             list_items=list_items,
@@ -236,7 +235,7 @@ class JNTValueActionShutterMultilevel(JNTValueActionByte):
     def __init__(self, entry_name="action_shutter_multilevel", **kwargs):
         """
         """
-        help = kwargs.pop('help', 'A shutter multilevel. A byte from 0 to 100')
+        hhelp = kwargs.pop('help', 'A shutter multilevel. A byte from 0 to 100')
         label = kwargs.pop('label', 'Shutterr')
         default = kwargs.pop('default', 0)
         min = kwargs.pop('min', 0)
@@ -244,7 +243,7 @@ class JNTValueActionShutterMultilevel(JNTValueActionByte):
         cmd_class = kwargs.pop('cmd_class', COMMAND_SHUTTER_MULTILEVEL)
         JNTValueActionByte.__init__(self,
             entry_name=entry_name,
-            help=help,
+            help=hhelp,
             default=default,
             label=label,
             min=min,
@@ -256,14 +255,14 @@ class JNTValueActionButtonBinary(JNTValueActionList):
     def __init__(self, entry_name="action_button_binary", **kwargs):
         """
         """
-        help = kwargs.pop('help', 'A button')
+        hhelp = kwargs.pop('help', 'A button')
         label = kwargs.pop('label', 'Button')
         list_items = kwargs.pop('list_items', ['on', 'off'])
         default = kwargs.pop('default', 'off')
         cmd_class = kwargs.pop('cmd_class', COMMAND_BUTTON_BINARY)
         JNTValueActionList.__init__(self,
             entry_name=entry_name,
-            help=help,
+            help=hhelp,
             label=label,
             default=default,
             list_items=list_items,
@@ -274,13 +273,13 @@ class JNTValueActionButtonMultilevel(JNTValueActionByte):
     def __init__(self, entry_name="action_button_mutlilevel", **kwargs):
         """
         """
-        help = kwargs.pop('help', 'A button')
+        hhelp = kwargs.pop('help', 'A button')
         label = kwargs.pop('label', 'Button')
         default = kwargs.pop('default', 'off')
         cmd_class = kwargs.pop('cmd_class', COMMAND_BUTTON_MULTILEVEL)
         JNTValueActionByte.__init__(self,
             entry_name=entry_name,
-            help=help,
+            help=hhelp,
             label=label,
             default=default,
             cmd_class=cmd_class,
@@ -294,7 +293,7 @@ class JNTValueTransitionFsm(JNTValueActionList):
         self._fsm_bus = fsm_bus
         if self._fsm_bus is None:
             raise RuntimeError("You must define fsm_bus parameter")
-        help = kwargs.pop('help', 'Trigger a transition on the fsm or get the last triggered')
+        hhelp = kwargs.pop('help', 'Trigger a transition on the fsm or get the last triggered')
         label = kwargs.pop('label', 'Transit')
         genre = kwargs.pop('genre', 0x01)
         list_items = kwargs.pop('list_items', ['sleep','work'])
@@ -306,7 +305,7 @@ class JNTValueTransitionFsm(JNTValueActionList):
             get_data_cb=get_data_cb, set_data_cb=set_data_cb,
             list_items=list_items,
             cmd_class=cmd_class,
-            help=help,
+            help=hhelp,
             label=label,
             **kwargs)
 
@@ -318,9 +317,9 @@ class JNTValueTransitionFsm(JNTValueActionList):
     def create_config_value(self, **kwargs):
         """
         """
-        help = kwargs.pop('help', 'The initial transition to apply (at boot)')
+        hhelp = kwargs.pop('help', 'The initial transition to apply (at boot)')
         default = kwargs.pop('default', 'sleep')
-        return self._create_config_value(type=0x08, help=help, default=default)
+        return self._create_config_value(type=0x08, help=hhelp, default=default)
 
     def create_poll_value(self, **kwargs):
         """

@@ -27,7 +27,6 @@ __copyright__ = "Copyright © 2013-2014-2015-2016 Sébastien GALLET aka bibi2100
 import logging
 logger = logging.getLogger(__name__)
 
-from janitoo.classes import VALUE_DESC
 from janitoo.value_factory import JNTValueFactoryEntry
 
 ##############################################################
@@ -84,14 +83,14 @@ class JNTValueNetworkController(JNTValueFactoryEntry):
         """
         """
         genre = kwargs.pop('genre', 0x04)
-        help = kwargs.pop('help', 'Primary/secondary network controller')
+        hhelp = kwargs.pop('help', 'Primary/secondary network controller')
         label = kwargs.pop('label', 'Network controller')
         cmd_class = kwargs.pop('cmd_class', COMMAND_NETWORK_CONTROLLER)
         list_tiems = kwargs.pop('list_tiems', ['primary', 'secondary'])
         JNTValueFactoryEntry.__init__(self,
             entry_name=entry_name,
             genre=genre,
-            help=help,
+            help=hhelp,
             label=label,
             list_tiems=list_tiems,
             cmd_class=cmd_class,
@@ -102,29 +101,29 @@ class JNTValueSensorFloat(JNTValueSensorGeneric):
     def __init__(self, entry_name="sensor_float", **kwargs):
         """
         """
-        help = kwargs.pop('help', 'A float sensor')
+        hhelp = kwargs.pop('help', 'A float sensor')
         label = kwargs.pop('label', 'Float')
         cmd_class = kwargs.pop('cmd_class', COMMAND_SENSOR_MULTILEVEL)
-        JNTValueSensorGeneric.__init__(self, entry_name=entry_name, help=help, label=label,
+        JNTValueSensorGeneric.__init__(self, entry_name=entry_name, help=hhelp, label=label,
             cmd_class=cmd_class, type=0x03, **kwargs)
 
 class JNTValueSensorByte(JNTValueSensorGeneric):
     def __init__(self, entry_name="sensor_byte", **kwargs):
         """
         """
-        help = kwargs.pop('help', 'A byte sensor')
+        hhelp = kwargs.pop('help', 'A byte sensor')
         label = kwargs.pop('label', 'Byte')
         cmd_class = kwargs.pop('cmd_class', COMMAND_SENSOR_MULTILEVEL)
-        JNTValueSensorGeneric.__init__(self, entry_name=entry_name, help=help, label=label,
+        JNTValueSensorGeneric.__init__(self, entry_name=entry_name, help=hhelp, label=label,
             cmd_class=cmd_class, type=0x02, **kwargs)
 
 class JNTValueSensorInteger(JNTValueSensorGeneric):
     def __init__(self, entry_name="sensor_integer", **kwargs):
         """
         """
-        help = kwargs.pop('help', 'An integer sensor')
+        hhelp = kwargs.pop('help', 'An integer sensor')
         label = kwargs.pop('label', 'Integer')
         cmd_class = kwargs.pop('cmd_class', COMMAND_SENSOR_MULTILEVEL)
-        JNTValueSensorGeneric.__init__(self, entry_name=entry_name, help=help, label=label,
+        JNTValueSensorGeneric.__init__(self, entry_name=entry_name, help=hhelp, label=label,
             cmd_class=cmd_class, type=0x04, **kwargs)
 

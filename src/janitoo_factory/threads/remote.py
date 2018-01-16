@@ -31,11 +31,10 @@ logger = logging.getLogger(__name__)
 import os
 from pkg_resources import get_distribution, DistributionNotFound, resource_filename
 
-from janitoo.compat import HTTPServer
 from janitoo.thread import JNTBusThread
 from janitoo.options import get_option_autostart
 from janitoo.utils import HADD, hadd_split
-from janitoo.utils import  TOPIC_VALUES_USER, TOPIC_VALUES_CONFIG, TOPIC_VALUES_BASIC, TOPIC_HEARTBEAT_NODE
+from janitoo.utils import  TOPIC_VALUES_USER, TOPIC_VALUES_BASIC, TOPIC_HEARTBEAT_NODE
 
 from janitoo.component import JNTComponent
 from janitoo.bus import JNTBus

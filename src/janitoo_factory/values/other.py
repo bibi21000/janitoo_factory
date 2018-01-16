@@ -57,10 +57,10 @@ class JNTValueRRead(JNTValueConfigString):
     """Should be extend to a SensorString + config (as value_factory) to avoid use of get cache, ...
     """
     def __init__(self, entry_name="rread_value", **kwargs):
-        help = kwargs.pop('help', 'A read value located on a remote node')
+        hhelp = kwargs.pop('help', 'A read value located on a remote node')
         label = kwargs.pop('label', 'Remote')
         #We will update
-        JNTValueConfigString.__init__(self, entry_name=entry_name, help=help, label=label, **kwargs)
+        JNTValueConfigString.__init__(self, entry_name=entry_name, help=hhelp, label=label, **kwargs)
         self._cache = {}
 
     def get_cache(self, node_uuid=None, index=None):
@@ -107,10 +107,10 @@ class JNTValueRWrite(JNTValueConfigString):
     """Should be extend to a SensorString + config (as value_factory) to avoid use of get cache, ...
     """
     def __init__(self, entry_name="rwrite_value", **kwargs):
-        help = kwargs.pop('help', 'A write value located on a remote node')
+        hhelp = kwargs.pop('help', 'A write value located on a remote node')
         label = kwargs.pop('label', 'Rwrite')
         #We will update
-        JNTValueConfigString.__init__(self, entry_name=entry_name, help=help, label=label, **kwargs)
+        JNTValueConfigString.__init__(self, entry_name=entry_name, help=hhelp, label=label, **kwargs)
         self._cache = {}
 
     def get_cache(self, node_uuid=None, index=None):
