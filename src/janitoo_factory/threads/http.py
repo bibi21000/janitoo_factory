@@ -28,20 +28,18 @@ __copyright__ = "Copyright © 2013-2014-2015-2016 Sébastien GALLET aka bibi2100
 
 import logging
 logger = logging.getLogger(__name__)
-import os, sys
+
+import os
 import threading
 from distutils.dir_util import copy_tree
 import shutil
-from pkg_resources import get_distribution, DistributionNotFound, resource_filename, Requirement
+from pkg_resources import get_distribution, DistributionNotFound, resource_filename
 
-from janitoo.compat import HTTPServer, BaseHTTPRequestHandler
+from janitoo.compat import HTTPServer
 from janitoo.compat import SimpleHTTPRequestHandler
 from janitoo.compat import ThreadingMixIn
 from janitoo.thread import JNTBusThread, BaseThread
 from janitoo.options import get_option_autostart
-from janitoo.utils import HADD
-from janitoo.node import JNTNode
-from janitoo.value import JNTValue
 from janitoo.component import JNTComponent
 from janitoo.bus import JNTBus
 
@@ -268,7 +266,6 @@ class HttpBus(JNTBus):
     def set_action(self, node_uuid, index, data):
         """Act on the server
         """
-        params = {}
         if data == "start":
             if self.mqttc is not None:
                 self.start_http_server()

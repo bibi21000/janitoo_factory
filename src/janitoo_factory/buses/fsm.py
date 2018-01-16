@@ -28,8 +28,6 @@ import logging
 logger = logging.getLogger(__name__)
 
 import threading
-import time
-from pkg_resources import iter_entry_points
 
 from janitoo.bus import JNTBus
 from janitoo.fsm import HierarchicalMachine as Machine
@@ -197,7 +195,7 @@ class JNTFsmBus(JNTBus):
                     self._fsm_boot_timer.start()
             else:
                 logger.info("[%s] - fsm has booted in state %s", self.__class__.__name__, self.state)
-        except :
+        except Exception:
             logger.exception("[%s] - Error when trying to boot fsm at try %s", self.__class__.__name__, self._fsm_retry)
         finally:
             self._fsm_boot_lock.release()

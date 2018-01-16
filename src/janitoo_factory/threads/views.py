@@ -39,19 +39,16 @@ __copyright__ = "Copyright © 2013-2014-2015-2016 Sébastien GALLET aka bibi2100
 import logging
 logger = logging.getLogger(__name__)
 
-import os, sys
+import os
 import threading
 from distutils.dir_util import copy_tree
 import shutil
-from BaseHTTPServer import HTTPServer, BaseHTTPRequestHandler
+from BaseHTTPServer import HTTPServer,
 from SimpleHTTPServer import SimpleHTTPRequestHandler
 from SocketServer import ThreadingMixIn
-from pkg_resources import get_distribution, DistributionNotFound
+from pkg_resources import DistributionNotFound
 
 from janitoo.options import get_option_autostart
-from janitoo.utils import HADD
-from janitoo.node import JNTNode
-from janitoo.value import JNTValue
 from janitoo.component import JNTComponent
 from janitoo.bus import JNTBus
 from janitoo.thread import JNTBusThread, BaseThread
@@ -259,7 +256,6 @@ class HttpBus(JNTBus):
     def set_action(self, node_uuid, index, data):
         """Act on the server
         """
-        params = {}
         if data == "start":
             if self.mqttc is not None:
                 self.start(self.mqttc)
@@ -293,7 +289,7 @@ class HttpResourceComponent(JNTComponent):
         product_type = kwargs.pop('product_type', "Software")
         product_manufacturer = kwargs.pop('product_manufacturer', "Janitoo")
         JNTComponent.__init__(self, oid=oid, bus=bus, addr=addr, name=name,
-                product_name=product_name, product_type=product_type, product_manufacturer="Janitoo", **kwargs)
+                product_name=product_name, product_type=product_type, product_manufacturer=product_manufacturer, **kwargs)
         logger.debug("[%s] - __init__ node uuid:%s", self.__class__.__name__, self.uuid)
         self.path = path
         dirname='.'

@@ -33,27 +33,17 @@ __copyright__ = "Copyright © 2013-2014-2015-2016 Sébastien GALLET aka bibi2100
 
 # Set default logging handler to avoid "No handler found" warnings.
 import logging
-try:  # Python 2.7+                                   # pragma: no cover
-    from logging import NullHandler                   # pragma: no cover
-except ImportError:                                   # pragma: no cover
-    class NullHandler(logging.Handler):               # pragma: no cover
-        """NullHandler logger for python 2.6"""       # pragma: no cover
-        def emit(self, record):                       # pragma: no cover
-            pass                                      # pragma: no cover
 logger = logging.getLogger(__name__)
 
-import os, sys
-import threading
+import os
 from random import randint
-from pkg_resources import get_distribution, DistributionNotFound
+from pkg_resources import DistributionNotFound
 
 from janitoo.thread import JNTBusThread
 from janitoo.options import get_option_autostart
-from janitoo.utils import HADD
-from janitoo.node import JNTNode
 from janitoo.bus import JNTBus
 from janitoo.component import JNTComponent
-from janitoo.value import JNTValue, value_config_poll
+from janitoo.value import JNTValue
 
 ##############################################################
 #Check that we are in sync with the official command classes

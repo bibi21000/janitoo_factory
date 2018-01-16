@@ -24,14 +24,10 @@ __author__ = 'Sébastien GALLET aka bibi21000'
 __email__ = 'bibi21000@gmail.com'
 __copyright__ = "Copyright © 2013-2014-2015-2016 Sébastien GALLET aka bibi21000"
 
-# Set default logging handler to avoid "No handler found" warnings.
-import os
 import logging
 logger = logging.getLogger(__name__)
 
-from janitoo.classes import GENRE_DESC, VALUE_DESC
-from janitoo.utils import json_dumps
-from janitoo.value import JNTValue
+from janitoo.classes import VALUE_DESC
 from janitoo.value_factory import JNTValueFactoryEntry
 
 ##############################################################
@@ -87,7 +83,7 @@ class JNTValueConfigGeneric(JNTValueFactoryEntry):
         index = kwargs.pop('index', 0)
         JNTValueFactoryEntry.__init__(self,
             get_data_cb=get_data_cb, set_data_cb=set_data_cb,
-            cmd_class=COMMAND_CONFIGURATION,
+            cmd_class=cmd_class,
             index=index, genre=genre,
             is_readonly=is_readonly, is_writeonly=is_writeonly,
             **kwargs)
@@ -103,7 +99,7 @@ class JNTValueConfigGeneric(JNTValueFactoryEntry):
                 self.options.set_option(node_uuid, '%s_%s'%(self.uuid, index), '%s'%data)
         except Exception:
             self.instances[index]['data'] = None
-            logger.exception('Exception when writing %s_%s for node %s'%(self.uuid, index, node_uuid))
+            logger.exception('[%s] - Exception when writing %s_%s for node %s', self.__class__.__name__, self.uuid, index, node_uuid)
 
     def _get_data(self, node_uuid, index):
         """
@@ -132,7 +128,7 @@ class JNTValueConfigGeneric(JNTValueFactoryEntry):
                             stop = True
                         #~ logger.debug('index %s, instances %s'%(i, self.instances))
                     except Exception:
-                        logger.exception('Catched exception when retrieving %s_%s for self.instances : %s'%(self.uuid, i, self.instances))
+                        logger.exception('[%s] - Catched exception when retrieving %s_%s for self.instances : %s', self.__class__.__name__, self.uuid, i, self.instances)
                         stop = True
                 i += 1
         #~ print "last", self.instances[index]['data']
@@ -140,7 +136,7 @@ class JNTValueConfigGeneric(JNTValueFactoryEntry):
             try:
                 self.instances[index]['data'] = self.options.get_option(node_uuid, '%s_%s'%(self.uuid, index))
             except Exception:
-                logger.exception('Exception when retrieving %s_%s for node %s'%(self.uuid, index, node_uuid))
+                logger.exception('[%s] - Exception when retrieving %s_%s for node %s', self.__class__.__name__, self.uuid, index, node_uuid)
                 self.instances[index]['data'] = self.default
         return self.instances[index]['data']
 

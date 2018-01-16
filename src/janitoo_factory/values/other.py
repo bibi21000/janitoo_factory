@@ -27,7 +27,6 @@ __copyright__ = "Copyright © 2013-2014-2015-2016 Sébastien GALLET aka bibi2100
 import logging
 logger = logging.getLogger(__name__)
 
-from janitoo.classes import GENRE_DESC
 from janitoo_factory.values.config import JNTValueConfigString
 
 ##############################################################
@@ -100,7 +99,7 @@ class JNTValueRRead(JNTValueConfigString):
             if len(data) > 2:
                 return None
             return data
-        except :
+        except Exception:
             logger.exception('[%s] - Exception when reading (%s)', self.__class__.__name__, self.instances[index]['data'])
             return None
 
@@ -150,6 +149,6 @@ class JNTValueRWrite(JNTValueConfigString):
             if len(data) != 5:
                 return None
             return data
-        except :
+        except Exception:
             logger.exception('[%s] - Exception when reading (%s)', self.__class__.__name__, self.instances[index]['data'])
             return None

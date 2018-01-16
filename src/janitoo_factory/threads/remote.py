@@ -28,26 +28,19 @@ __copyright__ = "Copyright © 2013-2014-2015-2016 Sébastien GALLET aka bibi2100
 
 import logging
 logger = logging.getLogger(__name__)
-import os, sys
-import threading
-from distutils.dir_util import copy_tree
-import shutil
-from pkg_resources import get_distribution, DistributionNotFound, resource_filename, Requirement
+import os
+from pkg_resources import get_distribution, DistributionNotFound, resource_filename
 
-from janitoo.compat import HTTPServer, BaseHTTPRequestHandler
-from janitoo.compat import SimpleHTTPRequestHandler
-from janitoo.compat import ThreadingMixIn
-from janitoo.thread import JNTBusThread, BaseThread
+from janitoo.compat import HTTPServer
+from janitoo.thread import JNTBusThread
 from janitoo.options import get_option_autostart
-from janitoo.utils import HADD, HADD_SEP, hadd_split
-from janitoo.utils import  TOPIC_VALUES_USER, TOPIC_VALUES_CONFIG, TOPIC_VALUES_SYSTEM, TOPIC_VALUES_BASIC, TOPIC_HEARTBEAT_NODE
+from janitoo.utils import HADD, hadd_split
+from janitoo.utils import  TOPIC_VALUES_USER, TOPIC_VALUES_CONFIG, TOPIC_VALUES_BASIC, TOPIC_HEARTBEAT_NODE
 
-from janitoo.node import JNTNode
-from janitoo.value import JNTValue
 from janitoo.component import JNTComponent
 from janitoo.bus import JNTBus
 from janitoo.dhcp import HeartbeatMessage
-from janitoo.mqtt import MQTTClient, MQTTBasic
+from janitoo.mqtt import MQTTClient
 
 ##############################################################
 #Check that we are in sync with the official command classes
