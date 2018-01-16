@@ -33,7 +33,6 @@ import os
 import threading
 from distutils.dir_util import copy_tree
 import shutil
-from pkg_resources import resource_filename
 
 from janitoo.compat import HTTPServer
 from janitoo.compat import SimpleHTTPRequestHandler
