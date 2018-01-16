@@ -200,16 +200,16 @@ class JNTValueActionSwitchMultilevel(JNTValueActionByte):
         hhelp = kwargs.pop('help', 'A dimmer. A byte from 0 to 100')
         label = kwargs.pop('label', 'dimmer')
         default = kwargs.pop('default', 0)
-        min = kwargs.pop('min', 0)
-        max = kwargs.pop('max', 0)
+        mmin = kwargs.pop('min', 0)
+        mmax = kwargs.pop('max', 0)
         cmd_class = kwargs.pop('cmd_class', COMMAND_SWITCH_MULTILEVEL)
         JNTValueActionByte.__init__(self,
             entry_name=entry_name,
             help=hhelp,
             default=default,
             label=label,
-            min=min,
-            max=max,
+            min=mmin,
+            max=mmax,
             cmd_class=cmd_class,
             **kwargs)
 
@@ -238,16 +238,16 @@ class JNTValueActionShutterMultilevel(JNTValueActionByte):
         hhelp = kwargs.pop('help', 'A shutter multilevel. A byte from 0 to 100')
         label = kwargs.pop('label', 'Shutterr')
         default = kwargs.pop('default', 0)
-        min = kwargs.pop('min', 0)
-        max = kwargs.pop('max', 0)
+        mmin = kwargs.pop('min', 0)
+        mmax = kwargs.pop('max', 0)
         cmd_class = kwargs.pop('cmd_class', COMMAND_SHUTTER_MULTILEVEL)
         JNTValueActionByte.__init__(self,
             entry_name=entry_name,
             help=hhelp,
             default=default,
             label=label,
-            min=min,
-            max=max,
+            min=mmin,
+            max=mmax,
             cmd_class=cmd_class,
             **kwargs)
 

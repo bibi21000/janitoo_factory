@@ -28,8 +28,8 @@ __copyright__ = "Copyright © 2013-2014-2015-2016 Sébastien GALLET aka bibi2100
 
 import logging
 logger = logging.getLogger(__name__)
-import os
-from pkg_resources import get_distribution, DistributionNotFound, resource_filename
+
+from pkg_resources import get_distribution, resource_filename
 
 from janitoo.thread import JNTBusThread
 from janitoo.options import get_option_autostart
