@@ -115,7 +115,10 @@ class HttpServerThread(BaseThread):
         """
         """
         if host is not None:
-            self.host = host
+            if host = '*':
+                self.host = ''
+            else:
+                self.host = host
         if port is not None:
             self.port = port
 

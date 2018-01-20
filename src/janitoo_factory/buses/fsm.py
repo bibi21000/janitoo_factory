@@ -122,15 +122,21 @@ class JNTFsmBus(JNTBus):
         self._fsm = self.create_fsm()
         JNTBus.start(self, mqttc, trigger_thread_reload_cb, **kwargs)
         try:
+            slow_start = self.options.get_option('system','slow_start', default=0.05)
+            slow_start = slow_start * len(self.get_components())
+        except Exception:
+            slow_start = 0
+            logger.info("[%s] - Can't get slow_start from configuration file. Using default value %s", self.__class__.__name__, 0, exc_info=True)
+        try:
             self._fsm_timer_delay = self.options.get_option(self.section, 'fsm_timer_delay', default=self._fsm_timer_delay)
         except Exception:
-            logger.info("[%s] - Can't set fsm_timer_delay from configuration file. Using default value %s", self.__class__.__name__, self._fsm_timer_delay)
+            logger.info("[%s] - Can't set fsm_timer_delay from configuration file. Using default value %s", self.__class__.__name__, self._fsm_timer_delay, exc_info=True)
         try:
             self._fsm_max_retries = self.options.get_option(self.section,'fsm_max_retries', default=self._fsm_max_retries)
         except Exception:
-            logger.info("[%s] - Can't set fsm_max_retries from configuration file. Using default value %s", self.__class__.__name__, self._fsm_max_retries)
+            logger.info("[%s] - Can't set fsm_max_retries from configuration file. Using default value %s", self.__class__.__name__, self._fsm_max_retries, exc_info=True)
         
-        self._fsm_boot_timer = threading.Timer(self._fsm_timer_delay*2, self.on_boot_timer)
+        self._fsm_boot_timer = threading.Timer(self._fsm_timer_delay + slow_start, self.on_boot_timer)
         self._fsm_boot_timer.start()
 
     def get_state(self, node_uuid, index):
