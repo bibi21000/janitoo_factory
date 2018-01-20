@@ -128,11 +128,11 @@ class JNTFsmBus(JNTBus):
             slow_start = 0
             logger.info("[%s] - Can't get slow_start from configuration file. Using default value %s", self.__class__.__name__, 0, exc_info=True)
         try:
-            self._fsm_timer_delay = self.options.get_option(self.section, 'fsm_timer_delay', default=self._fsm_timer_delay)
+            self._fsm_timer_delay = self.options.get_option(self.oid, 'fsm_timer_delay', default=self._fsm_timer_delay)
         except Exception:
             logger.info("[%s] - Can't set fsm_timer_delay from configuration file. Using default value %s", self.__class__.__name__, self._fsm_timer_delay, exc_info=True)
         try:
-            self._fsm_max_retries = self.options.get_option(self.section,'fsm_max_retries', default=self._fsm_max_retries)
+            self._fsm_max_retries = self.options.get_option(self.oid,'fsm_max_retries', default=self._fsm_max_retries)
         except Exception:
             logger.info("[%s] - Can't set fsm_max_retries from configuration file. Using default value %s", self.__class__.__name__, self._fsm_max_retries, exc_info=True)
         
