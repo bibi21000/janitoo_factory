@@ -83,7 +83,7 @@ class JNTFsmBus(JNTBus):
         """The timer that's start the finish state machine"""
         self._fsm_boot_lock = threading.Lock()
         """The timer that's start the finish state machine"""
-        self._fsm_timer_delay = 3
+        self._fsm_timer_delay = 3.1
         """The timer delay between 2 retries"""
         self._fsm_max_retries = 5
         """The max retries to boot the fsm"""
@@ -121,7 +121,16 @@ class JNTFsmBus(JNTBus):
             delattr(self, "get_graph")
         self._fsm = self.create_fsm()
         JNTBus.start(self, mqttc, trigger_thread_reload_cb, **kwargs)
-        self._fsm_boot_timer = threading.Timer(self._fsm_timer_delay, self.on_boot_timer)
+        try:
+            self._fsm_timer_delay = self.options.get_option(self.section, 'fsm_timer_delay', self._fsm_timer_delay)
+        except Exception:
+            logger.info("[%s] - Can't set fsm_timer_delay from configuration file. Using default value %s", self.__class__.__name__, self._fsm_timer_delay)
+        try:
+            self._fsm_max_retries = self.options.get_option(self.section,'fsm_max_retries', self._fsm_max_retries)
+        except Exception:
+            logger.info("[%s] - Can't set fsm_max_retries from configuration file. Using default value %s", self.__class__.__name__, self._fsm_max_retries)
+        
+        self._fsm_boot_timer = threading.Timer(self._fsm_timer_delay*2, self.on_boot_timer)
         self._fsm_boot_timer.start()
 
     def get_state(self, node_uuid, index):
