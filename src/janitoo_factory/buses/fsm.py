@@ -89,6 +89,8 @@ class JNTFsmBus(JNTBus):
         """The max retries to boot the fsm"""
         self._fsm_retry = 0
         """The current retry to boot the fsm"""
+        self._fsm_slow_start = 0
+        """The slow delay to boot the fsm"""
         self.state = self.states[0]
         """Initial state of the fsm"""
         self._bus_lock = threading.Lock()
@@ -122,11 +124,10 @@ class JNTFsmBus(JNTBus):
         self._fsm = self.create_fsm()
         JNTBus.start(self, mqttc, trigger_thread_reload_cb, **kwargs)
         try:
-            slow_start = self.options.get_option('system','slow_start', default=0.05)
-            slow_start = slow_start * len(self.get_components())
+            self._fsm_slow_start = self.nodeman.slow_start * len(self.get_components())
         except Exception:
-            slow_start = 0
-            logger.info("[%s] - Can't get slow_start from configuration file. Using default value %s", self.__class__.__name__, 0, exc_info=True)
+            self._fsm_slow_start = self.nodeman.slow_start
+            logger.info("[%s] - Can't set slow_start. Using default value %s", self.__class__.__name__, self._fsm_slow_start, exc_info=True)
         try:
             self._fsm_timer_delay = self.options.get_option(self.oid, 'fsm_timer_delay', default=self._fsm_timer_delay)
         except Exception:
@@ -136,9 +137,17 @@ class JNTFsmBus(JNTBus):
         except Exception:
             logger.info("[%s] - Can't set fsm_max_retries from configuration file. Using default value %s", self.__class__.__name__, self._fsm_max_retries, exc_info=True)
         
-        logger.debug("[%s] - Will boot fsm in %s seconds", self.__class__.__name__, self._fsm_timer_delay + slow_start)
-        self._fsm_boot_timer = threading.Timer(self._fsm_timer_delay + slow_start, self.on_boot_timer)
-        self._fsm_boot_timer.start()
+        self._fsm_boot_lock.acquire()
+        try:
+            self.stop_boot_timer()
+            logger.debug("[%s] - Will boot fsm in %s seconds", self.__class__.__name__, self._fsm_timer_delay + self._fsm_slow_start)
+            self._fsm_boot_timer = threading.Timer(self._fsm_timer_delay + self._fsm_slow_start, self.on_boot_timer)
+            self._fsm_boot_timer.start()
+        except Exception:
+            logger.exception("[%s] - Error when trying to boot fsm at try %s", self.__class__.__name__, self._fsm_retry)
+        finally:
+            self._fsm_boot_lock.release()
+
 
     def get_state(self, node_uuid, index):
         """Get the state of the fsm
@@ -193,7 +202,7 @@ class JNTFsmBus(JNTBus):
             self._fsm_boot_timer = None
 
     def on_boot_timer(self):
-        """Make a check using a timer.
+        """Try to boot the bus using a timer.
 
         """
         self._fsm_boot_lock.acquire()
@@ -204,10 +213,8 @@ class JNTFsmBus(JNTBus):
                     logger.error("[%s] - Fail to boot fsm after %s retries", self.__class__.__name__, self._fsm_retry)
                 else:
                     self._fsm_retry += 1
-                    state = self.nodeman.find_bus_value('transition_config').data
-                    logger.debug("[%s] - boot try %s with transition %s", self.__class__.__name__, self._fsm_retry, state)
-                    self.nodeman.find_bus_value('transition').data = state
-                    self._fsm_boot_timer = threading.Timer(self._fsm_timer_delay + self._fsm_retry*self.nodeman.slow_start, self.on_boot_timer)
+                    logger.debug("[%s] - fsm boot try %s. Next try in %s seconds", self.__class__.__name__, self._fsm_retry, self._fsm_timer_delay + self._fsm_retry*self._fsm_slow_start)
+                    self._fsm_boot_timer = threading.Timer(self._fsm_timer_delay + self._fsm_retry*self._fsm_slow_start, self.on_boot_timer)
                     self._fsm_boot_timer.start()
             else:
                 logger.info("[%s] - fsm has booted in state %s", self.__class__.__name__, self.state)
