@@ -122,11 +122,11 @@ class JNTFsmBus(JNTBus):
         self._fsm = self.create_fsm()
         JNTBus.start(self, mqttc, trigger_thread_reload_cb, **kwargs)
         try:
-            self._fsm_timer_delay = self.options.get_option(self.section, 'fsm_timer_delay', self._fsm_timer_delay)
+            self._fsm_timer_delay = self.options.get_option(self.section, 'fsm_timer_delay', default=self._fsm_timer_delay)
         except Exception:
             logger.info("[%s] - Can't set fsm_timer_delay from configuration file. Using default value %s", self.__class__.__name__, self._fsm_timer_delay)
         try:
-            self._fsm_max_retries = self.options.get_option(self.section,'fsm_max_retries', self._fsm_max_retries)
+            self._fsm_max_retries = self.options.get_option(self.section,'fsm_max_retries', default=self._fsm_max_retries)
         except Exception:
             logger.info("[%s] - Can't set fsm_max_retries from configuration file. Using default value %s", self.__class__.__name__, self._fsm_max_retries)
         
