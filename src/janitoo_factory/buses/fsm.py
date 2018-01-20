@@ -136,6 +136,7 @@ class JNTFsmBus(JNTBus):
         except Exception:
             logger.info("[%s] - Can't set fsm_max_retries from configuration file. Using default value %s", self.__class__.__name__, self._fsm_max_retries, exc_info=True)
         
+        logger.debug("[%s] - Will boot fsm in %s seconds", self.__class__.__name__, self._fsm_timer_delay + slow_start)
         self._fsm_boot_timer = threading.Timer(self._fsm_timer_delay + slow_start, self.on_boot_timer)
         self._fsm_boot_timer.start()
 
