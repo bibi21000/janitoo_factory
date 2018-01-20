@@ -115,7 +115,7 @@ class HttpServerThread(BaseThread):
         """
         """
         if host is not None:
-            if host = '*':
+            if host == '*':
                 self.host = ''
             else:
                 self.host = host
