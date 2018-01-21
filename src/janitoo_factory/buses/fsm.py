@@ -213,7 +213,10 @@ class JNTFsmBus(JNTBus):
                     logger.error("[%s] - Fail to boot fsm after %s retries", self.__class__.__name__, self._fsm_retry)
                 else:
                     self._fsm_retry += 1
+                    state = self.nodeman.find_bus_value('transition_config').data
                     logger.debug("[%s] - fsm boot try %s. Next try in %s seconds", self.__class__.__name__, self._fsm_retry, self._fsm_timer_delay + self._fsm_retry*self._fsm_slow_start)
+                    logger.debug("[%s] - boot try %s with transition %s", self.__class__.__name__, self._fsm_retry, state)
+                    self.nodeman.find_bus_value('transition').data = state
                     self._fsm_boot_timer = threading.Timer(self._fsm_timer_delay + self._fsm_retry*self._fsm_slow_start, self.on_boot_timer)
                     self._fsm_boot_timer.start()
             else:
