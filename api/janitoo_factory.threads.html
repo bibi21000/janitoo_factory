@@ -148,7 +148,7 @@ Check account for ne emails</p>
 <p>A resource ie /rrd</p>
 <dl class="method">
 <dt id="janitoo_factory.threads.http.BasicResourceComponent.deploy_resource">
-<code class="descname">deploy_resource</code><span class="sig-paren">(</span><em>destination</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/http.html#BasicResourceComponent.deploy_resource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.http.BasicResourceComponent.deploy_resource" title="Permalink to this definition">¶</a></dt>
+<code class="descname">deploy_resource</code><span class="sig-paren">(</span><em>destination</em>, <em>package_name=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/http.html#BasicResourceComponent.deploy_resource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.http.BasicResourceComponent.deploy_resource" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -165,7 +165,7 @@ Check account for ne emails</p>
 <p>A resource ie /rrd</p>
 <dl class="method">
 <dt id="janitoo_factory.threads.http.DocumentationResourceComponent.deploy_resource">
-<code class="descname">deploy_resource</code><span class="sig-paren">(</span><em>destination</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/http.html#DocumentationResourceComponent.deploy_resource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.http.DocumentationResourceComponent.deploy_resource" title="Permalink to this definition">¶</a></dt>
+<code class="descname">deploy_resource</code><span class="sig-paren">(</span><em>destination</em>, <em>package_name=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/http.html#DocumentationResourceComponent.deploy_resource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.http.DocumentationResourceComponent.deploy_resource" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -223,7 +223,7 @@ Check account for ne emails</p>
 
 <dl class="method">
 <dt id="janitoo_factory.threads.http.HttpBus.start">
-<code class="descname">start</code><span class="sig-paren">(</span><em>mqttc</em>, <em>trigger_thread_reload_cb=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/http.html#HttpBus.start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.http.HttpBus.start" title="Permalink to this definition">¶</a></dt>
+<code class="descname">start</code><span class="sig-paren">(</span><em>mqttc</em>, <em>trigger_thread_reload_cb=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/http.html#HttpBus.start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.http.HttpBus.start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start the bus</p>
 </dd></dl>
 
@@ -235,7 +235,7 @@ Check account for ne emails</p>
 
 <dl class="method">
 <dt id="janitoo_factory.threads.http.HttpBus.stop">
-<code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/http.html#HttpBus.stop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.http.HttpBus.stop" title="Permalink to this definition">¶</a></dt>
+<code class="descname">stop</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/http.html#HttpBus.stop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.http.HttpBus.stop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stop the bus</p>
 </dd></dl>
 
@@ -260,7 +260,7 @@ Check account for ne emails</p>
 
 <dl class="method">
 <dt id="janitoo_factory.threads.http.HttpResourceComponent.deploy_resource">
-<code class="descname">deploy_resource</code><span class="sig-paren">(</span><em>destination</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/http.html#HttpResourceComponent.deploy_resource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.http.HttpResourceComponent.deploy_resource" title="Permalink to this definition">¶</a></dt>
+<code class="descname">deploy_resource</code><span class="sig-paren">(</span><em>destination</em>, <em>package_name=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/http.html#HttpResourceComponent.deploy_resource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.http.HttpResourceComponent.deploy_resource" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -588,181 +588,8 @@ Look at zwave scenes</p>
 <dd></dd></dl>
 
 </div>
-<div class="section" id="module-janitoo_factory.threads.views">
-<span id="janitoo-factory-threads-views-module"></span><h2>janitoo_factory.threads.views module<a class="headerlink" href="#module-janitoo_factory.threads.views" title="Permalink to this headline">¶</a></h2>
-<p>The Raspberry http views</p>
-<p>A view is a list of values (hadd, uuid, index)
-Will be used by UI to show a limited list of values</p>
-<p>Examples of views :</p>
-<blockquote>
-<div><ul class="simple">
-<li>a fish pond can implement a view,</li>
-<li>a thermostats</li>
-<li>a room / location too</li>
-</ul>
-<p>...</p>
-</div></blockquote>
-<dl class="class">
-<dt id="janitoo_factory.threads.views.HttpBus">
-<em class="property">class </em><code class="descclassname">janitoo_factory.threads.views.</code><code class="descname">HttpBus</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/views.html#HttpBus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.views.HttpBus" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">janitoo.bus.JNTBus</span></code></p>
-<p>A pseudo-bus to manage RRDTools</p>
-<dl class="method">
-<dt id="janitoo_factory.threads.views.HttpBus.check_heartbeat">
-<code class="descname">check_heartbeat</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/views.html#HttpBus.check_heartbeat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.views.HttpBus.check_heartbeat" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check that the component is &#8216;available&#8217;</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="janitoo_factory.threads.views.HttpBus.get_resource_path">
-<code class="descname">get_resource_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/views.html#HttpBus.get_resource_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.views.HttpBus.get_resource_path" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the resource path</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="janitoo_factory.threads.views.HttpBus.set_action">
-<code class="descname">set_action</code><span class="sig-paren">(</span><em>node_uuid</em>, <em>index</em>, <em>data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/views.html#HttpBus.set_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.views.HttpBus.set_action" title="Permalink to this definition">¶</a></dt>
-<dd><p>Act on the server</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="janitoo_factory.threads.views.HttpBus.start">
-<code class="descname">start</code><span class="sig-paren">(</span><em>mqttc</em>, <em>trigger_thread_reload_cb=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/views.html#HttpBus.start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.views.HttpBus.start" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="janitoo_factory.threads.views.HttpBus.stop">
-<code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/views.html#HttpBus.stop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.views.HttpBus.stop" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="janitoo_factory.threads.views.HttpResourceComponent">
-<em class="property">class </em><code class="descclassname">janitoo_factory.threads.views.</code><code class="descname">HttpResourceComponent</code><span class="sig-paren">(</span><em>path='generic'</em>, <em>bus=None</em>, <em>addr=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/views.html#HttpResourceComponent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.views.HttpResourceComponent" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">janitoo.component.JNTComponent</span></code></p>
-<p>A resource ie /rrd</p>
-<dl class="method">
-<dt id="janitoo_factory.threads.views.HttpResourceComponent.check_heartbeat_file">
-<code class="descname">check_heartbeat_file</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/views.html#HttpResourceComponent.check_heartbeat_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.views.HttpResourceComponent.check_heartbeat_file" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check that the component is &#8216;available&#8217;</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="janitoo_factory.threads.views.HttpResourceComponent.deploy_resource">
-<code class="descname">deploy_resource</code><span class="sig-paren">(</span><em>destination</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/views.html#HttpResourceComponent.deploy_resource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.views.HttpResourceComponent.deploy_resource" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="janitoo_factory.threads.views.HttpResourceComponent.get_module_dir">
-<code class="descname">get_module_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/views.html#HttpResourceComponent.get_module_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.views.HttpResourceComponent.get_module_dir" title="Permalink to this definition">¶</a></dt>
-<dd><p>Needed to publish static files</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="janitoo_factory.threads.views.HttpResourceComponent.get_resource">
-<code class="descname">get_resource</code><span class="sig-paren">(</span><em>node_uuid</em>, <em>index</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/views.html#HttpResourceComponent.get_resource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.views.HttpResourceComponent.get_resource" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="janitoo_factory.threads.views.HttpResourceComponent.start">
-<code class="descname">start</code><span class="sig-paren">(</span><em>mqttc</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/views.html#HttpResourceComponent.start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.views.HttpResourceComponent.start" title="Permalink to this definition">¶</a></dt>
-<dd><p>Start the component.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="janitoo_factory.threads.views.HttpResourceComponent.stop">
-<code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/views.html#HttpResourceComponent.stop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.views.HttpResourceComponent.stop" title="Permalink to this definition">¶</a></dt>
-<dd><p>Stop the component.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="janitoo_factory.threads.views.HttpServerThread">
-<em class="property">class </em><code class="descclassname">janitoo_factory.threads.views.</code><code class="descname">HttpServerThread</code><span class="sig-paren">(</span><em>section</em>, <em>options={}</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/views.html#HttpServerThread"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.views.HttpServerThread" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">janitoo.thread.BaseThread</span></code></p>
-<p>The Rdd cache thread</p>
-<p>Implement a cache.</p>
-<dl class="method">
-<dt id="janitoo_factory.threads.views.HttpServerThread.config">
-<code class="descname">config</code><span class="sig-paren">(</span><em>host='localhost'</em>, <em>port=8081</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/views.html#HttpServerThread.config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.views.HttpServerThread.config" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="janitoo_factory.threads.views.HttpServerThread.config_timeout_callback">
-<code class="descname">config_timeout_callback</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/views.html#HttpServerThread.config_timeout_callback"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.views.HttpServerThread.config_timeout_callback" title="Permalink to this definition">¶</a></dt>
-<dd><p>Called when configuration is finished.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="janitoo_factory.threads.views.HttpServerThread.loop">
-<code class="descname">loop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/views.html#HttpServerThread.loop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.views.HttpServerThread.loop" title="Permalink to this definition">¶</a></dt>
-<dd><p>Launch after finishing the run loop. The node manager is still available.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="janitoo_factory.threads.views.HttpServerThread.post_loop">
-<code class="descname">post_loop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/views.html#HttpServerThread.post_loop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.views.HttpServerThread.post_loop" title="Permalink to this definition">¶</a></dt>
-<dd><p>Launch after finishing the run loop. The node manager is still available.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="janitoo_factory.threads.views.HttpServerThread.pre_loop">
-<code class="descname">pre_loop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/views.html#HttpServerThread.pre_loop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.views.HttpServerThread.pre_loop" title="Permalink to this definition">¶</a></dt>
-<dd><p>Launch before entering the run loop. The node manager is available.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="janitoo_factory.threads.views.HttpServerThread.run">
-<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/views.html#HttpServerThread.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.views.HttpServerThread.run" title="Permalink to this definition">¶</a></dt>
-<dd><p>Run the loop</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="janitoo_factory.threads.views.HttpServerThread.stop">
-<code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/views.html#HttpServerThread.stop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.views.HttpServerThread.stop" title="Permalink to this definition">¶</a></dt>
-<dd><p>Stop the thread</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="janitoo_factory.threads.views.HttpThread">
-<em class="property">class </em><code class="descclassname">janitoo_factory.threads.views.</code><code class="descname">HttpThread</code><span class="sig-paren">(</span><em>options=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/views.html#HttpThread"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.views.HttpThread" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">janitoo.thread.JNTBusThread</span></code></p>
-<p>The Http thread</p>
-<dl class="method">
-<dt id="janitoo_factory.threads.views.HttpThread.init_bus">
-<code class="descname">init_bus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/views.html#HttpThread.init_bus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.views.HttpThread.init_bus" title="Permalink to this definition">¶</a></dt>
-<dd><p>Build the bus</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="janitoo_factory.threads.views.ThreadedHTTPHandler">
-<em class="property">class </em><code class="descclassname">janitoo_factory.threads.views.</code><code class="descname">ThreadedHTTPHandler</code><span class="sig-paren">(</span><em>request</em>, <em>client_address</em>, <em>server</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/views.html#ThreadedHTTPHandler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.views.ThreadedHTTPHandler" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/simplehttpserver.html#SimpleHTTPServer.SimpleHTTPRequestHandler" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">SimpleHTTPServer.SimpleHTTPRequestHandler</span></code></a></p>
-</dd></dl>
-
-<dl class="class">
-<dt id="janitoo_factory.threads.views.ThreadedHTTPServer">
-<em class="property">class </em><code class="descclassname">janitoo_factory.threads.views.</code><code class="descname">ThreadedHTTPServer</code><span class="sig-paren">(</span><em>server_address</em>, <em>RequestHandlerClass</em>, <em>bind_and_activate=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/views.html#ThreadedHTTPServer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.views.ThreadedHTTPServer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/socketserver.html#SocketServer.ThreadingMixIn" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">SocketServer.ThreadingMixIn</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/basehttpserver.html#BaseHTTPServer.HTTPServer" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">BaseHTTPServer.HTTPServer</span></code></a></p>
-<p>Handle requests in a separate thread.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="janitoo_factory.threads.views.make_http_resource">
-<code class="descclassname">janitoo_factory.threads.views.</code><code class="descname">make_http_resource</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/views.html#make_http_resource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.views.make_http_resource" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="janitoo_factory.threads.views.make_thread">
-<code class="descclassname">janitoo_factory.threads.views.</code><code class="descname">make_thread</code><span class="sig-paren">(</span><em>options</em>, <em>force=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_factory/threads/views.html#make_thread"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_factory.threads.views.make_thread" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<div class="section" id="janitoo-factory-threads-views-module">
+<h2>janitoo_factory.threads.views module<a class="headerlink" href="#janitoo-factory-threads-views-module" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-janitoo_factory.threads">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-janitoo_factory.threads" title="Permalink to this headline">¶</a></h2>

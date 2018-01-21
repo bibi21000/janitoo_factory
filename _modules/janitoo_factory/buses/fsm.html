@@ -139,7 +139,6 @@
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">threading</span>
-<span class="kn">from</span> <span class="nn">pkg_resources</span> <span class="k">import</span> <span class="n">iter_entry_points</span>
 
 <span class="kn">from</span> <span class="nn">janitoo.bus</span> <span class="k">import</span> <span class="n">JNTBus</span>
 <span class="kn">from</span> <span class="nn">janitoo.fsm</span> <span class="k">import</span> <span class="n">HierarchicalMachine</span> <span class="k">as</span> <span class="n">Machine</span>
@@ -147,54 +146,62 @@
 <div class="viewcode-block" id="JNTFsmBus"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus">[docs]</a><span class="k">class</span> <span class="nc">JNTFsmBus</span><span class="p">(</span><span class="n">JNTBus</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A bus managed by a fsm</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">states</span> <span class="o">=</span> <span class="p">[</span>
-       <span class="s1">&#39;booting&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;sleeping&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;working&#39;</span><span class="p">,</span>
-    <span class="p">]</span>
-    <span class="sd">&quot;&quot;&quot;The fsm states :</span>
-
-<span class="sd">   - the first state must be booting</span>
-<span class="sd">   - do what you want with the other ones.</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">transitions</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="p">{</span> <span class="s1">&#39;trigger&#39;</span><span class="p">:</span> <span class="s1">&#39;boot&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;source&#39;</span><span class="p">:</span> <span class="s1">&#39;booting&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;dest&#39;</span><span class="p">:</span> <span class="s1">&#39;sleeping&#39;</span><span class="p">,</span>
-        <span class="p">},</span>
-        <span class="p">{</span> <span class="s1">&#39;trigger&#39;</span><span class="p">:</span> <span class="s1">&#39;sleep&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;source&#39;</span><span class="p">:</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;dest&#39;</span><span class="p">:</span> <span class="s1">&#39;sleeping&#39;</span><span class="p">,</span>
-        <span class="p">},</span>
-        <span class="p">{</span> <span class="s1">&#39;trigger&#39;</span><span class="p">:</span> <span class="s1">&#39;work&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;source&#39;</span><span class="p">:</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;dest&#39;</span><span class="p">:</span> <span class="s1">&#39;working&#39;</span><span class="p">,</span>
-        <span class="p">},</span>
-    <span class="p">]</span>
-    <span class="sd">&quot;&quot;&quot;The fsm transitions</span>
-<span class="sd">    - the first transition is used to get out the boot state : its a good idea to check values availability in ths trigger.</span>
-<span class="sd">    - the second transition is used to stop the machine.</span>
-<span class="sd">    - do what you want with the other ones.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">JNTBus</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">states</span> <span class="o">=</span> <span class="p">[</span>
+           <span class="s1">&#39;booting&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;halted&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;sleeping&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;working&#39;</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="sd">&quot;&quot;&quot;The fsm states :</span>
+
+<span class="sd">       - the first state must be booting</span>
+<span class="sd">       - do what you want with the other ones.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">transitions</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">{</span> <span class="s1">&#39;trigger&#39;</span><span class="p">:</span> <span class="s1">&#39;boot&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;source&#39;</span><span class="p">:</span> <span class="s1">&#39;booting&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;dest&#39;</span><span class="p">:</span> <span class="s1">&#39;sleeping&#39;</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="p">{</span> <span class="s1">&#39;trigger&#39;</span><span class="p">:</span> <span class="s1">&#39;halt&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;source&#39;</span><span class="p">:</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;dest&#39;</span><span class="p">:</span> <span class="s1">&#39;halted&#39;</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="p">{</span> <span class="s1">&#39;trigger&#39;</span><span class="p">:</span> <span class="s1">&#39;sleep&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;source&#39;</span><span class="p">:</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;dest&#39;</span><span class="p">:</span> <span class="s1">&#39;sleeping&#39;</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="p">{</span> <span class="s1">&#39;trigger&#39;</span><span class="p">:</span> <span class="s1">&#39;work&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;source&#39;</span><span class="p">:</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;dest&#39;</span><span class="p">:</span> <span class="s1">&#39;working&#39;</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">]</span>
+        <span class="sd">&quot;&quot;&quot;The fsm transitions</span>
+<span class="sd">        - the first transition is used to get out the boot state : its a good idea to check values availability in ths trigger.</span>
+<span class="sd">        - the second transition is used to stop the machine.</span>
+<span class="sd">        - do what you want with the other ones.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_fsm</span> <span class="o">=</span>  <span class="kc">None</span>
         <span class="sd">&quot;&quot;&quot;The finish state machine&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_timer</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="sd">&quot;&quot;&quot;The timer that&#39;s start the finish state machine&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
         <span class="sd">&quot;&quot;&quot;The timer that&#39;s start the finish state machine&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_timer_delay</span> <span class="o">=</span> <span class="mi">3</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_timer_delay</span> <span class="o">=</span> <span class="mf">3.1</span>
         <span class="sd">&quot;&quot;&quot;The timer delay between 2 retries&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_max_retries</span> <span class="o">=</span> <span class="mi">5</span>
         <span class="sd">&quot;&quot;&quot;The max retries to boot the fsm&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_retry</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="sd">&quot;&quot;&quot;The current retry to boot the fsm&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_slow_start</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="sd">&quot;&quot;&quot;The slow delay to boot the fsm&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">states</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="sd">&quot;&quot;&quot;Initial state of the fsm&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_bus_lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
@@ -220,19 +227,50 @@
         <span class="n">poll_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">uuid</span><span class="p">]</span><span class="o">.</span><span class="n">create_poll_value</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">poll_value</span><span class="o">.</span><span class="n">uuid</span><span class="p">]</span> <span class="o">=</span> <span class="n">poll_value</span>
 
-<div class="viewcode-block" id="JNTFsmBus.start"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus.start">[docs]</a>    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mqttc</span><span class="p">,</span> <span class="n">trigger_thread_reload_cb</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="JNTFsmBus.start"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus.start">[docs]</a>    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mqttc</span><span class="p">,</span> <span class="n">trigger_thread_reload_cb</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Start the bus</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;get_graph&quot;</span><span class="p">):</span>
+            <span class="nb">delattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;get_graph&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_fsm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_fsm</span><span class="p">()</span>
-        <span class="n">JNTBus</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mqttc</span><span class="p">,</span> <span class="n">trigger_thread_reload_cb</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_timer</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fsm_timer_delay</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_boot_timer</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span></div>
+        <span class="n">JNTBus</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mqttc</span><span class="p">,</span> <span class="n">trigger_thread_reload_cb</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_slow_start</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodeman</span><span class="o">.</span><span class="n">slow_start</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_components</span><span class="p">())</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_slow_start</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodeman</span><span class="o">.</span><span class="n">slow_start</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">] - Can&#39;t set slow_start. Using default value </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_slow_start</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_timer_delay</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">oid</span><span class="p">,</span> <span class="s1">&#39;fsm_timer_delay&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_fsm_timer_delay</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">] - Can&#39;t set fsm_timer_delay from configuration file. Using default value </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_timer_delay</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_max_retries</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">oid</span><span class="p">,</span><span class="s1">&#39;fsm_max_retries&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_fsm_max_retries</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">] - Can&#39;t set fsm_max_retries from configuration file. Using default value </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_max_retries</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stop_boot_timer</span><span class="p">()</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">] - Will boot fsm in </span><span class="si">%s</span><span class="s2"> seconds&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_timer_delay</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_slow_start</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_timer</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fsm_timer_delay</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_slow_start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_boot_timer</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">] - Error when trying to boot fsm at try </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_retry</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_lock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span></div>
+
 
 <div class="viewcode-block" id="JNTFsmBus.get_state"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus.get_state">[docs]</a>    <span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node_uuid</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get the state of the fsm</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span></div>
 
+<div class="viewcode-block" id="JNTFsmBus.publish_state"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus.publish_state">[docs]</a>    <span class="k">def</span> <span class="nf">publish_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">state</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodeman</span><span class="o">.</span><span class="n">find_bus_value</span><span class="p">(</span><span class="s1">&#39;state&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nodeman</span><span class="o">.</span><span class="n">publish_poll</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span></div>
+        
 <div class="viewcode-block" id="JNTFsmBus.create_fsm"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus.create_fsm">[docs]</a>    <span class="k">def</span> <span class="nf">create_fsm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create the fsm</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -242,29 +280,29 @@
             <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Bus&#39;</span><span class="p">,</span>
             <span class="n">initial</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">states</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="JNTFsmBus.stop"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus.stop">[docs]</a>    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="JNTFsmBus.stop"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus.stop">[docs]</a>    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Stop the bus</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;halt&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">halt</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;get_graph&quot;</span><span class="p">):</span>
+            <span class="nb">delattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;get_graph&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+        <span class="n">event</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;event&#39;</span><span class="p">,</span> <span class="n">threading</span><span class="o">.</span><span class="n">Event</span><span class="p">())</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">] - Stop the node manager with event </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">event</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">stop_boot_timer</span><span class="p">()</span>
         <span class="k">finally</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_lock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">states</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">nodeman</span><span class="o">.</span><span class="n">find_bus_value</span><span class="p">(</span><span class="s1">&#39;transition&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transitions</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;trigger&#39;</span><span class="p">]</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_fsm</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;get_graph&quot;</span><span class="p">):</span>
-                <span class="nb">delattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;get_graph&quot;</span><span class="p">)</span>
-        <span class="k">except</span> <span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">] - Error when stopping fsm&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_retry</span><span class="p">)</span>
-        <span class="n">JNTBus</span><span class="o">.</span><span class="n">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+        <span class="n">event</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fsm</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">JNTBus</span><span class="o">.</span><span class="n">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="JNTFsmBus.check_heartbeat"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus.check_heartbeat">[docs]</a>    <span class="k">def</span> <span class="nf">check_heartbeat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Check that the fsm is started</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">!=</span> <span class="s1">&#39;booting&#39;</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span> <span class="s1">&#39;booting&#39;</span><span class="p">,</span> <span class="s1">&#39;halted&#39;</span> <span class="p">]</span></div>
 
 <div class="viewcode-block" id="JNTFsmBus.stop_boot_timer"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus.stop_boot_timer">[docs]</a>    <span class="k">def</span> <span class="nf">stop_boot_timer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Stop the boot timer</span>
@@ -275,7 +313,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_timer</span> <span class="o">=</span> <span class="kc">None</span></div>
 
 <div class="viewcode-block" id="JNTFsmBus.on_boot_timer"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus.on_boot_timer">[docs]</a>    <span class="k">def</span> <span class="nf">on_boot_timer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Make a check using a timer.</span>
+        <span class="sd">&quot;&quot;&quot;Try to boot the bus using a timer.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
@@ -287,30 +325,40 @@
                 <span class="k">else</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_retry</span> <span class="o">+=</span> <span class="mi">1</span>
                     <span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodeman</span><span class="o">.</span><span class="n">find_bus_value</span><span class="p">(</span><span class="s1">&#39;transition_config&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">data</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">] - fsm boot try </span><span class="si">%s</span><span class="s2">. Next try in </span><span class="si">%s</span><span class="s2"> seconds&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_retry</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_timer_delay</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_retry</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_fsm_slow_start</span><span class="p">)</span>
                     <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">] - boot try </span><span class="si">%s</span><span class="s2"> with transition </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_retry</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">nodeman</span><span class="o">.</span><span class="n">find_bus_value</span><span class="p">(</span><span class="s1">&#39;transition&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">state</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_timer</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fsm_timer_delay</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_retry</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nodeman</span><span class="o">.</span><span class="n">slow_start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_boot_timer</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_timer</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fsm_timer_delay</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_retry</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_fsm_slow_start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_boot_timer</span><span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">] - fsm has booted in state </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
-        <span class="k">except</span> <span class="p">:</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">] - Error when trying to boot fsm at try </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_retry</span><span class="p">)</span>
         <span class="k">finally</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_fsm_boot_lock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="JNTFsmBus.bus_acquire"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus.bus_acquire">[docs]</a>    <span class="k">def</span> <span class="nf">bus_acquire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">blocking</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="JNTFsmBus.fsm_bus_acquire"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus.fsm_bus_acquire">[docs]</a>    <span class="k">def</span> <span class="nf">fsm_bus_acquire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">blocking</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get a lock on the bus&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bus_lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">(</span><span class="n">blocking</span><span class="p">):</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="JNTFsmBus.bus_release"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus.bus_release">[docs]</a>    <span class="k">def</span> <span class="nf">bus_release</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="JNTFsmBus.fsm_bus_release"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus.fsm_bus_release">[docs]</a>    <span class="k">def</span> <span class="nf">fsm_bus_release</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Release a lock on the bus&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_bus_lock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="JNTFsmBus.bus_locked"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus.bus_locked">[docs]</a>    <span class="k">def</span> <span class="nf">bus_locked</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="JNTFsmBus.fsm_bus_locked"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus.fsm_bus_locked">[docs]</a>    <span class="k">def</span> <span class="nf">fsm_bus_locked</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get status of the lock&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bus_lock</span><span class="o">.</span><span class="n">locked</span><span class="p">()</span></div></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bus_lock</span><span class="o">.</span><span class="n">locked</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="JNTFsmBus.on_enter_halted"><a class="viewcode-back" href="../../../api/janitoo_factory.buses.html#janitoo_factory.buses.fsm.JNTFsmBus.on_enter_halted">[docs]</a>    <span class="k">def</span> <span class="nf">on_enter_halted</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">] - on_enter_halted&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">publish_state</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">] - Error when publishing state&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span></div></div>
 </pre></div>
 
     </div>
